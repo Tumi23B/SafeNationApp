@@ -1,5 +1,6 @@
 package com.example.mining.UI
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -20,6 +21,7 @@ import java.util.Date
 import java.util.Locale
 
 
+
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -32,6 +34,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -123,7 +126,7 @@ class HomeFragment : Fragment() {
         Toast.makeText(requireContext(), "ALERT: $emergencyType reported! Safety team notified.", Toast.LENGTH_LONG).show()
 
         // Check if we have vibration permission and device supports vibration
-        val vibrator = requireContext().getSystemService(Context.VIBRATOR_SERVICE) as? Vibrator
+        @Suppress("DEPRECATION") val vibrator = requireContext().getSystemService(Context.VIBRATOR_SERVICE) as? Vibrator
         vibrator?.let {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 it.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE))
