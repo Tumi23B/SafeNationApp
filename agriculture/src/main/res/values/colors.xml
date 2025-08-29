@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Color values used on the Training screen -->
+<resources>
+    <color name="training_bg">#FFE6A7</color>
+    <color name="training_toolbar">#99582A</color>
+    <color name="training_tile">#BB9457</color>
+    <color name="training_text">#432818</color>
+
+    <!-- Color values used on the Settings screen -->
+    <color name="settings_bg">#FFE6A7</color>
+    <color name="settings_toolbar_bg">#99582a</color>
+    <color name="settings_card_bg">#BB9457</color>
+    <color name="settings_text_primary">#432818</color>
+    <color name="settings_accent">#99582a</color>
+    <color name="settings_value">#6f1d1b</color>
+</resources>

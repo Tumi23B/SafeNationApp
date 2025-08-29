@@ -1,0 +1,88 @@
+<!-- Purpose: Layout for the language settings screen -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/settings_bg">
+
+        <include
+            android:id="@+id/includeToolbar"
+            layout="@layout/include_language_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <!-- This space pushes the content down. -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/fredoka_one"
+                android:text="Select a language"
+                android:textColor="@color/settings_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <include
+                android:id="@+id/englishCard"
+                layout="@layout/item_language_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:languageName="@{@string/language_english}" />
+
+            <include
+                android:id="@+id/sesothoCard"
+                layout="@layout/item_language_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:languageName="@{@string/language_sesotho}" />
+
+            <include
+                android:id="@+id/isizuluCard"
+                layout="@layout/item_language_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:languageName="@{@string/language_isizulu}" />
+
+            <!-- This space creates distance between the cards and the button. -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSave"
+                android:layout_width="@dimen/settings_button_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#6F1D1B"
+                android:fontFamily="@font/alata"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="#FFE6A7"
+                app:cornerRadius="@dimen/settings_button_corner" />
+
+            <!-- This space adds padding at the bottom. -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5" />
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

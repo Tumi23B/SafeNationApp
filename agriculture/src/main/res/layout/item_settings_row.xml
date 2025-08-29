@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Purpose: Settings row using android:src binding to fix setter error -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable name="title" type="String" />
+        <variable name="value" type="String" />
+        <variable name="iconRes" type="int" />
+        <variable name="showValue" type="Boolean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:background="@color/settings_card_bg"
+        android:padding="14dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:src='@{iconRes}' />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/ivIcon"
+            android:text='@{title}'
+            android:textColor="@color/settings_text_primary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:visibility='@{showValue ? View.VISIBLE : View.GONE}'
+            android:text='@{value}'
+            android:textColor="@color/settings_value" />
+
+
+    </RelativeLayout>
+</layout>

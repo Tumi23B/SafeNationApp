@@ -1,0 +1,21 @@
+<!-- Night theme overrides for AgricultureAgritech -->
+<resources>
+    <!-- Keep the same name as in values/themes.xml so it overrides at night -->
+    <style name="Base.Theme.AgricultureAgritech" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">#432818</item>
+        <item name="colorOnPrimary">#99582a</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">#99582a</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <!-- Keep Theme.* inheriting from Base.* for consistency -->
+    <style name="Theme.AgricultureAgritech" parent="Base.Theme.AgricultureAgritech" />
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file defines the layout for the All Incidents screen. -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFE6A7"
+        tools:context=".features.incidentReporting.ui.AllIncidentsFragment">
+
+        <!-- This provides horizontal scrolling for the filter chips. -->
+        <HorizontalScrollView
+            android:id="@+id/filter_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#99582A"
+            android:backgroundTint="#99582A"
+            android:scrollbars="none"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- This group contains the filter chips. -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/filter_chip_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_all"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#6f1d1b"
+                    android:checked="true"
+                    android:fontFamily="@font/alata"
+                    android:text="All"
+                    android:textColor="#ffe6a7" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_issued"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#6f1d1b"
+                    android:fontFamily="@font/alata"
+                    android:text="Issued"
+                    android:textColor="#ffe6a7" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_pending"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#6f1d1b"
+                    android:fontFamily="@font/alata"
+                    android:text="Pending"
+                    android:textColor="#ffe6a7" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_resolved"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#6f1d1b"
+                    android:fontFamily="@font/alata"
+                    android:text="Resolved"
+                    android:textColor="#ffe6a7" />
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <!-- This list displays the incidents. -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/incidents_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_scroll_view"
+            tools:listitem="@layout/list_item_incident" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

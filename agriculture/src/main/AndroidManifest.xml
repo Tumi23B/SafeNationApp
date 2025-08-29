@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file declares the components for the agriculture library. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!--
+         The main app's manifest will handle application-level attributes.
+         This file only needs to declare the activities that belong to this library.
+        -->
+        <activity
+            android:name="com.safenation.agriculture.features.dashboard.ui.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.safenation.agriculture.features.incidentReporting.ui.IncidentReportingActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.safenation.agriculture.features.safetyChecklists.ui.SafetyChecklistActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.safenation.agriculture.features.training.ui.TrainingModuleActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.safenation.agriculture.features.settings.ui.SettingsActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

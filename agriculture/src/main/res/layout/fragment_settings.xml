@@ -1,0 +1,102 @@
+<!-- Purpose: Composed Settings screen with proper include params so margins apply -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="language"
+            type="String" />
+        <variable
+            name="changePassword"
+            type="String" />
+        <variable
+            name="policy"
+            type="String" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/settings_bg">
+
+        <include
+            android:id="@+id/includeToolbar"
+            layout="@layout/include_settings_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ScrollView
+            android:id="@+id/settings_sc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Account"
+                    android:textColor="@color/settings_text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <include
+                    android:id="@+id/accountCard"
+                    layout="@layout/item_settings_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/settings_vertical_spacing_large"
+                    android:text="Settings"
+                    android:textColor="@color/settings_text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <include
+                    android:id="@+id/languageRow"
+                    layout="@layout/item_settings_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/settings_card_margin_vertical"
+                    app:title="@{language}" />
+
+                <include
+                    android:id="@+id/changePasswRow"
+                    layout="@layout/item_settings_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/settings_card_margin_vertical"
+                    app:title="@{changePassword}" />
+
+                <include
+                    android:id="@+id/policyRow"
+                    layout="@layout/item_settings_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/settings_card_margin_vertical"
+                    app:title="@{policy}" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogout"
+                    android:layout_width="@dimen/settings_button_width"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/settings_vertical_spacing_large"
+                    android:backgroundTint="#6f1d1b"
+                    android:fontFamily="@font/alata"
+                    android:text="Logout"
+                    android:textAllCaps="false"
+                    android:textColor="#FFE6A7"
+                    app:cornerRadius="@dimen/settings_button_corner" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

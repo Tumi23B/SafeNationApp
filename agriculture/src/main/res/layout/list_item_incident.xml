@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file defines the layout for a single incident item in the list. -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="4dp"
+        app:cardBackgroundColor="#BB9457"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/a_incident"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- This displays the priority and ID of the incident. -->
+            <TextView
+                android:id="@+id/incident_priority_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alata"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="P1 #74" />
+
+            <!-- This displays the status of the incident. -->
+            <TextView
+                android:id="@+id/incident_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#99582A"
+                android:fontFamily="@font/alata"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textColor="#ffe6a7"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Resolved" />
+
+            <!-- This displays the title of the incident. -->
+            <TextView
+                android:id="@+id/incident_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/alata"
+                android:textColor="#432818"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/incident_priority_id"
+                tools:text="Tractor front wheel is flat" />
+
+            <!-- This displays the timestamp and owner of the incident. -->
+            <TextView
+                android:id="@+id/incident_timestamp_owner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/alata"
+                android:textColor="#99582A"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/incident_title"
+                tools:text="Aug 04, 2025 1:02 PM, No Owner" />
+
+            <!-- This button allows the user to download a report of the incident. -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/download_report_button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/alata"
+                android:text="Download Report"
+                android:textColor="#FFE6A7"
+                app:backgroundTint="#6F1D1B"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/incident_timestamp_owner"
+                app:strokeColor="#432818" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

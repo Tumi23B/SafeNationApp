@@ -1,0 +1,44 @@
+<!-- Layout for IncidentReportingActivity with centered, styled toolbar title -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.Material3.ActionBar">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_incidents"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:backgroundTint="#99582a"
+                app:navigationIcon="@drawable/ic_arrow_back"
+                app:title="@string/incidents_title"
+                app:titleCentered="true"
+                android:background="@color/settings_toolbar_bg"
+                app:titleTextAppearance="@style/ToolbarTitleText"
+                app:titleTextColor="#432818" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs_incidents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffe6a7"
+                android:backgroundTint="#ffe6a7"
+                app:titleTextColor="#432818"
+
+                app:tabIndicatorFullWidth="false" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_incidents"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

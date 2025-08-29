@@ -1,0 +1,5 @@
+<!-- Night palette overrides -->
+<resources>
+    <color name="purple_200">#432818</color>
+    <color name="teal_200">#432818</color>
+</resources>

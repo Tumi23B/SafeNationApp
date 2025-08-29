@@ -1,0 +1,12 @@
+<!-- App theme definitions without duplicate ToolbarTitleText -->
+<resources>
+    <style name="Base.Theme.AgricultureAgritech" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:colorBackground">#FFE6A7</item>
+    </style>
+
+    <style name="Theme.AgricultureAgritech" parent="Base.Theme.AgricultureAgritech" />
+
+    <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:fontFamily">@font/alata</item>
+    </style>
+</resources>

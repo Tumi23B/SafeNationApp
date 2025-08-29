@@ -1,0 +1,46 @@
+<!-- Layout for the policy screen, enabling vertical scroll -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- CoordinatorLayout helps manage interactions between toolbar and scrolling content. -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/settings_bg">
+
+        <include
+            android:id="@+id/includeToolbar"
+            layout="@layout/include_policy_toolbar" />
+
+        <!-- ScrollView makes its child content vertically scrollable. -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <!-- MaterialCardView contains the policy text. -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardBackgroundColor="#BB9457"
+                app:cardCornerRadius="8dp"
+                app:strokeColor="#432818"
+                app:strokeWidth="2dp">
+
+                <!-- TextView displays the policy text. -->
+                <TextView
+                    android:id="@+id/tvPolicyText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/policy_text"
+                    android:textColor="#432818"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </ScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

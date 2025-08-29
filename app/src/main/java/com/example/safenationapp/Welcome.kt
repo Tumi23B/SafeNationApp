@@ -1,20 +1,22 @@
+// This file contains the logic for the application's welcome screen.
 package com.example.safenationapp
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.widget.Button
+import com.safenation.agriculture.features.dashboard.ui.DashboardActivity
 
-class Welcome : AppCompatActivity() {
+class Welcome : BaseActivity() {
+    //This function sets up the view and the button's click listener.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_welcome)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        applyWindowInsets(findViewById(R.id.main))
+
+        val agricultureButton = findViewById<Button>(R.id.agriculture_button)
+        agricultureButton.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
         }
     }
 }
