@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.safenationapp"
+    namespace = "com.example.mining"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.safenationapp"
+        applicationId = "com.example.mining"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -38,18 +38,20 @@ android {
         viewBinding = true
         dataBinding = true
     }
-}
+    dependencies {
 
-dependencies {
+        implementation(libs.androidx.core.ktx)
+        implementation(libs.androidx.appcompat)
+        implementation(libs.material)
+        implementation(libs.androidx.activity)
+        implementation(libs.androidx.constraintlayout)
+        implementation(libs.androidx.navigation.fragment.ktx)
+        implementation(libs.androidx.navigation.ui.ktx)
+        testImplementation(libs.junit)
+        androidTestImplementation(libs.androidx.junit)
+        androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(project(":agriculture"))
-    implementation(project(":mining"))
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+        implementation(libs.androidx.navigation.fragment.ktx)
+        implementation(libs.androidx.navigation.ui.ktx)
+    }
 }

@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "SafeNationApp"
 include(":app")
 include(":agriculture")
+include(":mining")

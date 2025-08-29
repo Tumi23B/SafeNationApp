@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/homeFragment"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/incidentReportFragment"
+            android:icon="@drawable/ic_incident"
+            android:title="Incident Report" />
+        <item
+            android:id="@+id/safetyFragment"
+            android:icon="@drawable/ic_safety"
+            android:title="Safety" />
+        <item
+            android:id="@+id/trainingFragment"
+            android:icon="@drawable/ic_training"
+            android:title="Training" />
+        <item
+            android:id="@+id/checklistFragment"
+            android:icon="@drawable/ic_checklist"
+            android:title="Checklist" />
+        <item
+            android:id="@+id/settingsFragment"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings" />
+    </group>
+</menu>
