@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/mining_dark_background"
     android:padding="16dp"
-    tools:context=".UI.ReportFragment">
+    tools:context="com.safenation.mining.ui.ReportFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

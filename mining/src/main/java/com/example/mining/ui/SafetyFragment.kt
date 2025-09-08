@@ -1,4 +1,4 @@
-package com.example.mining.UI
+package com.safenation.mining.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.mining.R
-import com.example.mining.databinding.FragmentSafetyBinding
+import com.safenation.mining.R
+import com.safenation.mining.databinding.FragmentSafetyBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
@@ -63,6 +63,7 @@ class SafetyFragment : Fragment() {
 
     private fun makeEmergencyCall(phoneNumber: String) {
         val intent = Intent(Intent.ACTION_DIAL).apply {
+           // Intent.setData = Uri.parse("tel:$phoneNumber")
             data = Uri.parse("tel:$phoneNumber")
         }
 

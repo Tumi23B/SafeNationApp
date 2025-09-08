@@ -1,4 +1,4 @@
-package com.example.mining.UI
+package com.safenation.mining.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.mining.R
-import com.example.mining.databinding.FragmentTrainingBinding
+import com.safenation.mining.databinding.FragmentTrainingBinding
 
 class TrainingFragment : Fragment() {
     private var _binding: FragmentTrainingBinding? = null

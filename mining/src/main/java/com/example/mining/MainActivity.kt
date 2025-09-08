@@ -1,18 +1,19 @@
-package com.example.mining
+package com.example.safenationapp
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.mining.databinding.ActivityMainBinding
+import com.example.safenation.core.BaseActivity
+import com.safenation.mining.R
+import com.safenation.mining.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -20,9 +21,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+        setContentView(binding.root) // REMOVED duplicate setContentView()
         setupNavigation()
+
+        // SETUP ACTIONBAR FIRST - This is the critical fix
+        //setupActionBar(binding.toolbar)
+
     }
 
     private fun setupNavigation() {
@@ -44,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         )
 
         // Setup ActionBar with NavController
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
+        //setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.toolbar?.setupWithNavController(navController, appBarConfiguration)
         // Setup NavigationView with NavController
         binding.navigationView.setupWithNavController(navController)
 
@@ -91,15 +95,6 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-    // Handle back press with navigation drawer
-    /*override fun onBackPressed() {
-        if (binding.drawerLayout.isDrawerOpen(binding.navigationView)) {
-            binding.drawerLayout.closeDrawer(binding.navigationView)
-        } else {
-            super.onBackPressed()
-        }
-    }*/
 
     // Method to handle logout from SettingsFragment
     fun handleLogout() {

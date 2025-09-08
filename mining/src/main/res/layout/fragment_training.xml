@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/mining_dark_background"
     android:padding="16dp"
-    tools:context=".UI.TrainingFragment">
+    tools:context="com.safenation.mining.ui.TrainingFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

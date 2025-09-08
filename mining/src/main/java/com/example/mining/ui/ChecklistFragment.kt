@@ -1,4 +1,4 @@
-package com.example.mining.UI
+package com.example.mining.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.mining.R
-import com.example.mining.databinding.FragmentChecklistBinding
+import com.safenation.mining.databinding.FragmentChecklistBinding
 
 
 class ChecklistFragment : Fragment() {

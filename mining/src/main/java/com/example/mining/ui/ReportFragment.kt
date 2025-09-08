@@ -1,4 +1,4 @@
-package com.example.mining.UI
+package com.safenation.mining.ui
 
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.mining.R
-import com.example.mining.databinding.FragmentReportBinding
+import com.safenation.mining.databinding.FragmentReportBinding
 import java.util.Date
 import java.util.Locale
 

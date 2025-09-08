@@ -38,6 +38,8 @@ android {
 }
 
 dependencies {
+
+
     // This block lists the libraries the module depends on.
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

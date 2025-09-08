@@ -1,4 +1,4 @@
-package com.example.mining.UI
+package com.safenation.mining.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -13,8 +13,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
-import com.example.mining.R
-import com.example.mining.databinding.FragmentHomeBinding
+import com.safenation.mining.R
+import com.safenation.mining.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.SimpleDateFormat
 import java.util.Date

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/mining_dark_background"
-    tools:context=".UI.HomeFragment">
+    tools:context="com.safenation.mining.ui.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
