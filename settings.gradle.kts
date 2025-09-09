@@ -23,3 +23,4 @@ rootProject.name = "SafeNationApp"
 include(":app")
 include(":agriculture")
 include(":mining")
+include(":logistics")

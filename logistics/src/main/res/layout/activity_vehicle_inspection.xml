@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#121212">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:context=".ui.VehicleInspection">
+
+        <!-- Header Section -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Vehicle Inspection"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Vehicle Information -->
+        <TextView
+            android:id="@+id/vehicleInfoLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Vehicle Information"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/vinLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/vehicleInfoLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:boxStrokeColor="#1E90FF"
+            app:hintTextColor="#CCCCCC"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/vinInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="VIN Number"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/white"
+                android:textColorHint="#CCCCCC"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/licensePlateLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/vinLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:boxStrokeColor="#1E90FF"
+            app:hintTextColor="#CCCCCC"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/licensePlateInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="License Plate"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/white"
+                android:textColorHint="#CCCCCC"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Inspection Items -->
+        <TextView
+            android:id="@+id/inspectionLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Inspection Items"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/licensePlateLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Exterior -->
+        <TextView
+            android:id="@+id/exteriorLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Exterior"
+            android:textColor="#1E90FF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/inspectionLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/exteriorGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/exteriorLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <CheckBox
+                android:id="@+id/checkTires"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tires - Good condition and proper pressure"
+                android:textColor="@android:color/white"/>
+            <CheckBox
+                android:id="@+id/checkLights"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lights - All functioning properly"
+                android:textColor="@android:color/white"/>
+            <CheckBox
+                android:id="@+id/checkBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Body - No major damage or rust"
+                android:textColor="@android:color/white"/>
+            <CheckBox
+                android:id="@+id/checkWindows"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Windows - No cracks or damage"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+
+        <!-- Interior -->
+        <TextView
+            android:id="@+id/interiorLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Interior"
+            android:textColor="#1E90FF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/exteriorGroup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/interiorGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/interiorLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <CheckBox
+                android:id="@+id/checkSeats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seats - Proper condition and adjustment"
+                android:textColor="@android:color/white"/>
+            <CheckBox
+                android:id="@+id/checkDashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dashboard - All warning lights off"
+                android:textColor="@android:color/white"/>
+            <CheckBox
+                android:id="@+id/checkControls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Controls - All functioning properly"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+
+        <!-- Mechanical -->
+        <TextView
+            android:id="@+id/mechanicalLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Mechanical"
+            android:textColor="#1E90FF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/interiorGroup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/mechanicalGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/mechanicalLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <CheckBox
+                android:id="@+id/checkBrakes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Brakes - Responsive and even"
+                android:textColor="@android:color/white"/>
+            <CheckBox
+                android:id="@+id/checkEngine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Engine - No unusual noises or leaks"
+                android:textColor="@android:color/white"/>
+            <CheckBox
+                android:id="@+id/checkTransmission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transmission - Smooth shifting"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+
+        <!-- Notes -->
+        <TextView
+            android:id="@+id/notesLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Additional Notes"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/mechanicalGroup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/notesLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/notesLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:boxStrokeColor="#1E90FF"
+            app:hintTextColor="#CCCCCC"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/notesInput"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:gravity="top"
+                android:hint="Enter any additional notes or observations"
+                android:inputType="textMultiLine"
+                android:textColor="@android:color/white"
+                android:textColorHint="#CCCCCC"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Submit Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submitButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="32dp"
+            android:paddingVertical="16dp"
+            android:textSize="18sp"
+            android:text="Submit Inspection"
+            android:backgroundTint="#1E90FF"
+            app:cornerRadius="12dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/notesLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+
+
+
+
+
+

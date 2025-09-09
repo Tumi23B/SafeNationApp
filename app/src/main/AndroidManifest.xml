@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeNationApp">
         <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
             android:name=".Welcome"
             android:exported="true">
             <intent-filter>
@@ -20,8 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

@@ -1,44 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This XML file defines the layout for the Welcome screen. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#0D93D0"
+    android:orientation="vertical"
     tools:context=".Welcome">
 
-    <!-- This button navigates to the agriculture module's dashboard. -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/agriculture_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/alata"
-        android:text="Agriculture"
-        android:textColor="#F4F1DE"
-        app:backgroundTint="#4F772D"
-        app:cornerRadius="16dp"
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="328dp"
+        android:layout_height="63dp"
+        android:backgroundTint="#04A1E9"
+        android:text="Sign Up"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toBottomOf="@+id/welcometxt"
+        app:layout_constraintVertical_bias="0.673" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/mining_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/alata"
-        android:text="Mining"
-        android:textColor="#F4F1DE"
-        app:backgroundTint="#FF9800"
-        app:cornerRadius="16dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="363dp"
+        android:layout_height="337dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.806"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintVertical_bias="0.236"
+        app:srcCompat="@drawable/safetylogo" />
+
+    <TextView
+        android:id="@+id/welcometxt"
+        android:layout_width="335dp"
+        android:layout_height="31dp"
+        android:text="      Welcome To Safe Nation App"
+        android:textColor="#181C1F"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.051" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="328dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#04A1E9"
+        android:text="Sign In"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcometxt"
+        app:layout_constraintVertical_bias="0.27" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Promoting Workplace Safety"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcometxt"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

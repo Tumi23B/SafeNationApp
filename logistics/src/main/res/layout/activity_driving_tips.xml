@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".ui.DrivingTips">
+
+    <!-- Scrollable content -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Header -->
+            <TextView
+                android:id="@+id/drivingHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driving Safety Tips"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Tip 1 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🚦 Obey speed limits and traffic rules."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Tip 2 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📵 Avoid using your phone while driving."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Tip 3 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💤 Take breaks during long drives to avoid fatigue."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Tip 4 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🛡️ Always wear your seatbelt."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Tip 5 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🔧 Regularly maintain your vehicle to prevent breakdowns."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- South African Specific Tips -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🪨 On gravel roads, drive slowly and keep extra distance."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🦓 Watch for wildlife crossings, especially in rural areas."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="⛰️ Use low gears and brakes wisely on mountain passes."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="❄️ On icy or wet roads, reduce speed and increase distance."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🪨 On rocky terrain, drive carefully and avoid sudden maneuvers."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="⚡ In load-shedding traffic, stay patient, use hazards, and drive safely."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="32dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

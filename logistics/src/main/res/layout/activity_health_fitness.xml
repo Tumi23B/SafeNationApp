@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".ui.HealthFitness">
+
+    <!-- Scrollable content -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Header -->
+            <TextView
+                android:id="@+id/healthHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Health and Fitness Tips"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Tip 1 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🚰 Stay Hydrated: Drink at least 2 liters of water daily."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Tip 2 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🥗 Eat Healthy Snacks: Choose fruits, nuts, and vegetables instead of junk food."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Tip 3 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🧘 Take Breaks: Stretch and walk around every 2 hours to prevent fatigue."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Tip 4 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="😴 Get Enough Sleep: Aim for at least 7–8 hours of sleep per night."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Tip 5 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🏋️ Exercise Regularly: Include at least 20 minutes of physical activity daily."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Tip 6 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🧴 Maintain Hygiene: Wash your hands frequently and keep your vehicle clean."
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Tip 7 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/tip_background"
+                android:padding="12dp"
+
+                android:text="📵 Reduce Screen Time: Take breaks from your phone to avoid eye strain."
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
