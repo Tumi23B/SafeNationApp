@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#121212">
+    android:background="#000000">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -28,207 +28,238 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Issue Title -->
-        <TextView
-            android:id="@+id/issueLabel"
+        <!-- Issue Information Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/issueInfoCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Issue Title"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/reportTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/issueTitleLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/issueLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:boxStrokeColor="#1E90FF"
-            app:hintTextColor="#CCCCCC"
-            app:placeholderTextColor="#CCCCCC"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/issueTitleInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter issue title"
-                android:textColor="@android:color/white"
-                android:textColorHint="#ADA3A3" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Issue Description -->
-        <TextView
-            android:id="@+id/issueDescLabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Description"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/issueTitleLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/issueDescLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/issueDescLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:boxStrokeColor="#1E90FF"
-            app:hintTextColor="#CCCCCC"
-            app:placeholderTextColor="#CCCCCC"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/issueDescInput"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:gravity="top"
-                android:hint="Describe the issue in detail"
-                android:inputType="textMultiLine"
-                android:textColor="@android:color/white"
-                android:textColorHint="#CCCCCC"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Upload Pictures -->
-        <TextView
-            android:id="@+id/uploadLabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Upload Pictures (Optional)"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/issueDescLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <!-- Upload Button with Icon -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/uploadCard"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="8dp"
             app:cardBackgroundColor="#1E1E1E"
             app:cardCornerRadius="12dp"
-            app:strokeColor="#1E90FF"
-            app:strokeWidth="1dp"
-            app:layout_constraintTop_toBottomOf="@id/uploadLabel"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/reportTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:clickable="true"
-                android:focusable="true">
+                android:padding="16dp">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@android:drawable/ic_menu_gallery"
-                    app:tint="#1E90FF" />
-
+                <!-- Issue Title -->
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/issueLabel"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tap to add image"
-                    android:textColor="#CCCCCC"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    android:text="Issue Title"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
 
-        <!-- Image Preview (Initially Hidden) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/issueTitleLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:boxBackgroundColor="#2B2B2B"
+                    app:boxBackgroundMode="filled"
+                    app:boxStrokeColor="#1E90FF"
+                    app:hintTextColor="#CCCCCC"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/issueTitleInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#2B2B2B"
+                        android:hint="Enter issue title"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="#ADA3A3" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Issue Description -->
+                <TextView
+                    android:id="@+id/issueDescLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/issueDescLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundColor="#2B2B2B"
+                    app:boxBackgroundMode="filled"
+                    app:boxStrokeColor="#1E90FF"
+                    app:hintTextColor="#CCCCCC"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/issueDescInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="#2B2B2B"
+                        android:gravity="top|start"
+                        android:hint="Describe the issue in detail"
+                        android:inputType="textMultiLine"
+                        android:padding="12dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="#CCCCCC"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Image Upload Card -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/previewCard"
+            android:id="@+id/uploadSectionCard"
             android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#1E1E1E"
+            app:cardCornerRadius="12dp"
             app:cardElevation="4dp"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/uploadCard"
+            app:layout_constraintTop_toBottomOf="@id/issueInfoCard"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/previewImage"
+                <!-- Upload Pictures -->
+                <TextView
+                    android:id="@+id/uploadLabel"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:adjustViewBounds="true" />
+                    android:layout_height="wrap_content"
+                    android:text="Upload Pictures (Optional)"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
 
-                <!-- Remove Image Button -->
-                <ImageButton
-                    android:id="@+id/removeImageButton"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/ic_circle_background"
-                    android:src="@android:drawable/ic_menu_close_clear_cancel"
-                    />
-            </RelativeLayout>
+                <!-- Upload Button with Icon -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/uploadCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    app:cardBackgroundColor="#2B2B2B"
+                    app:cardCornerRadius="12dp"
+                    app:strokeColor="#1E90FF"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_baseline_add_photo_alternate_24"
+                            app:tint="#1E90FF" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tap to add images"
+                            android:textColor="#CCCCCC"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Image Preview Section -->
+                <TextView
+                    android:id="@+id/selectedImagesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Selected Images:"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:layout_marginTop="16dp"
+                    android:visibility="gone"/>
+
+                <HorizontalScrollView
+                    android:id="@+id/imagesScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/imagesContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"/>
+                </HorizontalScrollView>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Additional Notes -->
-        <TextView
-            android:id="@+id/notesLabel"
+        <!-- Additional Notes Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notesCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Additional Notes"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/previewCard"
+            app:cardBackgroundColor="#1E1E1E"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/uploadSectionCard"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/notesLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/notesLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:boxStrokeColor="#1E90FF"
-            app:hintTextColor="#CCCCCC"
-            app:placeholderTextColor="#CCCCCC"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/notesInput"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:gravity="top"
-                android:hint="Enter any additional notes"
-                android:inputType="textMultiLine"
-                android:textColor="@android:color/white"
-                android:textColorHint="#CCCCCC"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Additional Notes -->
+                <TextView
+                    android:id="@+id/notesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Additional Notes"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/notesLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundColor="#2B2B2B"
+                    app:boxBackgroundMode="filled"
+                    app:boxStrokeColor="#1E90FF"
+                    app:hintTextColor="#CCCCCC"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/notesInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="#2B2B2B"
+                        android:gravity="top|start"
+                        android:hint="Enter any additional notes"
+                        android:inputType="textMultiLine"
+                        android:padding="12dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="#CCCCCC"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <!-- Submit Button -->
         <com.google.android.material.button.MaterialButton
@@ -236,17 +267,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="32dp"
-            android:paddingVertical="16dp"
-            android:textSize="18sp"
             android:text="Submit Report"
-            android:backgroundTint="#1E90FF"
-            app:cornerRadius="12dp"
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintTop_toBottomOf="@id/notesLayout"
+            android:textSize="18sp"
+            app:backgroundTint="#1E90FF"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_baseline_send_24"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:iconTint="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/notesCard"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView> 
-
+</ScrollView>

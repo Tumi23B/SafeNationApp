@@ -72,8 +72,17 @@ class LogisticsDashboard : AppCompatActivity() {
         }
 
         settingsIcon?.setOnClickListener {
-            navigateTo(Settings::class.java)
+            try {
+                // Navigate to Settings activity in the same module
+                val intent = Intent(this, LogisticsSettings::class.java)
+                startActivity(intent)
+            } catch (e: Exception) {
+                // Catch any crash and show toast
+                Toast.makeText(this, "Unable to open Settings", Toast.LENGTH_SHORT).show()
+                e.printStackTrace()
+            }
         }
+
 
         // Debugging: warn if any views are missing
         if (vehicleInspection == null) logMissingView("vehicleInspectionSection")

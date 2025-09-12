@@ -35,7 +35,7 @@ class Register : AppCompatActivity() {
         val btnRegister = findViewById<Button>(R.id.button4)
 
         // Spinner setup 
-        val industries = arrayOf("Select Industry", "Agriculture", "Mining", "Logistics")
+        val industries = arrayOf("Select Sector", "Agriculture", "Mining", "Logistics")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, industries)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerIndustry.adapter = adapter

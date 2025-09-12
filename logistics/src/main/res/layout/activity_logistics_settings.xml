@@ -7,7 +7,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".ui.Settings">
+    tools:context=".ui.LogisticsSettings">
+
+    <!-- User Profile Section -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profileCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="#111111"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <!-- Profile Icon -->
+            <ImageView
+                android:id="@+id/profileIcon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_profile"
+                android:contentDescription="Profile icon"
+                app:tint="#04A1E9"
+                android:layout_marginEnd="16dp"/>
+
+            <!-- User Name and Surname -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="John"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"/>
+
+                <TextView
+                    android:id="@+id/userSurname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Doe"
+                    android:textSize="16sp"
+                    android:textColor="#AAAAAA"/>
+            </LinearLayout>
+
+            <!-- Edit Profile Button (Optional) -->
+            <ImageButton
+                android:id="@+id/editProfileButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_edit"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Edit profile"
+                app:tint="#04A1E9"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <!-- Header -->
     <TextView
@@ -20,61 +87,61 @@
         android:textColor="@color/white"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Save Button -->
-    <Button
+    <!-- Save Settings Button -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/saveButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Save Settings"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:backgroundTint="#04A1E9"
         android:layout_margin="16dp"
         android:padding="12dp"
         app:cornerRadius="22dp"
+        android:backgroundTint="#04A1E9"
         app:layout_constraintBottom_toTopOf="@+id/signOutButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Sign Out Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/signOutButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Sign Out"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:backgroundTint="#333333"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:padding="12dp"
         app:cornerRadius="22dp"
+        android:backgroundTint="#333333"
         app:layout_constraintBottom_toTopOf="@+id/deleteAccountButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Delete Account Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteAccountButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Delete Account"
         android:textColor="#FF5252"
         android:textSize="18sp"
-        android:backgroundTint="#333333"
         android:layout_margin="16dp"
         android:padding="12dp"
         app:cornerRadius="22dp"
+        android:backgroundTint="#333333"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Scrollable Settings -->
+    <!-- Scrollable Settings Section -->
     <ScrollView
         android:id="@+id/scrollViewSettings"
         android:layout_width="0dp"
@@ -92,7 +159,7 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <!-- Language Selection -->
+            <!-- Language Selection Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,7 +221,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Safety Notifications -->
+            <!-- Safety Notifications Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,7 +230,6 @@
                 app:cardBackgroundColor="#111111"
                 app:cardElevation="6dp"
                 app:strokeColor="#04A1E9"
-
                 app:strokeWidth="2dp">
 
                 <LinearLayout
@@ -171,7 +237,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="16dp"
-
                     android:gravity="center_vertical">
 
                     <TextView
@@ -191,7 +256,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Vehicle Maintenance -->
+            <!-- Vehicle Maintenance Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -226,7 +291,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Emergency Info -->
+            <!-- Emergency Info Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -261,7 +326,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Dark Mode -->
+            <!-- Dark Mode Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -298,5 +363,5 @@
 
         </LinearLayout>
     </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
 
+</androidx.constraintlayout.widget.ConstraintLayout>

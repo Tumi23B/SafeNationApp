@@ -4,6 +4,8 @@ import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -103,12 +105,25 @@ class Emergency : AppCompatActivity() {
         val closeButton = dialog.findViewById<Button>(R.id.closeButton)
 
         titleTextView.text = title
-        detailsTextView.text = details
+
+        // Format the details text for better readability
+        val formattedDetails = details.replace("\\d+\\.\\s".toRegex()) { matchResult ->
+            // Make numbers bold and add newlines
+            "\n${matchResult.value}"
+        }.trim()
+
+        detailsTextView.text = formattedDetails
+        detailsTextView.movementMethod = ScrollingMovementMethod() // Enable scrolling
 
         closeButton.setOnClickListener { dialog.dismiss() }
+
+        // Set dialog size
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.9).toInt(),
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
 
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.show()
     }
 }
-

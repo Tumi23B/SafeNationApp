@@ -2,15 +2,19 @@ package com.safenation.logistics.ui
 
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.CheckBox
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
-import com.safenation.logistics.R
 import com.google.android.material.textfield.TextInputEditText
+import com.safenation.logistics.R
 
 class VehicleInspection : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +32,8 @@ class VehicleInspection : AppCompatActivity() {
         val vinInput = findViewById<TextInputEditText>(R.id.vinInput)
         val licensePlateInput = findViewById<TextInputEditText>(R.id.licensePlateInput)
         val submitButton = findViewById<MaterialButton>(R.id.submitButton)
+        val notesInput = findViewById<TextInputEditText>(R.id.notesInput)
+        val mainScrollView = findViewById<ScrollView>(R.id.mainScrollView)
 
         // Get all checkboxes
         val checkTires = findViewById<CheckBox>(R.id.checkTires)
@@ -40,7 +46,31 @@ class VehicleInspection : AppCompatActivity() {
         val checkBrakes = findViewById<CheckBox>(R.id.checkBrakes)
         val checkEngine = findViewById<CheckBox>(R.id.checkEngine)
         val checkTransmission = findViewById<CheckBox>(R.id.checkTransmission)
-        val notesInput = findViewById<TextInputEditText>(R.id.notesInput)
+
+        // Set up auto-scroll when notes input is focused
+        notesInput.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                // Scroll to the notes section when focused
+                mainScrollView.post {
+                    // Calculate position to scroll to (notes card position)
+                    val notesCard = findViewById<androidx.cardview.widget.CardView>(R.id.notesCard)
+                    val yPosition = notesCard.top - 100 // Add some offset for better visibility
+                    mainScrollView.smoothScrollTo(0, yPosition)
+                }
+            }
+        }
+
+        // Optional: Auto-expand the notes field as user types
+        notesInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                // Request layout to adjust height
+                notesInput.requestLayout()
+            }
+        })
 
         // Set up submit button click listener
         submitButton.setOnClickListener {
@@ -107,20 +137,17 @@ class VehicleInspection : AppCompatActivity() {
         // Simulate processing
         Toast.makeText(this, "Submitting inspection...", Toast.LENGTH_SHORT).show()
 
-
         // 1. Save the inspection data to a database
         // 2. Upload to your server
         // 3. Generate a report
 
         // Simulate a delay for network request
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             val message = "Inspection submitted! $passedCount/$totalCount items passed"
             Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 
             // Optionally navigate back or clear form
             // finish() // Uncomment to close activity after submission
-
         }, 1500)
     }
 }
-

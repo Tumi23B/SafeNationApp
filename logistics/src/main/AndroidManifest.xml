@@ -15,8 +15,8 @@
             android:name="com.safenation.logistics.ui.ReportIssue"
             android:exported="false" />
         <activity
-            android:name="com.safenation.logistics.ui.Settings"
-            android:exported="false" />
+            android:name="com.safenation.logistics.ui.LogisticsSettings"
+            android:exported="true" />
         <activity
             android:name="com.safenation.logistics.ui.Emergency"
             android:exported="false" />
