@@ -50,19 +50,23 @@ android {
         implementation(libs.androidx.navigation.fragment.ktx)
         implementation(libs.androidx.navigation.ui.ktx)
 
-        androidTestImplementation("androidx.test.ext:junit:1.3.0")
-        androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
 
-        implementation("androidx.core:core-ktx:1.12.0")
-        implementation("androidx.appcompat:appcompat:1.6.1")
-        implementation("com.google.android.material:material:1.10.0")
-        implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+        // OpenStreetMap dependencies with exclusions
+        implementation("org.osmdroid:osmdroid-android:6.1.20") {
+            exclude(group = "com.j256.ormlite", module = "ormlite-core")
+        }
+        implementation("org.osmdroid:osmdroid-mapsforge:6.1.20") {
+            exclude(group = "com.j256.ormlite", module = "ormlite-core")
+        }
+        implementation("org.osmdroid:osmdroid-geopackage:6.1.20") {
+            exclude(group = "com.j256.ormlite", module = "ormlite-core")
+        }
+
+        // Use ormlite-android
+        implementation("com.j256.ormlite:ormlite-android:6.1")
+
+        implementation(libs.androidx.preference.ktx)
 
     }
 }
-dependencies {
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-}
+

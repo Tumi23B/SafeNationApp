@@ -2,16 +2,18 @@ package com.example.safenationapp
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
+import com.example.safenation.core.BaseActivity
 import com.safenation.mining.R
 import com.safenation.mining.databinding.ActivityMainBinding
+import org.osmdroid.config.Configuration
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -24,7 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         // SETUP ACTIONBAR FIRST - This is the critical fix
         //setupActionBar(binding.toolbar)
-
+// Initialize osmdroid configuration
+        Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this))
+        Configuration.getInstance().userAgentValue = packageName
     }
 
     private fun setupNavigation() {
@@ -115,4 +119,5 @@ class MainActivity : AppCompatActivity() {
     fun navigateToFragmentWithArgs(fragmentId: Int, args: Bundle) {
         navController.navigate(fragmentId, args)
     }
+
 }

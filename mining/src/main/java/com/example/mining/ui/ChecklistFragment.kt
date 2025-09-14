@@ -37,8 +37,8 @@ class ChecklistFragment : Fragment() {
     }
 
     private fun submitChecklist() {
-        val notes = binding.etChecklistNotes.text.toString()
-        val itemsCompleted = listOf(
+        binding.etChecklistNotes.text.toString()
+        listOf(
             binding.cbItem1.isChecked,
             binding.cbItem2.isChecked,
             binding.cbItem3.isChecked,
