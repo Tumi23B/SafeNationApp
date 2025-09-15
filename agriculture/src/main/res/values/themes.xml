@@ -1,12 +1,25 @@
-<!-- App theme definitions without duplicate ToolbarTitleText -->
+<!-- App theme definitions for day mode -->
 <resources>
     <style name="Base.Theme.AgricultureAgritech" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:colorBackground">#FFE6A7</item>
+        <!--
+        These attributes define the main colors for your app's theme.
+        Buttons and other components will use these colors automatically.
+        -->
+        <item name="colorPrimary">@color/settings_value</item>
+        <item name="colorOnPrimary">@color/training_bg</item>
+        <item name="android:colorBackground">@color/training_bg</item>
     </style>
 
     <style name="Theme.AgricultureAgritech" parent="Base.Theme.AgricultureAgritech" />
 
     <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:fontFamily">@font/alata</item>
+    </style>
+
+    <!-- This style provides a specific look for the training buttons. -->
+    <style name="Training.Button" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/settings_value</item>
+        <item name="android:textColor">@color/training_bg</item>
         <item name="android:fontFamily">@font/alata</item>
     </style>
 </resources>

@@ -2,6 +2,12 @@
 <!-- This file declares the components for the agriculture library. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!--
+    This permission is required for your app to make network requests
+    to your REST API.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application>
         <!--
          The main app's manifest will handle application-level attributes.
@@ -21,6 +27,14 @@
             android:exported="false" />
         <activity
             android:name="com.safenation.agriculture.features.settings.ui.SettingsActivity"
+            android:exported="false" />
+
+        <!--
+        This is the new activity declaration for the quiz screen.
+        It tells the Android system that QuizActivity exists and can be launched.
+        -->
+        <activity
+            android:name="com.example.agricultureagritech.features.training.ui.QuizActivity"
             android:exported="false" />
     </application>
 

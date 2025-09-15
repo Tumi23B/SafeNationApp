@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/alata"
-        android:text="Hi, User"
+        android:text="Hi, Lungile Phakade!"
         android:textColor="#432818"
         android:textSize="22sp"
         android:textStyle="bold"
