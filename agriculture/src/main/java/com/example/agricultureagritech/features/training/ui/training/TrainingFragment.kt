@@ -57,7 +57,9 @@ class TrainingFragment : Fragment() {
     }
 
     /*
-     * This function configures the RecyclerView, including the adapter and navigation logic for tile clicks.
+     * The transaction now correctly targets R.id.container, which is the ID
+     * of the CoordinatorLayout. When a tile is clicked, this entire layout
+     * will be replaced by the corresponding detail fragment.
      */
     private fun setupRecycler() {
         adapter = TrainingTileAdapter { tile ->
