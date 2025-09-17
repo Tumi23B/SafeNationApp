@@ -2,30 +2,51 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permission for the app to access the internet. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Safe Nation"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeNationApp">
-        <activity
-            android:name=".Login"
-            android:exported="false" />
-        <activity
-            android:name=".Register"
-            android:exported="false" />
+
+        <!-- The Welcome activity is the entry screen of the app. -->
         <activity
             android:name=".Welcome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- The Login activity handles sign-in and email confirmation deep links. -->
+        <activity
+            android:name=".Login"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <!-- This intent filter captures the Supabase confirmation link. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- This defines the custom URL that the app will respond to. -->
+                <data
+                    android:scheme="com.example.safenationapp"
+                    android:host="login-callback" />
+            </intent-filter>
+        </activity>
+
+        <!-- The Register activity handles new user registration. -->
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+
     </application>
 
 </manifest>

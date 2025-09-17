@@ -1,109 +1,104 @@
 package com.example.safenationapp
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.*
-import androidx.activity.enableEdgeToEdge
+import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ProgressBar
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.safenationapp.domain.repository.AuthRepository
+import kotlinx.coroutines.launch
+import java.util.Locale
 
 class Register : AppCompatActivity() {
 
-    @SuppressLint("MissingInflatedId")
+    private lateinit var usernameEditText: EditText
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var confirmPasswordEditText: EditText
+    private lateinit var sectorSpinner: Spinner
+    private lateinit var registerButton: Button
+    private lateinit var progressBar: ProgressBar
+
+    private val authRepository = AuthRepository()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        enableEdgeToEdge()
         setContentView(R.layout.activity_register)
 
-        // System bars padding 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        // Declaring UI elements using the correct IDs from the layout file activity_register.xml
+
+        usernameEditText = findViewById(R.id.editTextText)
+        emailEditText = findViewById(R.id.editTextTextEmailAddress2)
+        passwordEditText = findViewById(R.id.editTextTextPassword2)
+        confirmPasswordEditText = findViewById(R.id.editTextTextPassword3)
+        sectorSpinner = findViewById(R.id.spinnerIndustry)
+        registerButton = findViewById(R.id.button4)
+        progressBar = findViewById(R.id.progressBar)
+
+        // the drop down menu set up with the sector choices.
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.sector_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            sectorSpinner.adapter = adapter
         }
 
-        val edtName = findViewById<EditText>(R.id.editTextText)
-        val edtEmail = findViewById<EditText>(R.id.editTextTextEmailAddress2)
-        val spinnerIndustry = findViewById<Spinner>(R.id.spinnerIndustry)
-        val edtPassword = findViewById<EditText>(R.id.editTextTextPassword2)
-        val edtConfirmPassword = findViewById<EditText>(R.id.editTextTextPassword3)
-        val btnRegister = findViewById<Button>(R.id.button4)
+        // click listener for the register button.
+        registerButton.setOnClickListener {
+            handleRegistration()
+        }
+    }
 
-        // Spinner setup 
-        val industries = arrayOf("Select Sector", "Agriculture", "Mining", "Logistics")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, industries)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerIndustry.adapter = adapter
+    // This function gets user input, validates it, and shows detailed error messages on failure.
+    private fun handleRegistration() {
+        val username = usernameEditText.text.toString()
+        val email = emailEditText.text.toString()
+        val password = passwordEditText.text.toString()
+        val confirmPassword = confirmPasswordEditText.text.toString()
+        // Converts the selected sector to lowercase to match the database enum.
+        val sector = sectorSpinner.selectedItem.toString().lowercase(Locale.getDefault())
 
-        spinnerIndustry.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long) {
-                Log.d("RegisterActivity", "Spinner selected: $position - ${parent.getItemAtPosition(position)}")
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {}
+        if (username.isBlank() || email.isBlank() || password.isBlank()) {
+            Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
+            return
         }
 
-        // Register button click 
-        btnRegister.setOnClickListener {
-            val name = edtName.text.toString().trim()
-            val email = edtEmail.text.toString().trim()
-            val password = edtPassword.text.toString()
-            val confirmPassword = edtConfirmPassword.text.toString()
-            val selectedIndustry = spinnerIndustry.selectedItem.toString()
+        if (password != confirmPassword) {
+            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-            // Validation 
-            when {
-                name.isEmpty() -> edtName.error = "Please enter your name"
-                email.isEmpty() -> edtEmail.error = "Please enter your email"
-                !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> edtEmail.error = "Invalid email"
-                selectedIndustry == "Select Industry" -> Toast.makeText(this, "Please select an industry", Toast.LENGTH_SHORT).show()
-                password.isEmpty() -> edtPassword.error = "Please enter a password"
-                confirmPassword.isEmpty() -> edtConfirmPassword.error = "Please confirm your password"
-                password != confirmPassword -> edtConfirmPassword.error = "Passwords do not match"
+        setLoading(true)
 
-                else -> {
-                    // Save user details 
-                    val sharedPref = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-                    with(sharedPref.edit()) {
-                        putString("name", name)
-                        putString("email", email)
-                        putString("password", password)
-                        putString("industry", selectedIndustry)
-                        apply()
-                    }
-
-                    Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show()
-
-
-                    // Navigate to the selected dashboard 
-                    try {
-                        val intent = when (selectedIndustry) {
-                            "Agriculture" -> Intent(this, com.safenation.agriculture.features.dashboard.ui.DashboardActivity::class.java)
-                            "Mining" -> Intent(this, com.example.safenationapp.MainActivity::class.java)
-                            "Logistics" -> Intent(this@Register, com.safenation.logistics.ui.LogisticsDashboard::class.java)
-                            else -> null
-                        }
-
-                        if (intent != null) {
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            Toast.makeText(this, "Cannot navigate. Please try again.", Toast.LENGTH_SHORT).show()
-                        }
-
-                    } catch (e: Exception) {
-                        Log.e("RegisterActivity", "Navigation error: ${e.message}")
-                        Toast.makeText(this, "Navigation failed. Check dashboard setup.", Toast.LENGTH_LONG).show()
-                    }
-                }
+        lifecycleScope.launch {
+            val errorMessage = authRepository.signUp(email, password, username, sector)
+            if (errorMessage == null) {
+                Toast.makeText(this@Register, "Registration successful!", Toast.LENGTH_LONG).show()
+                finish() // Close the registration screen.
+            } else {
+                // Display the specific error message from the repository file under domain folder.
+                Toast.makeText(this@Register, errorMessage, Toast.LENGTH_LONG).show()
             }
+            setLoading(false)
+        }
+    }
+
+    // This function disables the button while the app communicates with the database.
+    private fun setLoading(isLoading: Boolean) {
+        if (isLoading) {
+            progressBar.visibility = View.VISIBLE
+            registerButton.isEnabled = false
+        } else {
+            progressBar.visibility = View.GONE
+            registerButton.isEnabled = true
         }
     }
 }
-
-

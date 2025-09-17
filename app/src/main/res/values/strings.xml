@@ -1,4 +1,9 @@
+<!-- This file contains string resources for the application. -->
 <resources>
-    <string name="app_name">SafeNationApp</string>
-    <string name="industry_prompt" />
+    <string name="industry_prompt">Select your sector</string>
+    <string-array name="sector_array">
+        <item>agriculture</item>
+        <item>mining</item>
+        <item>logistics</item>
+    </string-array>
 </resources>

@@ -1,20 +1,28 @@
+// Handles the user login process and shows detailed error messages on the login screen.
 package com.example.safenationapp
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.safenationapp.domain.repository.AuthRepository
+import kotlinx.coroutines.launch
 
-// Import dashboards 
+// Import dashboards for routing after login
 import com.safenation.agriculture.features.dashboard.ui.DashboardActivity as AgricultureDashboard
 import com.safenation.logistics.ui.LogisticsDashboard as LogisticsDashboard
+import com.example.safenationapp.MainActivity as MiningDashboard
 
 class Login : AppCompatActivity() {
+
+    private val authRepository = AuthRepository()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,54 +30,58 @@ class Login : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
-        // Handle system UI padding 
+        // Sets up system UI padding.
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // UI references 
+        // UI references.
         val edtEmail = findViewById<EditText>(R.id.editTextTextEmailAddress)
         val edtPassword = findViewById<EditText>(R.id.editTextTextPassword)
         val btnLogin = findViewById<Button>(R.id.button2)
-        // Load saved credentials 
-        val sharedPref = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
-        // Handle Login button 
+        // Handles Login button click and shows detailed errors.
         btnLogin.setOnClickListener {
             val email = edtEmail.text.toString().trim()
             val password = edtPassword.text.toString()
 
-            val savedEmail = sharedPref.getString("email", null)
-            val savedPassword = sharedPref.getString("password", null)
-            val savedIndustry = sharedPref.getString("industry", null)
-
             when {
-                email.isEmpty() -> edtEmail.error = "Please enter your email"
+                email.isEmpty() -> edtEmail.error = "Please enter your email."
                 !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() ->
-                    edtEmail.error = "Invalid email format"
-                password.isEmpty() -> edtPassword.error = "Please enter your password"
-                savedEmail == null || savedPassword == null || savedIndustry == null ->
-                    Toast.makeText(this, "No account found, please register", Toast.LENGTH_SHORT).show()
-                email != savedEmail || password != savedPassword ->
-                    Toast.makeText(this, "Incorrect email or password", Toast.LENGTH_SHORT).show()
+                    edtEmail.error = "Invalid email format."
+                password.isEmpty() -> edtPassword.error = "Please enter your password."
                 else -> {
-                    // ✅ Login success → route based on industry 
-                    when (savedIndustry) {
-                        "Agriculture" -> startActivity(Intent(this, AgricultureDashboard::class.java))
-                       // "Mining" -> startActivity(Intent(this, MiningDashboard::class.java))
-                        "Logistics" -> startActivity(Intent(this, LogisticsDashboard::class.java))
-                        else -> Toast.makeText(this, "Unknown industry selected", Toast.LENGTH_SHORT).show()
+                    lifecycleScope.launch {
+                        try {
+                            val profile = authRepository.signIn(email, password)
+                            // Login success, route based on the user's sector.
+                            when (profile.sector.lowercase()) {
+                                "agriculture" -> {
+                                    startActivity(Intent(this@Login, AgricultureDashboard::class.java))
+                                    finish() // Prevent going back to the login screen.
+                                }
+                                "logistics" -> {
+                                    startActivity(Intent(this@Login, LogisticsDashboard::class.java))
+                                    finish() // Prevent going back to the login screen.
+                                }
+                                "mining" -> {
+                                    startActivity(Intent(this@Login, MiningDashboard::class.java))
+                                    finish() // Prevent going back to the login screen.
+                                }
+                                else -> {
+                                    Toast.makeText(this@Login, "Login successful, but industry is unknown: ${profile.sector}", Toast.LENGTH_LONG).show()
+                                }
+                            }
+                        } catch (e: Exception) {
+                            // Handle all errors, including invalid credentials or missing profiles.
+                            val errorMsg = e.message ?: "An unexpected error occurred."
+                            Toast.makeText(this@Login, "Login failed: $errorMsg", Toast.LENGTH_LONG).show()
+                        }
                     }
-                    finish() // Prevent going back to login screen 
                 }
             }
         }
-
     }
 }
-
-
-
-
