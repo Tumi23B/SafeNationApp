@@ -1,4 +1,4 @@
-// This block applies the necessary plugins for the library.
+// This file manages the dependencies for the agriculture module.
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -13,7 +13,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    // enables view binding.
     buildFeatures {
         viewBinding = true
         dataBinding = true
@@ -38,6 +37,9 @@ android {
 }
 
 dependencies {
+    // This module depends on the core module for shared code like BaseActivity.
+    implementation(project(":core"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -46,7 +48,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.fragment:fragment-ktx:1.7.1")
 
-    // Libraries for network requests and JSON parsing.
+    // These are libraries for network requests and JSON parsing.
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")

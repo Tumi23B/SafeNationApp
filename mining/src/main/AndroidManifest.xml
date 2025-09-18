@@ -9,7 +9,7 @@
     <application>
 
         <activity
-            android:name="com.example.safenationapp.MainActivity"
+            android:name="com.safenation.mining.MainActivity"
             android:exported="false"/>
 
     </application>

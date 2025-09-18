@@ -1,6 +1,7 @@
+// This file manages the dependencies for the mining module.
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -8,9 +9,9 @@ android {
     compileSdk = 36
 
     defaultConfig {
-
         minSdk = 24
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -22,51 +23,42 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
 
     buildFeatures {
         viewBinding = true
         dataBinding = true
     }
-    dependencies {
 
-        implementation(libs.androidx.core.ktx)
-        implementation(libs.androidx.appcompat)
-        implementation(libs.material)
-        implementation(libs.androidx.activity)
-        implementation(libs.androidx.constraintlayout)
-        implementation(libs.androidx.navigation.fragment.ktx)
-        implementation(libs.androidx.navigation.ui.ktx)
-        testImplementation(libs.junit)
-        androidTestImplementation(libs.androidx.junit)
-        androidTestImplementation(libs.androidx.espresso.core)
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 
-        implementation(libs.androidx.navigation.fragment.ktx)
-        implementation(libs.androidx.navigation.ui.ktx)
-
-
-        // OpenStreetMap dependencies with exclusions
-        implementation("org.osmdroid:osmdroid-android:6.1.20") {
-            exclude(group = "com.j256.ormlite", module = "ormlite-core")
-        }
-        implementation("org.osmdroid:osmdroid-mapsforge:6.1.20") {
-            exclude(group = "com.j256.ormlite", module = "ormlite-core")
-        }
-        implementation("org.osmdroid:osmdroid-geopackage:6.1.20") {
-            exclude(group = "com.j256.ormlite", module = "ormlite-core")
-        }
-
-        // Use ormlite-android
-        implementation("com.j256.ormlite:ormlite-android:6.1")
-
-        implementation(libs.androidx.preference.ktx)
-
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
+dependencies {
+    // This module depends on the core module for shared code like BaseActivity.
+    implementation(project(":core"))
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.work.runtime.ktx)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
+    /*
+    * osmdroid for map functionality and preference for configuration.
+    */
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
+    implementation(libs.androidx.preference.ktx)
+}

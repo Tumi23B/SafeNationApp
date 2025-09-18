@@ -1,7 +1,8 @@
+<!-- This file sets the base theme for the core library module. -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- This file defines the night mode theme for the application. -->
     <style name="Base.Theme.SafeNationApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- This sets the status bar color to blend with the toolbar. -->
         <item name="android:statusBarColor">#0077B6</item>
     </style>
+
+    <style name="Theme.SafeNationApp" parent="Base.Theme.SafeNationApp" />
 </resources>

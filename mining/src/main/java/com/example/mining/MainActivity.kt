@@ -1,4 +1,5 @@
-package com.example.safenationapp
+// This file defines the main activity of the application, which handles the primary user interface and navigation.
+package com.safenation.mining
 
 import android.os.Bundle
 import android.widget.Toast
@@ -8,35 +9,43 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
-import com.example.safenation.core.BaseActivity
-import com.safenation.mining.R
+import com.example.safenationapp.BaseActivity
 import com.safenation.mining.databinding.ActivityMainBinding
 import org.osmdroid.config.Configuration
 
 class MainActivity : BaseActivity() {
+    /**
+     * These variables handle the view binding, navigation controller, and app bar configuration.
+     */
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    /**
+     * This function initializes the activity, sets up the view, and configures navigation.
+     * It also applies window insets to ensure content is not hidden by system bars.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root) // REMOVED duplicate setContentView()
+        setContentView(binding.root)
+        applyWindowInsets(binding.root)
         setupNavigation()
 
-        // SETUP ACTIONBAR FIRST - This is the critical fix
-        //setupActionBar(binding.toolbar)
-// Initialize osmdroid configuration
+        // Initialize osmdroid configuration
         Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this))
         Configuration.getInstance().userAgentValue = packageName
     }
 
+    /**
+     * This function sets up the navigation components, including the NavController, AppBar, NavigationView, and BottomNavigationView.
+     */
     private fun setupNavigation() {
-        // Get NavHostFragment and NavController
+        // Get NavHostFragment and NavController using the local R file
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        // Setup AppBarConfiguration with top-level destinations
+        // Setup AppBarConfiguration with top-level destinations from the local R file
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
@@ -50,7 +59,6 @@ class MainActivity : BaseActivity() {
         )
 
         // Setup ActionBar with NavController
-        //setupActionBarWithNavController(navController, appBarConfiguration)
         binding.toolbar?.setupWithNavController(navController, appBarConfiguration)
         // Setup NavigationView with NavController
         binding.navigationView.setupWithNavController(navController)
@@ -62,6 +70,9 @@ class MainActivity : BaseActivity() {
         setupNavigationListeners()
     }
 
+    /**
+     * This function configures listeners for handling clicks on navigation items in the toolbar and navigation drawer.
+     */
     private fun setupNavigationListeners() {
         // Handle toolbar menu items (optional)
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
@@ -94,11 +105,16 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    /**
+     * This function enables upward navigation within the app's navigation structure.
+     */
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    // Method to handle logout from SettingsFragment
+    /**
+     * This function handles user logout by clearing session data and navigating to the home screen.
+     */
     fun handleLogout() {
         // Clear user session data
         val sharedPreferences = getSharedPreferences("SafeNationPrefs", MODE_PRIVATE)
@@ -110,14 +126,17 @@ class MainActivity : BaseActivity() {
         Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
     }
 
-    // Method to open specific fragment programmatically
+    /**
+     * This function allows programmatic navigation to a specific fragment using its ID.
+     */
     fun navigateToFragment(fragmentId: Int) {
         navController.navigate(fragmentId)
     }
 
-    // Method to open specific fragment with arguments
+    /**
+     * This function allows navigation to a fragment while passing arguments in a Bundle.
+     */
     fun navigateToFragmentWithArgs(fragmentId: Int, args: Bundle) {
         navController.navigate(fragmentId, args)
     }
-
 }

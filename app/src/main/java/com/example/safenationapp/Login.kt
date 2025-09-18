@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 // Import dashboards for routing after login
 import com.safenation.agriculture.features.dashboard.ui.DashboardActivity as AgricultureDashboard
 import com.safenation.logistics.ui.LogisticsDashboard as LogisticsDashboard
-import com.example.safenationapp.MainActivity as MiningDashboard
+import com.safenation.mining.MainActivity as MiningDashboard
 
 class Login : AppCompatActivity() {
 
@@ -30,19 +30,19 @@ class Login : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
-        // Sets up system UI padding.
+        // This sets up system UI padding.
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // UI references.
+        // These are the UI references.
         val edtEmail = findViewById<EditText>(R.id.editTextTextEmailAddress)
         val edtPassword = findViewById<EditText>(R.id.editTextTextPassword)
         val btnLogin = findViewById<Button>(R.id.button2)
 
-        // Handles Login button click and shows detailed errors.
+        // This handles the Login button click and shows detailed errors.
         btnLogin.setOnClickListener {
             val email = edtEmail.text.toString().trim()
             val password = edtPassword.text.toString()
@@ -56,26 +56,26 @@ class Login : AppCompatActivity() {
                     lifecycleScope.launch {
                         try {
                             val profile = authRepository.signIn(email, password)
-                            // Login success, route based on the user's sector.
+                            // The login is a success, so the app routes based on the user's sector.
                             when (profile.sector.lowercase()) {
                                 "agriculture" -> {
                                     startActivity(Intent(this@Login, AgricultureDashboard::class.java))
-                                    finish() // Prevent going back to the login screen.
+                                    finish() // This prevents the user from going back to the login screen.
                                 }
                                 "logistics" -> {
                                     startActivity(Intent(this@Login, LogisticsDashboard::class.java))
-                                    finish() // Prevent going back to the login screen.
+                                    finish() // This prevents the user from going back to the login screen.
                                 }
                                 "mining" -> {
                                     startActivity(Intent(this@Login, MiningDashboard::class.java))
-                                    finish() // Prevent going back to the login screen.
+                                    finish() // This prevents the user from going back to the login screen.
                                 }
                                 else -> {
                                     Toast.makeText(this@Login, "Login successful, but industry is unknown: ${profile.sector}", Toast.LENGTH_LONG).show()
                                 }
                             }
                         } catch (e: Exception) {
-                            // Handle all errors, including invalid credentials or missing profiles.
+                            // This handles all errors, including invalid credentials or missing profiles.
                             val errorMsg = e.message ?: "An unexpected error occurred."
                             Toast.makeText(this@Login, "Login failed: $errorMsg", Toast.LENGTH_LONG).show()
                         }

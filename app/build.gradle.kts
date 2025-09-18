@@ -1,13 +1,13 @@
 // This file manages the dependencies for the main application module.
 plugins {
-    alias(libs.plugins.android.application)
+    id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.23"
 }
 
 android {
     namespace = "com.example.safenationapp"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.safenationapp"
@@ -43,10 +43,12 @@ android {
 }
 
 dependencies {
-
+    // The app module depends on the feature modules and the core module.
+    implementation(project(":core"))
     implementation(project(":agriculture"))
     implementation(project(":mining"))
     implementation(project(":logistics"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -60,7 +62,6 @@ dependencies {
 
     /*
     * Supabase dependencies for authentication, database, and functions.
-    * The bom (bill of materials) manages the versions of the Supabase libraries.
     */
     implementation(platform("io.github.jan-tennert.supabase:bom:2.5.2"))
     implementation("io.github.jan-tennert.supabase:gotrue-kt")

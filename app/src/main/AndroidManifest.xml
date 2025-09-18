@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.safenationapp">
 
     <!-- Permission for the app to access the internet. -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,7 +14,8 @@
         android:label="Safe Nation"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SafeNationApp">
+        android:theme="@style/Theme.SafeNationApp"
+        tools:replace="android:allowBackup,android:label">
 
         <!-- The Welcome activity is the entry screen of the app. -->
         <activity

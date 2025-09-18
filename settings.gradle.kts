@@ -1,3 +1,4 @@
+// This file defines all the modules included in the project.
 pluginManagement {
     repositories {
         google {
@@ -24,3 +25,4 @@ include(":app")
 include(":agriculture")
 include(":mining")
 include(":logistics")
+include(":core")

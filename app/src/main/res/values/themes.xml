@@ -2,7 +2,7 @@
     <!-- This file defines the base theme for the application. -->
     <style name="Base.Theme.SafeNationApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- This sets the status bar color to blend with the toolbar. -->
-        <item name="android:statusBarColor">#432818</item>
+        <item name="android:statusBarColor">#0077B6</item>
     </style>
 
     <style name="Theme.SafeNationApp" parent="Base.Theme.SafeNationApp" />
