@@ -22,7 +22,7 @@ import com.safenation.logistics.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputEditText
-
+import com.safenation.logistics.ui.Supabase
 class ReportIssue : AppCompatActivity() {
 
     private val selectedImageUris = mutableListOf<Uri>()

@@ -10,7 +10,7 @@ import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.safenation.logistics.R
-
+import com.safenation.logistics.ui.Supabase
 class LogisticsSettings : AppCompatActivity() {
 
     private val prefsName = "DriverAppSettings"

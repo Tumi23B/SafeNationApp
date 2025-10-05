@@ -12,7 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.safenation.logistics.R
-
+import com.safenation.logistics.ui.Supabase
 class Emergency : AppCompatActivity() {
 
     // First aid details for various emergencies

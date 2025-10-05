@@ -1,11 +1,16 @@
 package com.safenation.logistics.ui
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
+import android.net.Uri
+import com.safenation.logistics.ui.Supabase
 import android.os.Bundle
 import android.os.Looper
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -51,7 +56,7 @@ class LogisticsDashboard : AppCompatActivity() {
 
     // Safety UI
     private lateinit var safetyStatusText: TextView
-    private lateinit var safetyFeaturesText: TextView
+    private lateinit var safetyPlacesText: TextView
     private lateinit var safetyDistanceText: TextView
     private lateinit var safetyIcon: ImageView
 
@@ -59,7 +64,7 @@ class LogisticsDashboard : AppCompatActivity() {
     private var currentLatitude: Double = 0.0
     private var currentLongitude: Double = 0.0
     private var currentLocationName: String = "Unknown Location"
-    private var safetyFeatures: List<SafetyFeature> = emptyList()
+    private var safetyPlaces: List<SafetyPlace> = emptyList()
     private var currentWeather: CurrentWeatherData? = null
 
     // Location permission launcher
@@ -141,7 +146,7 @@ class LogisticsDashboard : AppCompatActivity() {
                     // Get location name and fetch data
                     getLocationName(currentLatitude, currentLongitude)
                     fetchWeatherData(currentLatitude, currentLongitude)
-                    fetchRoadSafetyData(currentLatitude, currentLongitude)
+                    fetchSafetyPlaces(currentLatitude, currentLongitude)
                 }
             }
         }
@@ -211,7 +216,7 @@ class LogisticsDashboard : AppCompatActivity() {
         }
 
         safetyCard.setOnClickListener {
-            showSafetyDetails()
+            showSafetyPlacesDialog()
         }
     }
 
@@ -227,7 +232,7 @@ class LogisticsDashboard : AppCompatActivity() {
         // Safety card views
         safetyCard = findViewById(R.id.safetyCard)
         safetyStatusText = findViewById(R.id.safetyStatusText)
-        safetyFeaturesText = findViewById(R.id.safetyFeaturesText)
+        safetyPlacesText = findViewById(R.id.safetyFeaturesText)
         safetyDistanceText = findViewById(R.id.safetyDistanceText)
         safetyIcon = findViewById(R.id.safetyIcon)
 
@@ -241,14 +246,13 @@ class LogisticsDashboard : AppCompatActivity() {
         weatherConditionText.text = ""
 
         safetyStatusText.text = "Scanning..."
-        safetyFeaturesText.text = "Safety features nearby"
-        safetyDistanceText.text = "Tap for details"
+        safetyPlacesText.text = "Safety places nearby"
+        safetyDistanceText.text = "Tap to view places"
     }
 
     private fun getLocationName(lat: Double, lng: Double) {
         lifecycleScope.launch {
             try {
-                // Try multiple geocoding services if one fails
                 val locationInfo = geocodingApi.reverseGeocode(lat, lng)
 
                 runOnUiThread {
@@ -260,14 +264,11 @@ class LogisticsDashboard : AppCompatActivity() {
                     }
 
                     weatherLocationText.text = currentLocationName
-                    Toast.makeText(this@LogisticsDashboard, "Location: $currentLocationName", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                // Fallback: Use coordinates with better formatting
                 runOnUiThread {
                     currentLocationName = "Location: ${String.format("%.4f, %.4f", lat, lng)}"
                     weatherLocationText.text = currentLocationName
-                    Toast.makeText(this@LogisticsDashboard, "Using GPS coordinates", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -308,7 +309,7 @@ class LogisticsDashboard : AppCompatActivity() {
                     currentLongitude = location.longitude
                     getLocationName(currentLatitude, currentLongitude)
                     fetchWeatherData(currentLatitude, currentLongitude)
-                    fetchRoadSafetyData(currentLatitude, currentLongitude)
+                    fetchSafetyPlaces(currentLatitude, currentLongitude)
                 } else {
                     weatherLocationText.text = "Getting fresh location..."
                     fusedLocationClient.requestLocationUpdates(
@@ -369,56 +370,61 @@ class LogisticsDashboard : AppCompatActivity() {
                     weatherWindText.text = "Wind: ${weather.current_weather.windspeed} km/h"
                     updateWeatherIcon(weather.current_weather.weathercode)
                     updateWeatherCondition(weather.current_weather.weathercode)
-                    Toast.makeText(this@LogisticsDashboard, "Weather updated!", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
                 runOnUiThread {
                     weatherTempText.text = "--°C"
                     weatherWindText.text = "Weather unavailable"
                     weatherConditionText.text = ""
-                    Toast.makeText(this@LogisticsDashboard, "Weather data error: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    private fun fetchRoadSafetyData(lat: Double, lng: Double) {
+    private fun fetchSafetyPlaces(lat: Double, lng: Double) {
         lifecycleScope.launch {
             try {
-                // Simpler query that's more likely to work
                 val query = """
                     [out:json][timeout:30];
                     (
                       node["amenity"="police"](around:5000,$lat,$lng);
                       node["amenity"="fuel"](around:5000,$lat,$lng);
                       node["amenity"="hospital"](around:5000,$lat,$lng);
-                      node["highway"="speed_camera"](around:5000,$lat,$lng);
+                      node["amenity"="fire_station"](around:5000,$lat,$lng);
+                      node["amenity"="pharmacy"](around:5000,$lat,$lng);
+                      node["amenity"="restaurant"](around:5000,$lat,$lng);
+                      node["amenity"="cafe"](around:5000,$lat,$lng);
                     );
                     out;
                 """.trimIndent()
 
-                val response = roadSafetyApi.getSafetyFeatures(query)
+                val response = roadSafetyApi.getSafetyPlaces(query)
 
-                // Process safety features with better error handling
-                safetyFeatures = response.elements.mapNotNull { element ->
+                // Process safety places and calculate distances
+                safetyPlaces = response.elements.mapNotNull { element ->
                     try {
-                        val featureType = when {
+                        val placeType = when {
                             element.tags["amenity"] == "police" -> "🚓 Police Station"
                             element.tags["amenity"] == "fuel" -> "⛽ Fuel Station"
                             element.tags["amenity"] == "hospital" -> "🏥 Hospital"
-                            element.tags["highway"] == "speed_camera" -> "🚨 Speed Camera"
+                            element.tags["amenity"] == "fire_station" -> "🚒 Fire Station"
+                            element.tags["amenity"] == "pharmacy" -> "💊 Pharmacy"
+                            element.tags["amenity"] == "restaurant" -> "🍴 Restaurant"
+                            element.tags["amenity"] == "cafe" -> "☕ Cafe"
                             else -> null
                         }
 
-                        if (featureType != null && element.lat != null && element.lon != null) {
-                            val name = element.tags["name"] ?: "Unnamed ${featureType.substringAfter(" ")}"
+                        if (placeType != null && element.lat != null && element.lon != null) {
+                            val name = element.tags["name"] ?: "Unnamed ${placeType.substringAfter(" ")}"
+                            val distanceInMeters = calculateDistanceInMeters(lat, lng, element.lat, element.lon)
 
-                            SafetyFeature(
-                                type = featureType,
+                            SafetyPlace(
+                                type = placeType,
                                 name = name,
                                 latitude = element.lat,
                                 longitude = element.lon,
-                                distance = calculateDistance(lat, lng, element.lat, element.lon)
+                                distance = formatDistance(distanceInMeters),
+                                distanceInMeters = distanceInMeters
                             )
                         } else {
                             null
@@ -428,40 +434,43 @@ class LogisticsDashboard : AppCompatActivity() {
                     }
                 }
 
+                // Sort by distance (closest first)
+                safetyPlaces = safetyPlaces.sortedBy { it.distanceInMeters }
+
                 runOnUiThread {
-                    val totalFeatures = safetyFeatures.size
+                    val totalPlaces = safetyPlaces.size
                     safetyStatusText.text = when {
-                        totalFeatures > 8 -> "🚨 High Alert"
-                        totalFeatures > 4 -> "⚠️ Moderate Alert"
-                        totalFeatures > 0 -> "✅ Clear Route"
-                        else -> "🟢 No Alerts"
+                        totalPlaces > 8 -> "🛡️ Well Protected"
+                        totalPlaces > 4 -> "✅ Good Coverage"
+                        totalPlaces > 0 -> "📍 Limited Places"
+                        else -> "🌍 Remote Area"
                     }
 
-                    safetyFeaturesText.text = when {
-                        totalFeatures == 0 -> "No safety features"
-                        totalFeatures == 1 -> "1 safety feature"
-                        else -> "$totalFeatures safety features"
+                    safetyPlacesText.text = when {
+                        totalPlaces == 0 -> "No safety places"
+                        totalPlaces == 1 -> "1 safety place"
+                        else -> "$totalPlaces safety places"
                     }
 
-                    safetyDistanceText.text = "Tap for details"
-                    Toast.makeText(this@LogisticsDashboard, "Found $totalFeatures safety features", Toast.LENGTH_SHORT).show()
+                    safetyDistanceText.text = "Tap to view places"
                 }
             } catch (e: Exception) {
                 runOnUiThread {
                     safetyStatusText.text = "Scan Failed"
-                    safetyFeaturesText.text = "Check connection"
+                    safetyPlacesText.text = "Check connection"
                     safetyDistanceText.text = "Try again"
-                    Toast.makeText(this@LogisticsDashboard, "Safety data error: ${e.message}", Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
 
-    private fun calculateDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): String {
+    private fun calculateDistanceInMeters(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Float {
         val results = FloatArray(1)
         Location.distanceBetween(lat1, lon1, lat2, lon2, results)
-        val distanceInMeters = results[0]
+        return results[0]
+    }
 
+    private fun formatDistance(distanceInMeters: Float): String {
         return when {
             distanceInMeters < 1000 -> "${distanceInMeters.toInt()}m away"
             else -> "${String.format("%.1f", distanceInMeters / 1000)}km away"
@@ -470,13 +479,13 @@ class LogisticsDashboard : AppCompatActivity() {
 
     private fun updateWeatherIcon(weatherCode: Int) {
         val iconRes = when (weatherCode) {
-            in 0..1 -> android.R.drawable.presence_online // Clear
-            in 2..3 -> android.R.drawable.presence_away // Partly cloudy
-            in 45..48 -> android.R.drawable.presence_invisible // Fog
-            in 51..67 -> android.R.drawable.presence_busy // Rain
-            in 71..86 -> android.R.drawable.star_big_on // Snow
-            in 95..99 -> android.R.drawable.stat_sys_warning // Thunderstorm
-            else -> android.R.drawable.stat_sys_warning // Unknown
+            in 0..1 -> android.R.drawable.presence_online
+            in 2..3 -> android.R.drawable.presence_away
+            in 45..48 -> android.R.drawable.presence_invisible
+            in 51..67 -> android.R.drawable.presence_busy
+            in 71..86 -> android.R.drawable.star_big_on
+            in 95..99 -> android.R.drawable.stat_sys_warning
+            else -> android.R.drawable.stat_sys_warning
         }
         weatherIcon.setImageResource(iconRes)
     }
@@ -537,11 +546,12 @@ class LogisticsDashboard : AppCompatActivity() {
             .show()
     }
 
-    private fun showSafetyDetails() {
-        if (safetyFeatures.isEmpty()) {
+    @SuppressLint("MissingInflatedId")
+    private fun showSafetyPlacesDialog() {
+        if (safetyPlaces.isEmpty()) {
             AlertDialog.Builder(this)
-                .setTitle("Safety Features")
-                .setMessage("No safety features found within 5km radius.\n\nThis could be because:\n• You're in a remote area\n• No safety data available\n• Poor internet connection\n\nTry moving to a different location or check your connection.")
+                .setTitle("Safety Places Nearby")
+                .setMessage("No safety places found within 5km radius.\n\nThis could be because:\n• You're in a remote area\n• No safety data available\n• Poor internet connection\n\nTry moving to a different location or check your connection.")
                 .setPositiveButton("OK", null)
                 .setNeutralButton("Refresh") { dialog, _ ->
                     forceLocationUpdate()
@@ -551,39 +561,83 @@ class LogisticsDashboard : AppCompatActivity() {
             return
         }
 
-        val featuresText = safetyFeatures.take(10).joinToString("\n\n") { feature ->
-            "${feature.type}\n" +
-                    "🏷️ ${feature.name}\n" +
-                    "📏 ${feature.distance}"
-        }
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_safety_places, null)
+        val safetyPlacesContainer = dialogView.findViewById<LinearLayout>(R.id.safetyPlacesContainer)
+        val noPlacesText = dialogView.findViewById<TextView>(R.id.noPlacesText)
 
-        val totalFeatures = safetyFeatures.size
-        val alertLevel = when {
-            totalFeatures > 8 -> "🚨 HIGH ALERT AREA"
-            totalFeatures > 4 -> "⚠️ MODERATE ALERT AREA"
-            else -> "✅ CLEAR ROUTE"
-        }
+        // Hide no places text since we have places
+        noPlacesText.visibility = View.GONE
 
-        val details = """
-            $alertLevel
-            
-            Found $totalFeatures safety features within 5km:
-            
-            $featuresText
-            ${if (totalFeatures > 10) "\n...and ${totalFeatures - 10} more features" else ""}
-            
-            💡 Stay alert and drive safely!
-        """.trimIndent()
+        // Clear existing views
+        safetyPlacesContainer.removeAllViews()
+
+        // Add each safety place as a card
+        safetyPlaces.forEach { place ->
+            val placeCard = LayoutInflater.from(this).inflate(R.layout.item_safety_place, null)
+
+            val placeTypeText = placeCard.findViewById<TextView>(R.id.placeTypeText)
+            val placeNameText = placeCard.findViewById<TextView>(R.id.placeNameText)
+            val placeDistanceText = placeCard.findViewById<TextView>(R.id.placeDistanceText)
+            val placeCardView = placeCard.findViewById<MaterialCardView>(R.id.placeCardView)
+
+            placeTypeText.text = place.type
+            placeNameText.text = place.name
+            placeDistanceText.text = place.distance
+
+            // Make card clickable for directions
+            placeCardView.setOnClickListener {
+                openDirectionsInGoogleMaps(place)
+            }
+
+            // Add some spacing between cards
+            val layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setMargins(0, 0, 0, 16) // 16dp bottom margin
+            }
+            placeCard.layoutParams = layoutParams
+
+            safetyPlacesContainer.addView(placeCard)
+        }
 
         AlertDialog.Builder(this)
-            .setTitle("Road Safety Information")
-            .setMessage(details)
-            .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+            .setTitle("Safety Places Nearby (${safetyPlaces.size} found)")
+            .setView(dialogView)
+            .setPositiveButton("Close") { dialog, _ -> dialog.dismiss() }
             .setNeutralButton("Refresh") { dialog, _ ->
                 forceLocationUpdate()
                 dialog.dismiss()
             }
             .show()
+    }
+
+    private fun openDirectionsInGoogleMaps(place: SafetyPlace) {
+        try {
+            // Create Google Maps intent for directions
+            val gmmIntentUri = Uri.parse("google.navigation:q=${place.latitude},${place.longitude}&mode=d")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+
+            // Verify that Google Maps is available
+            if (mapIntent.resolveActivity(packageManager) != null) {
+                startActivity(mapIntent)
+            } else {
+                // Fallback: Open in browser with Google Maps
+                val webIntentUri = Uri.parse("https://www.google.com/maps/dir/?api=1&destination=${place.latitude},${place.longitude}&travelmode=driving")
+                val webIntent = Intent(Intent.ACTION_VIEW, webIntentUri)
+                startActivity(webIntent)
+            }
+        } catch (e: Exception) {
+            Toast.makeText(this, "Unable to open Google Maps", Toast.LENGTH_SHORT).show()
+
+            // Final fallback: Show coordinates
+            AlertDialog.Builder(this)
+                .setTitle("Directions to ${place.name}")
+                .setMessage("Coordinates:\nLatitude: ${place.latitude}\nLongitude: ${place.longitude}\n\nPlease use these coordinates in your preferred navigation app.")
+                .setPositiveButton("OK", null)
+                .show()
+        }
     }
 
     private fun getDrivingAdvice(weatherCode: Int): String {
@@ -601,7 +655,7 @@ class LogisticsDashboard : AppCompatActivity() {
     private fun showLocationPermissionDenied() {
         AlertDialog.Builder(this)
             .setTitle("Location Permission Required")
-            .setMessage("This app needs location access to provide:\n\n• Real-time weather updates\n• Nearby safety features\n• Route safety information\n\nPlease enable location permissions in settings.")
+            .setMessage("This app needs location access to provide:\n\n• Real-time weather updates\n• Nearby safety places\n• Route safety information\n\nPlease enable location permissions in settings.")
             .setPositiveButton("Open Settings") { _, _ ->
                 val intent = Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                 intent.data = android.net.Uri.fromParts("package", packageName, null)
@@ -622,19 +676,16 @@ class LogisticsDashboard : AppCompatActivity() {
             Toast.makeText(this, "Unable to open this feature", Toast.LENGTH_SHORT).show()
         }
     }
-
-    private fun logMissingView(viewName: String) {
-        println("⚠️ Warning: View with ID $viewName not found in layout")
-    }
 }
 
 // Data Classes
-data class SafetyFeature(
+data class SafetyPlace(
     val type: String,
     val name: String,
     val latitude: Double,
     val longitude: Double,
-    val distance: String
+    val distance: String,
+    val distanceInMeters: Float
 )
 
 data class CurrentWeatherData(
@@ -656,12 +707,11 @@ interface WeatherApi {
 
 interface RoadSafetyApi {
     @GET("interpreter")
-    suspend fun getSafetyFeatures(
+    suspend fun getSafetyPlaces(
         @Query("data") query: String
     ): OverpassResponse
 }
 
-// Using BigDataCloud for better geocoding
 interface GeocodingApi {
     @GET("data/reverse-geocode-client")
     suspend fun reverseGeocode(
@@ -694,7 +744,6 @@ data class OverpassElement(
     val tags: Map<String, String> = emptyMap()
 )
 
-// BigDataCloud Response
 data class BigDataCloudResponse(
     val locality: String?,
     val city: String?,

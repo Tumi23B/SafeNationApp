@@ -15,6 +15,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.safenation.logistics.R
+import com.safenation.logistics.ui.Supabase
+
 
 class VehicleInspection : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

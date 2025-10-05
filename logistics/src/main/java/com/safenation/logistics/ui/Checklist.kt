@@ -9,6 +9,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.safenation.logistics.R
+import com.safenation.logistics.ui.Supabase
+
 class Checklist : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
