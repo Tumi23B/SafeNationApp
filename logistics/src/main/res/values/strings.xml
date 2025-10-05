@@ -9,4 +9,6 @@
     <string name="driving_tips_desc" />
     <string name="checklist_desc" />
     <string name="emergency_icon_desc" />
+    <string name="weather_icon_desc">Weather condition icon</string>
+    <string name="safety_icon_desc">Road safety alert icon</string>
 </resources>

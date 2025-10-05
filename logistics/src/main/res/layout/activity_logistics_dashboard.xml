@@ -33,8 +33,6 @@
       app:layout_constraintTop_toTopOf="parent"
       app:tint="#FFFFFF" />
 
-  <!-- App Logo/Title -->
-
   <!-- Profile Section -->
   <com.google.android.material.card.MaterialCardView
       android:id="@+id/profile_card"
@@ -86,6 +84,167 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/usernameText" />
 
+  <!-- Real-time Data Cards -->
+  <LinearLayout
+      android:id="@+id/realTimeDataLayout"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="16dp"
+      android:orientation="horizontal"
+      android:gravity="center"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/subGreetingText">
+
+    <!-- Weather Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/weatherCard"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_weight="1"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="#1A237E"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          android:gravity="center"
+          android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/weatherIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/weather_icon_desc"
+            android:src="@android:drawable/stat_sys_warning"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/weatherTempText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="--°C"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/weatherConditionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text=""
+            android:textColor="#BBBBBB"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/weatherLocationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Loading..."
+            android:textColor="#BBBBBB"
+            android:textSize="10sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/weatherWindText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Wind: -- km/h"
+            android:textColor="#BBBBBB"
+            android:textSize="10sp" />
+
+      </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Road Safety Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/safetyCard"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        app:cardBackgroundColor="#BF360C"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          android:gravity="center"
+          android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/safetyIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/safety_icon_desc"
+            android:src="@android:drawable/ic_dialog_alert"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/safetyStatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Scanning..."
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/safetyFeaturesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Safety features nearby"
+            android:textColor="#BBBBBB"
+            android:textSize="12sp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/safetyDistanceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Tap for details"
+            android:textColor="#BBBBBB"
+            android:textSize="10sp" />
+
+      </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+  </LinearLayout>
+
+  <!-- Refresh Data Button -->
+  <Button
+      android:id="@+id/refreshDataButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:text="Refresh Location Data"
+      android:textColor="#4CAF50"
+      android:background="@android:color/transparent"
+      android:textSize="12sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/realTimeDataLayout" />
+
   <!-- Actions Grid inside ScrollView -->
   <ScrollView
       android:id="@+id/actionScroll"
@@ -96,7 +255,7 @@
       app:layout_constraintBottom_toTopOf="@id/emergencyButtonCard"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/subGreetingText">
+      app:layout_constraintTop_toBottomOf="@id/refreshDataButton">
 
     <LinearLayout
         android:layout_width="match_parent"
