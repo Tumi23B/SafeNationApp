@@ -1,9 +1,5 @@
 package com.safenation.mining.ui
 
-
-
-
-
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import androidx.fragment.app.Fragment

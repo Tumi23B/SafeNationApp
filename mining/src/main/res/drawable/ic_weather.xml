@@ -1,0 +1,14 @@
+<!-- res/drawable/ic_weather.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M12,17.5A5.5,5.5 0,1 1,17.5 12,5.5 5.5,0 0,1 12,17.5z" />
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="0.5"
+        android:pathData="M12,6L12,3M12,21L12,18M18,12L21,12M3,12L6,12M16.95,7.05L19.07,4.93M4.93,19.07L7.05,16.95M16.95,16.95L19.07,19.07M4.93,4.93L7.05,7.05" />
+</vector>

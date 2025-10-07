@@ -77,8 +77,9 @@ class MainActivity : BaseActivity() {
         // Handle toolbar menu items (optional)
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.safetyFragment -> {
-                    navController.navigate(R.id.settingsFragment)
+                R.id.settingsFragment -> {
+                    navController.navigate(R.id.action_homeFragment_to_settingsFragment)
+
                     true
                 }
                 else -> false
@@ -90,7 +91,7 @@ class MainActivity : BaseActivity() {
             when (menuItem.itemId) {
                 R.id.settingsFragment -> {
                     // Special handling for settings if needed
-                    navController.navigate(R.id.settingsFragment)
+                    navController.navigate(R.id.action_homeFragment_to_settingsFragment)
                     binding.drawerLayout.closeDrawers()
                     true
                 }
