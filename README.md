@@ -1,6 +1,24 @@
-# How to Integrate a Feature Module into the Main App
+# Functionality of the REST API in the Agriculture & Agritech Modular App
+For this modular app, a custom REST API was built using Node.js and deployed on RENDER.com
 
-Guide to explain how we add new features as separate library modules to the main application. This method helps us keep the codebase clean, organized, and easier to maintain.
+•	The API's primary function is to support the module's training screen.
+
+•	It fetches educational materials from PDF documents and retrieves corresponding quizzes that were created using Google Forms. 
+
+•	Both the training materials and the quizzes are loaded into a web viewer, which gives the user fast and direct access to the content.
+
+# Agriculture & Agritech Modular App Links:
+
+•	Agriculture & Agritech API URL: [https://agri-safety.onrender.com/]
+
+•	API Deployment Site: [https://render.com/]
+
+•	Agriculture & Agritech Voice Over App Video URL: [https://youtu.be/XjtVKDLI25A]
+
+
+# How we integrated the Modular Apps into the Main App
+
+Guide to explain how we add new features as separate library modules to the main application. This method helps us keep the codebase clean, organized, and easier to maintain. We used Supabase as our database.
 
 For the purpose of this guide, we used the **agriculture module** as an example!
 
