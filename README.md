@@ -1,5 +1,6 @@
 # Functionality of the REST API in the Agriculture & Agritech Modular App
 For this modular app, a custom REST API was built using Node.js and deployed on RENDER.com
+
 •	The API's primary function is to support the module's training screen.
 
 •	It fetches educational materials from PDF documents and retrieves corresponding quizzes that were created using Google Forms. 
