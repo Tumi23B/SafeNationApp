@@ -7,6 +7,14 @@ For this modular app, a custom REST API was built using Node.js and deployed on 
 
 •	Both the training materials and the quizzes are loaded into a web viewer, which gives the user fast and direct access to the content.
 
+# Agriculture & Agritech Modular App Links:
+
+•	Agriculture & Agritech API URL: [https://agri-safety.onrender.com/]
+
+•	API Deployment Site: [https://render.com/]
+
+•	Agriculture & Agritech Voice Over App Video URL: [https://youtu.be/XjtVKDLI25A]
+
 
 # How we integrated the Modular Apps into the Main App
 
