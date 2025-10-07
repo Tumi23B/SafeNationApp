@@ -226,6 +226,7 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_equipmentCheckFragment)
         }
 
+
         private fun showProgressDialog() {
             val dialog = MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Safety Compliance Progress")

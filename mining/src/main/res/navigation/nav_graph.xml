@@ -27,9 +27,7 @@
         <action
             android:id="@+id/action_homeFragment_to_equipmentCheckFragment"
             app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+
     </fragment>
 
     <!-- Incident Report Fragment -->
@@ -70,6 +68,8 @@
         android:id="@+id/settingsFragment"
         android:name="com.safenation.mining.ui.SettingsFragment"
         android:label="Settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+
+    </fragment>
 
 </navigation>

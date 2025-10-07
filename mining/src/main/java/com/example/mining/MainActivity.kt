@@ -2,6 +2,7 @@
 package com.safenation.mining
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -74,14 +75,14 @@ class MainActivity : BaseActivity() {
      * This function configures listeners for handling clicks on navigation items in the toolbar and navigation drawer.
      */
     private fun setupNavigationListeners() {
-        // Handle toolbar menu items (optional)
+        // Handle toolbar menu items
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.settingsFragment -> {
-                    navController.navigate(R.id.action_homeFragment_to_settingsFragment)
-
+                R.id.action_settings -> {
+                    navController.navigate(R.id.settingsFragment)
                     true
                 }
+
                 else -> false
             }
         }
@@ -90,13 +91,11 @@ class MainActivity : BaseActivity() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.settingsFragment -> {
-                    // Special handling for settings if needed
-                    navController.navigate(R.id.action_homeFragment_to_settingsFragment)
+                    navController.navigate(R.id.settingsFragment)
                     binding.drawerLayout.closeDrawers()
                     true
                 }
                 else -> {
-                    // Default navigation behavior
                     menuItem.isChecked = true
                     binding.drawerLayout.closeDrawers()
                     navController.navigate(menuItem.itemId)
@@ -117,6 +116,8 @@ class MainActivity : BaseActivity() {
      * This function handles user logout by clearing session data and navigating to the home screen.
      */
     fun handleLogout() {
+        Log.d("NavigationDebug", "handleLogout called - THIS SHOULD ONLY HAPPEN WHEN LOGOUT BUTTON IS CLICKED")
+
         // Clear user session data
         val sharedPreferences = getSharedPreferences("SafeNationPrefs", MODE_PRIVATE)
         sharedPreferences.edit().clear().apply()
