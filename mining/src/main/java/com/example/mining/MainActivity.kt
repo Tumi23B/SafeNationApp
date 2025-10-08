@@ -1,6 +1,8 @@
 // This file defines the main activity of the application, which handles the primary user interface and navigation.
 package com.safenation.mining
 
+import android.content.ComponentName
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -119,17 +121,21 @@ class MainActivity : BaseActivity() {
      * This function handles user logout by clearing session data and navigating to the home screen.
      */
     fun handleLogout() {
-        Log.d("NavigationDebug", "handleLogout called - THIS SHOULD ONLY HAPPEN WHEN LOGOUT BUTTON IS CLICKED")
-
-        // Clear user session data
-        val sharedPreferences = getSharedPreferences("SafeNationPrefs", MODE_PRIVATE)
-        sharedPreferences.edit().clear().apply()
-
-        // Navigate back to home after logout
-        navController.navigate(R.id.homeFragment)
-
-        Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+        try {
+            // Method 1: Try using explicit intent with package name
+            val intent = Intent().apply {
+                component =
+                    ComponentName("com.example.safenationapp", "com.example.safenationapp.Login")
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            startActivity(intent)
+            finish()
+        } catch (e: Exception) {
+            // Method 2: Fallback - just finish and let app close
+            finishAffinity() // Closes all activities in the task
+        }
     }
+
 
     /**
      * This function allows programmatic navigation to a specific fragment using its ID.

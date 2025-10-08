@@ -62,7 +62,6 @@ class SettingsFragment : Fragment() {
         }
         binding.btnLogout.setOnClickListener {
             Toast.makeText(context, "Logout clicked", Toast.LENGTH_SHORT).show()
-
         }
     }
 
