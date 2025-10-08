@@ -79,10 +79,11 @@ class MainActivity : BaseActivity() {
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.action_settings -> {
-                    navController.navigate(R.id.settingsFragment)
+                    // Launch SettingsActivity instead of navigating to fragment
+                    val intent = android.content.Intent(this, com.example.mining.SettingsActivity::class.java)
+                    startActivity(intent)
                     true
                 }
-
                 else -> false
             }
         }
@@ -91,7 +92,9 @@ class MainActivity : BaseActivity() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.settingsFragment -> {
-                    navController.navigate(R.id.settingsFragment)
+                    // Launch SettingsActivity instead of navigating to fragment
+                    val intent = android.content.Intent(this, com.example.mining.SettingsActivity::class.java)
+                    startActivity(intent)
                     binding.drawerLayout.closeDrawers()
                     true
                 }

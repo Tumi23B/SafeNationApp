@@ -66,9 +66,9 @@
     <!-- Settings Fragment -->
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.safenation.mining.ui.SettingsFragment"
+        android:name="com.safenation.mining.ui.SettingFragment"
         android:label="Settings"
-        tools:layout="@layout/fragment_settings" >
+        tools:layout="@layout/fragment_setting" >
 
     </fragment>
 
