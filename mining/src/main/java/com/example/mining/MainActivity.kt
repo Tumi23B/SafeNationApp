@@ -16,6 +16,7 @@ import com.example.safenationapp.BaseActivity
 import com.safenation.mining.databinding.ActivityMainBinding
 import org.osmdroid.config.Configuration
 
+
 class MainActivity : BaseActivity() {
     /**
      * These variables handle the view binding, navigation controller, and app bar configuration.
