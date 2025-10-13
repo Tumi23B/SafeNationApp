@@ -101,7 +101,7 @@ Used for real-time weather condition monitoring and safety alert generation.
 
 ## 🎬 Voice-Over Demonstration
 ▶️ [Mining Module Voice-Over Video](https://youtube.com/shorts/KO2KXpqkyuw?feature=share)
-
+---
 # How we integrated the Modular Apps into the Main App
 
 Guide to explain how we add new features as separate library modules to the main application. This method helps us keep the codebase clean, organized, and easier to maintain. We used Supabase as our database.
