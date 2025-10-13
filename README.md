@@ -1,3 +1,6 @@
+# Feature that was used from part 1 in the agriculture & agritech modular app:
+* For this modular app we used the layout design of the home dashboard of the research app that we specified in part 1. The app was named SiteApp.
+
 # Functionality of the REST API in the Agriculture & Agritech Modular App
 For this modular app, a custom REST API was built using Node.js and deployed on RENDER.com
 
