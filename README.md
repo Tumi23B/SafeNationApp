@@ -31,17 +31,16 @@
 * Copy the 'app-debug-apk' file.
   
   # Transfer the 'app-debug-apk' file to your physical device:
-  * USB Cable: Connect your phone to your computer via USB and copy the file directly to your phone's 'Downloads' folder.
-  * Email or Messaging: Attach the file to an email or a message (like WhatsApp Web or Gmail) and send it to yourself.
+  * **USB Cable:** Connect your phone to your computer via USB and copy the file directly to your phone's 'Downloads' folder.
+  * **Email or Messaging:** Attach the file to an email or a message (like WhatsApp Web or Gmail) and send it to yourself.
   * Once you have the apk file on your physical device, download and install the apk. Then run the app.
     
   **Be aware you might be asked to allow unknown apps to install on your physical device, do this:**
   * On your Android device, go to Settings > Security (or Apps & notifications > Special app access on newer versions) and enable the option to Install unknown apps for your browser or file manager.
   * You must do this to install apps outside the Play Store.
- 
-
-# Feature that was used from part 1 in the agriculture & agritech modular app:
-* For this modular app we used the layout design of the home dashboard of the research app that we specified in part 1. The app was named SiteApp.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+# Feature from Part 1 specified in the agriculture & agritech modular app:
+* For this modular app we used the layout design of the home dashboard of the research app that we specified in part 1. The app was named SiteApp Pro.
 
 # Functionality of the REST API in the Agriculture & Agritech Modular App
 For this modular app, a custom REST API was built using Node.js and deployed on RENDER.com
@@ -54,13 +53,13 @@ For this modular app, a custom REST API was built using Node.js and deployed on 
 
 # Agriculture & Agritech Modular App Links:
 
-•	Agriculture & Agritech API URL: https://agri-safety.onrender.com/
+•	**Agriculture & Agritech API URL:** https://agri-safety.onrender.com/
 
-•	API Deployment Site: https://render.com/
-
- * Our Supabase Database containing all three modular apps tables
+•	**API Deployment Site:** https://render.com/
 
 •	Agriculture & Agritech Voice Over App Video URL: https://www.dropbox.com/scl/fi/sujgyn4rnhlg5m4xk0tz0/Agriculture-sub-app.mp4?rlkey=6g4xwcrkqb4wa8wexut7b6uzo&st=9kd9cldp&dl=0
+
+* **Our Supabase Database contains the tables for the three modular apps that form a single app**
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 🪓 SafeNation – Mining Modular App
