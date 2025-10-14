@@ -147,76 +147,90 @@ Used for real-time weather condition monitoring and safety alert generation.
 ▶️ [Mining Module Voice-Over Video](https://youtube.com/shorts/KO2KXpqkyuw?feature=share)
 ---
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-🚛 SafeNation – Logistics Modular App
-📱 Overview
+# 🚛 SafeNation – Logistics Modular App
+**📱 Overview**
 
 As part of the SafeNation safety and compliance mobile application development team, I was responsible for the Logistics module.
 SafeNation enables users across various industries to report safety incidents and utilize environment-specific checklists. Our team focused on three core sectors: Logistics, Mining, and Agriculture & Agritech.
 The app implements role-based access control, delivering customized module experiences based on the industry selected during user registration.
 
-🧩 Module Purpose
+**🧩 Module Purpose**
 
-The Logistics module improves road transport and delivery operations by providing real-time safety alerts, environmental monitoring, and access to emergency resources.
-⚙️ REST API Functionality
+* The Logistics module improves road transport and delivery operations by providing real-time safety alerts, environmental monitoring, and access to emergency resources.
+
+# ⚙️ REST API Functionality
+
 The Logistics module integrates multiple REST APIs to deliver real-time data for safety, navigation, and weather conditions.
 These APIs work together to ensure that drivers and logistics operators have up-to-date operational insights.
-Core API Integrations
-Open-Meteo Weather API
-Base URL: https://api.open-meteo.com/
-Purpose: Provides real-time weather data (temperature, wind speed, weather codes) for route safety and driving condition monitoring.
-Overpass API (OpenStreetMap)
-Base URL: https://overpass-api.de/api/
-Purpose: Identifies nearby safety locations (police stations, hospitals, fuel stations, fire stations, etc.).
-BigDataCloud Geocoding API
-Base URL: https://api.bigdatacloud.net/
-Purpose: Converts GPS coordinates into readable addresses to improve situational awareness.
-Google Maps Navigation Integration
-Functionality: Turn-by-turn navigation via deep linking.
-Purpose: Enables direct routing to safety or emergency facilities.
 
-🌍 Module Features & Capabilities
-Feature	Description
-🚨 Real-Time Safety Monitoring	Tracks location and weather to alert drivers about hazardous conditions.
-🏥 Safety Infrastructure Integration	Displays nearby police, hospitals, fuel, and fire stations.
-📡 Emergency Service Coordination	Allows quick navigation to emergency services through Google Maps.
-🌦️ Weather Condition Alerts	Sends notifications based on weather risks.
-🛣️ Route Risk Assessment	Evaluates routes for environmental and safety risks.
+**Core API Integrations**
+
+* Open-Meteo Weather API
+* **Base URL:** https://api.open-meteo.com/
+* **Purpose:** Provides real-time weather data (temperature, wind speed, weather codes) for route safety and driving condition monitoring.
+
+**Overpass API (OpenStreetMap)**
+
+* **Base URL:** https://overpass-api.de/api/
+* **Purpose:** Identifies nearby safety locations (police stations, hospitals, fuel stations, fire stations, etc.).
+
+**BigDataCloud Geocoding API**
+
+* **Base URL:** https://api.bigdatacloud.net/
+* **Purpose:** Converts GPS coordinates into readable addresses to improve situational awareness.
+
+**Google Maps Navigation Integration**
+
+* **Functionality:** Turn-by-turn navigation via deep linking.
+* **Purpose:** Enables direct routing to safety or emergency facilities.
+
+# 🌍 Module Features & Capabilities
+
+**Feature	Description:**
+* 🚨 Real-Time Safety Monitoring	Tracks location and weather to alert drivers about hazardous conditions.
+* 🏥 Safety Infrastructure Integration	Displays nearby police, hospitals, fuel, and fire stations.
+* 📡 Emergency Service Coordination	Allows quick navigation to emergency services through Google Maps.
+* 🌦️ Weather Condition Alerts	Sends notifications based on weather risks.
+* 🛣️ Route Risk Assessment	Evaluates routes for environmental and safety risks.
 
 
-🧰 Technical Implementation
-Component	Details
-Platform	Android (Native)
-Language	Kotlin
-Architecture	Modern Android Architecture Components
-API Integration	Retrofit2 with Gson Converter
-Location Services	Google Fused Location Provider API
-Authentication	Role-based access from main SafeNation app
+# 🧰 Technical Implementation
 
-☁️ Deployment & Infrastructure
-APIs Used: Open-Meteo, Overpass, BigDataCloud
-Navigation: Google Maps Deep Linking
-Data Storage: Local device + cloud integration
-Deployment: Android app to be  published to Google Play Store
+**Component	Details:**
+* Platform	Android (Native)
+* Language	Kotlin
+* Architecture	Modern Android Architecture Components
+* API Integration	Retrofit2 with Gson Converter
+* Location Services	Google Fused Location Provider API
+* Authentication	Role-based access from main SafeNation app
 
-🚛 Logistics Module Impact
+# ☁️ Deployment & Infrastructure
 
-The Logistics module addresses key challenges in transportation safety by enabling:
-Real-time hazard detection
-Quick access to emergency services
-Optimized route safety
-Proactive risk mitigation
-Enhanced driver safety awareness
+* **APIs Used:** Open-Meteo, Overpass, BigDataCloud
+* **Navigation:** Google Maps Deep Linking
+* **Data Storage:** Local device + cloud integration
+* **Deployment:** Android app to be  published to Google Play Store
 
-📎 Application Information
+# 🚛 Logistics Module Impact
 
-Main Application GitHub URL: https://github.com/Tumi23B/SafeNationApp
-Voiceover Demonstration: https://youtu.be/HhkA50OyclM
-Application Framework: Multi-module, industry-specific safety platform
-Target Industries: Logistics, Mining, Agriculture & Agritech
-Technology Stack: Android Native, REST APIs, Cloud Services
+* The Logistics module addresses key challenges in transportation safety by enabling:
+* Real-time hazard detection
+* Quick access to emergency services
+* Optimized route safety
+* Proactive risk mitigation
+* Enhanced driver safety awareness
 
-🏁 Conclusion
-The Logistics module is a critical component of the SafeNation application, combining real-time environmental monitoring and intelligent routing to improve safety awareness and emergency responsiveness in logistics operations.
+# 📎 Application Information
+
+* **Main Application GitHub URL:** https://github.com/Tumi23B/SafeNationApp
+* **Voiceover Demonstration:** https://youtu.be/HhkA50OyclM
+* **Application Framework:** Multi-module, industry-specific safety platform
+* **Target Industries:** Logistics, Mining, Agriculture & Agritech
+* **Technology Stack:** Android Native, REST APIs, Cloud Services
+
+# 🏁 Conclusion
+
+*The Logistics module is a critical component of the SafeNation application, combining real-time environmental monitoring and intelligent routing to improve safety awareness and emergency responsiveness in logistics operations.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # How we integrated the Modular Apps into the Main App:
