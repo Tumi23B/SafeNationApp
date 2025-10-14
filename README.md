@@ -5,7 +5,7 @@
 * Clone the repository. Because, you need a local copy of our code.
 * Open your terminal and run the following Git command:
 
-  **git clone [Your-Repository-URL]**
+  **git clone [https://github.com/Tumi23B/SafeNationApp.git]**
   
   **Remember to replace [Your-Repository-URL] with the actual link to this repository.**
 
