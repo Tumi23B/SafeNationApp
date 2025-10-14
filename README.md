@@ -1,3 +1,42 @@
+# How to Run This App
+- Follow these steps to get our application running on your local machine. You need to have Android Studio installed before you start.
+
+# Step 1:
+* Clone the repository. Because, you need a local copy of our code.
+* Open your terminal and run the following Git command:
+    git clone [Your-Repository-URL]
+  # Remember to replace [Your-Repository-URL] with the actual link to this repository.
+
+# Step 2:
+* Open the project in Android Studio. Next, start Android Studio.
+* On the welcome screen, choose 'Open'. Find the project folder you just cloned on your computer and select it. Android Studio will then open the project.
+
+# Step 3:
+* Sync the project. Android Studio will automatically begin to sync and build the project using Gradle. This process downloads all the necessary dependencies. You can see its progress in the bottom status bar. *Wait for it to finish completely.
+
+# Step 4:
+* Run the application. 
+* After the Gradle sync is successful, you are ready to run the app.
+* Look at the toolbar at the top.
+* Select an available Android device or emulator from the dropdown menu.
+* Finally, click the green 'Run' button. The app will then install and launch on your selected device.
+
+# Alternative Run the app on physical device:
+* After following the 4 steps above. On Android Studio, navigation to the top menu bar.
+* Click on 'Build'. Then click on 'Generate App Bundles or APKs'
+* Click 'Generate APK'. Wait for Android Studio to finish generating the APK file.
+* Once APK is successfully generated, on the confirmation message, click 'locate'. You will be taken to the APK file on your file explorer.
+* Copy the 'app-debug-apk' file.
+  
+  # Transfer the 'app-debug-apk' file to your physical device:
+  * USB Cable: Connect your phone to your computer via USB and copy the file directly to your phone's 'Downloads' folder.
+  * Email or Messaging: Attach the file to an email or a message (like WhatsApp Web or Gmail) and send it to yourself.
+  * Once you have the apk file on your physical device, download and install the apk. Then run the app.
+# Be aware you might be asked to allow unknown apps to install on your physical device, do this:
+* On your Android device, go to Settings > Security (or Apps & notifications > Special app access on newer versions) and enable the option to Install unknown apps for your browser or file manager.
+* You must do this to install apps outside the Play Store.
+ 
+
 # Feature that was used from part 1 in the agriculture & agritech modular app:
 * For this modular app we used the layout design of the home dashboard of the research app that we specified in part 1. The app was named SiteApp.
 
@@ -15,6 +54,8 @@ For this modular app, a custom REST API was built using Node.js and deployed on 
 •	Agriculture & Agritech API URL: https://agri-safety.onrender.com/
 
 •	API Deployment Site: https://render.com/
+
+ * Our Supabase Database containing all three modular apps tables
 
 •	Agriculture & Agritech Voice Over App Video URL: https://www.dropbox.com/scl/fi/sujgyn4rnhlg5m4xk0tz0/Agriculture-sub-app.mp4?rlkey=6g4xwcrkqb4wa8wexut7b6uzo&st=9kd9cldp&dl=0
 
@@ -103,7 +144,81 @@ Used for real-time weather condition monitoring and safety alert generation.
 ## 🎬 Voice-Over Demonstration
 ▶️ [Mining Module Voice-Over Video](https://youtube.com/shorts/KO2KXpqkyuw?feature=share)
 ---
-# How we integrated the Modular Apps into the Main App
+
+🚛 SafeNation – Logistics Modular App
+📱 Overview
+
+As part of the SafeNation safety and compliance mobile application development team, I was responsible for the Logistics module.
+SafeNation enables users across various industries to report safety incidents and utilize environment-specific checklists. Our team focused on three core sectors: Logistics, Mining, and Agriculture & Agritech.
+The app implements role-based access control, delivering customized module experiences based on the industry selected during user registration.
+
+🧩 Module Purpose
+
+The Logistics module improves road transport and delivery operations by providing real-time safety alerts, environmental monitoring, and access to emergency resources.
+⚙️ REST API Functionality
+The Logistics module integrates multiple REST APIs to deliver real-time data for safety, navigation, and weather conditions.
+These APIs work together to ensure that drivers and logistics operators have up-to-date operational insights.
+Core API Integrations
+Open-Meteo Weather API
+Base URL: https://api.open-meteo.com/
+Purpose: Provides real-time weather data (temperature, wind speed, weather codes) for route safety and driving condition monitoring.
+Overpass API (OpenStreetMap)
+Base URL: https://overpass-api.de/api/
+Purpose: Identifies nearby safety locations (police stations, hospitals, fuel stations, fire stations, etc.).
+BigDataCloud Geocoding API
+Base URL: https://api.bigdatacloud.net/
+Purpose: Converts GPS coordinates into readable addresses to improve situational awareness.
+Google Maps Navigation Integration
+Functionality: Turn-by-turn navigation via deep linking.
+Purpose: Enables direct routing to safety or emergency facilities.
+
+🌍 Module Features & Capabilities
+Feature	Description
+🚨 Real-Time Safety Monitoring	Tracks location and weather to alert drivers about hazardous conditions.
+🏥 Safety Infrastructure Integration	Displays nearby police, hospitals, fuel, and fire stations.
+📡 Emergency Service Coordination	Allows quick navigation to emergency services through Google Maps.
+🌦️ Weather Condition Alerts	Sends notifications based on weather risks.
+🛣️ Route Risk Assessment	Evaluates routes for environmental and safety risks.
+
+
+🧰 Technical Implementation
+Component	Details
+Platform	Android (Native)
+Language	Kotlin
+Architecture	Modern Android Architecture Components
+API Integration	Retrofit2 with Gson Converter
+Location Services	Google Fused Location Provider API
+Authentication	Role-based access from main SafeNation app
+
+☁️ Deployment & Infrastructure
+APIs Used: Open-Meteo, Overpass, BigDataCloud
+Navigation: Google Maps Deep Linking
+Data Storage: Local device + cloud integration
+Deployment: Android app to be  published to Google Play Store
+
+🚛 Logistics Module Impact
+
+The Logistics module addresses key challenges in transportation safety by enabling:
+Real-time hazard detection
+Quick access to emergency services
+Optimized route safety
+Proactive risk mitigation
+Enhanced driver safety awareness
+
+📎 Application Information
+
+Main Application GitHub URL: https://github.com/Tumi23B/SafeNationApp
+Voiceover Demonstration: https://youtu.be/HhkA50OyclM
+Application Framework: Multi-module, industry-specific safety platform
+Target Industries: Logistics, Mining, Agriculture & Agritech
+Technology Stack: Android Native, REST APIs, Cloud Services
+
+🏁 Conclusion
+The Logistics module is a critical component of the SafeNation application, combining real-time environmental monitoring and intelligent routing to improve safety awareness and emergency responsiveness in logistics operations.
+
+
+
+# How we integrated the Modular Apps into the Main App as a group:
 
 Guide to explain how we add new features as separate library modules to the main application. This method helps us keep the codebase clean, organized, and easier to maintain. We used Supabase as our database.
 
@@ -181,73 +296,3 @@ Here is an example:
 
 By following these steps, we successfully integrate a new feature module. This keeps our project scalable and separates concerns effectively.
 
-🚛 SafeNation – Logistics Modular App
-📱 Overview
-
-As part of the SafeNation safety and compliance mobile application development team, I was responsible for the Logistics module.
-SafeNation enables users across various industries to report safety incidents and utilize environment-specific checklists. Our team focused on three core sectors: Logistics, Mining, and Agriculture & Agritech.
-The app implements role-based access control, delivering customized module experiences based on the industry selected during user registration.
-
-🧩 Module Purpose
-
-The Logistics module improves road transport and delivery operations by providing real-time safety alerts, environmental monitoring, and access to emergency resources.
-⚙️ REST API Functionality
-The Logistics module integrates multiple REST APIs to deliver real-time data for safety, navigation, and weather conditions.
-These APIs work together to ensure that drivers and logistics operators have up-to-date operational insights.
-Core API Integrations
-Open-Meteo Weather API
-Base URL: https://api.open-meteo.com/
-Purpose: Provides real-time weather data (temperature, wind speed, weather codes) for route safety and driving condition monitoring.
-Overpass API (OpenStreetMap)
-Base URL: https://overpass-api.de/api/
-Purpose: Identifies nearby safety locations (police stations, hospitals, fuel stations, fire stations, etc.).
-BigDataCloud Geocoding API
-Base URL: https://api.bigdatacloud.net/
-Purpose: Converts GPS coordinates into readable addresses to improve situational awareness.
-Google Maps Navigation Integration
-Functionality: Turn-by-turn navigation via deep linking.
-Purpose: Enables direct routing to safety or emergency facilities.
-
-🌍 Module Features & Capabilities
-Feature	Description
-🚨 Real-Time Safety Monitoring	Tracks location and weather to alert drivers about hazardous conditions.
-🏥 Safety Infrastructure Integration	Displays nearby police, hospitals, fuel, and fire stations.
-📡 Emergency Service Coordination	Allows quick navigation to emergency services through Google Maps.
-🌦️ Weather Condition Alerts	Sends notifications based on weather risks.
-🛣️ Route Risk Assessment	Evaluates routes for environmental and safety risks.
-
-
-🧰 Technical Implementation
-Component	Details
-Platform	Android (Native)
-Language	Kotlin
-Architecture	Modern Android Architecture Components
-API Integration	Retrofit2 with Gson Converter
-Location Services	Google Fused Location Provider API
-Authentication	Role-based access from main SafeNation app
-
-☁️ Deployment & Infrastructure
-APIs Used: Open-Meteo, Overpass, BigDataCloud
-Navigation: Google Maps Deep Linking
-Data Storage: Local device + cloud integration
-Deployment: Android app to be  published to Google Play Store
-
-🚛 Logistics Module Impact
-
-The Logistics module addresses key challenges in transportation safety by enabling:
-Real-time hazard detection
-Quick access to emergency services
-Optimized route safety
-Proactive risk mitigation
-Enhanced driver safety awareness
-
-📎 Application Information
-
-Main Application GitHub URL: https://github.com/Tumi23B/SafeNationApp
-Voiceover Demonstration: https://youtu.be/HhkA50OyclM
-Application Framework: Multi-module, industry-specific safety platform
-Target Industries: Logistics, Mining, Agriculture & Agritech
-Technology Stack: Android Native, REST APIs, Cloud Services
-
-🏁 Conclusion
-The Logistics module is a critical component of the SafeNation application, combining real-time environmental monitoring and intelligent routing to improve safety awareness and emergency responsiveness in logistics operations.
