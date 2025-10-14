@@ -4,8 +4,10 @@
 # Step 1:
 * Clone the repository. Because, you need a local copy of our code.
 * Open your terminal and run the following Git command:
-    git clone [Your-Repository-URL]
-  # Remember to replace [Your-Repository-URL] with the actual link to this repository.
+
+  **git clone [Your-Repository-URL]**
+  
+  **Remember to replace [Your-Repository-URL] with the actual link to this repository.**
 
 # Step 2:
 * Open the project in Android Studio. Next, start Android Studio.
@@ -32,9 +34,10 @@
   * USB Cable: Connect your phone to your computer via USB and copy the file directly to your phone's 'Downloads' folder.
   * Email or Messaging: Attach the file to an email or a message (like WhatsApp Web or Gmail) and send it to yourself.
   * Once you have the apk file on your physical device, download and install the apk. Then run the app.
-# Be aware you might be asked to allow unknown apps to install on your physical device, do this:
-* On your Android device, go to Settings > Security (or Apps & notifications > Special app access on newer versions) and enable the option to Install unknown apps for your browser or file manager.
-* You must do this to install apps outside the Play Store.
+    
+  **Be aware you might be asked to allow unknown apps to install on your physical device, do this:**
+  * On your Android device, go to Settings > Security (or Apps & notifications > Special app access on newer versions) and enable the option to Install unknown apps for your browser or file manager.
+  * You must do this to install apps outside the Play Store.
  
 
 # Feature that was used from part 1 in the agriculture & agritech modular app:
@@ -59,7 +62,7 @@ For this modular app, a custom REST API was built using Node.js and deployed on 
 
 •	Agriculture & Agritech Voice Over App Video URL: https://www.dropbox.com/scl/fi/sujgyn4rnhlg5m4xk0tz0/Agriculture-sub-app.mp4?rlkey=6g4xwcrkqb4wa8wexut7b6uzo&st=9kd9cldp&dl=0
 
----
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 🪓 SafeNation – Mining Modular App
 
 ## 📱 Overview
@@ -144,7 +147,7 @@ Used for real-time weather condition monitoring and safety alert generation.
 ## 🎬 Voice-Over Demonstration
 ▶️ [Mining Module Voice-Over Video](https://youtube.com/shorts/KO2KXpqkyuw?feature=share)
 ---
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 🚛 SafeNation – Logistics Modular App
 📱 Overview
 
@@ -216,9 +219,8 @@ Technology Stack: Android Native, REST APIs, Cloud Services
 🏁 Conclusion
 The Logistics module is a critical component of the SafeNation application, combining real-time environmental monitoring and intelligent routing to improve safety awareness and emergency responsiveness in logistics operations.
 
-
-
-# How we integrated the Modular Apps into the Main App as a group:
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# How we integrated the Modular Apps into the Main App:
 
 Guide to explain how we add new features as separate library modules to the main application. This method helps us keep the codebase clean, organized, and easier to maintain. We used Supabase as our database.
 
