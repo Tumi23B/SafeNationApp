@@ -1,13 +1,15 @@
 // This file provides the ViewModel for the safety checklist feature.
 package com.agricultureAgritech.features.safetyChecklists.ui
 
+import android.app.Application
 import android.graphics.Color
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.agricultureAgritech.features.safetyChecklists.domain.model.ChecklistItem
+import com.safenation.agriculture.R
 
-class SafetyChecklistViewModel : ViewModel() {
+class SafetyChecklistViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _checklistItems = MutableLiveData<List<ChecklistItem>>()
     val checklistItems: LiveData<List<ChecklistItem>> = _checklistItems
@@ -20,19 +22,58 @@ class SafetyChecklistViewModel : ViewModel() {
     }
 
     /*
-     * This function populates the checklist with sample data.
+     * This function populates the checklist with data from string resources.
      */
     private fun loadChecklistItems() {
+        val res = getApplication<Application>().resources
+        val color = Color.parseColor("#606C38")
+
         val items = listOf(
-            ChecklistItem("Tractor Operation", "Pre-operation checks | Safe driving", Color.parseColor("#606C38")),
-            ChecklistItem("Pesticide Handling", "Proper PPE | Storage guidelines", Color.parseColor("#606C38")),
-            ChecklistItem("Harvesting Safety", "Equipment inspection | Fatigue management", Color.parseColor("#606C38")),
-            ChecklistItem("Livestock Handling", "Animal behavior | Proper restraints", Color.parseColor("#606C38")),
-            ChecklistItem("Emergency Preparedness", "First aid kits | Evacuation routes", Color.parseColor("#606C38")),
-            ChecklistItem("Fit For Work", "Policy | Worker Capable of performing tasks", Color.parseColor("#606C38")),
-            ChecklistItem("Training", "Training Module | Operate equipment and machinery safely", Color.parseColor("#606C38")),
-            ChecklistItem("Weather Awareness", "Precautions | Changing weather conditions", Color.parseColor("#606C38")),
-            ChecklistItem("Hazard Warning", "Post Labels and Signs | Warning signs", Color.parseColor("#606C38")),
+            ChecklistItem(
+                res.getString(R.string.checklist_tractor_title),
+                res.getString(R.string.checklist_tractor_subtitle),
+                color
+            ),
+            ChecklistItem(
+                res.getString(R.string.checklist_pesticide_title),
+                res.getString(R.string.checklist_pesticide_subtitle),
+                color
+            ),
+            ChecklistItem(
+                res.getString(R.string.checklist_harvesting_title),
+                res.getString(R.string.checklist_harvesting_subtitle),
+                color
+            ),
+            ChecklistItem(
+                res.getString(R.string.checklist_livestock_title),
+                res.getString(R.string.checklist_livestock_subtitle),
+                color
+            ),
+            ChecklistItem(
+                res.getString(R.string.checklist_emergency_title),
+                res.getString(R.string.checklist_emergency_subtitle),
+                color
+            ),
+            ChecklistItem(
+                res.getString(R.string.checklist_fit_for_work_title),
+                res.getString(R.string.checklist_fit_for_work_subtitle),
+                color
+            ),
+            ChecklistItem(
+                res.getString(R.string.checklist_training_title),
+                res.getString(R.string.checklist_training_subtitle),
+                color
+            ),
+            ChecklistItem(
+                res.getString(R.string.checklist_weather_title),
+                res.getString(R.string.checklist_weather_subtitle),
+                color
+            ),
+            ChecklistItem(
+                res.getString(R.string.checklist_hazard_title),
+                res.getString(R.string.checklist_hazard_subtitle),
+                color
+            ),
         )
         _checklistItems.value = items
     }
