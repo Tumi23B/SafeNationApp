@@ -58,4 +58,6 @@
     <string name="checklist_hazard_title">Hazard Warning</string>
     <string name="checklist_hazard_subtitle">Post Labels and Signs | Warning signs</string>
 
+    <string name="training_toolbar_title">Training</string>
+
 </resources>

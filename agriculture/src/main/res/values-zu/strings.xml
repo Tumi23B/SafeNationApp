@@ -57,4 +57,6 @@
     <string name="checklist_weather_subtitle">Izinyathelo zokuqapha | Izimo zezulu ezishintshayo</string>
     <string name="checklist_hazard_title">Isexwayiso Sengozi</string>
     <string name="checklist_hazard_subtitle">Amalebula Okuthunyelwe Nezimpawu | Izimpawu eziyisixwayiso</string>
+
+    <string name="training_toolbar_title">Ukuqeqeshwa</string>
 </resources>

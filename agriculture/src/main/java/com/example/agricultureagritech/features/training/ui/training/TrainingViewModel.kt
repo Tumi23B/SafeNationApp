@@ -1,15 +1,19 @@
 // ViewModel that exposes the tiles for the Training grid
 package com.example.agricultureagritech.features.training.ui
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import com.example.agricultureagritech.features.training.domain.TrainingTile
 import com.safenation.agriculture.R
 
-class TrainingViewModel : ViewModel() {
+class TrainingViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val res = application.resources
+
     val tiles: List<TrainingTile> = listOf(
-        TrainingTile("Farm Business Management", R.drawable.fbm),
-        TrainingTile("Production Management", R.drawable.pro),
-        TrainingTile("Farm Automation", R.drawable.farmauto),
-        TrainingTile("Pest and disease management", R.drawable.pest)
+        TrainingTile(res.getString(R.string.training_fbm_title), R.drawable.fbm),
+        TrainingTile(res.getString(R.string.training_pm_title), R.drawable.pro),
+        TrainingTile(res.getString(R.string.training_fa_title), R.drawable.farmauto),
+        TrainingTile(res.getString(R.string.training_pdm_title), R.drawable.pest)
     )
 }

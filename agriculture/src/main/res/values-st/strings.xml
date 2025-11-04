@@ -57,4 +57,6 @@
     <string name="checklist_weather_subtitle">Mehato ya tshireletso | Maemo a lehodimo a fetohang</string>
     <string name="checklist_hazard_title">Temoso ya Kotsi</string>
     <string name="checklist_hazard_subtitle">Manstwe le Matshwao | Matshwao a temoso</string>
+
+    <string name="training_toolbar_title">Koetliso</string>
 </resources>
