@@ -40,7 +40,7 @@ You must secure your account information and are responsible for all activities 
     <string name="training_pdm_title">Pest/Disease Management</string>
     <string name="training_pdm_text">Integrated Pest Management (IPM) is an effective and environmentally sensitive approach to pest and disease control. It relies on a combination of practices, including biological control, habitat manipulation, and the use of resistant varieties. Judicious use of pesticides is a last resort. Proper IPM strategies protect your crops, reduce chemical costs, and minimize environmental impact.</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Hello, </string>
 
 
 </resources>

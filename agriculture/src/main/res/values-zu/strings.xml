@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ezolimo</string>
+    <string name="incidents_title">Izigameko</string>
+
+    <string name="settings_language">Ulimi</string>
+    <string name="settings_change_password">Shintsha Iphasiwedi</string>
+    <string name="settings_policy">Inqubomgomo</string>
+
+    <string name="language_english">IsiNgisi</string>
+    <string name="language_sesotho">IsiSuthu</string>
+    <string name="language_isizulu">isiZulu</string>
+
+    <string name="current_password">Iphasiwedi Yamanje</string>
+    <string name="enter_current_password">Faka iphasiwedi yakho yamanje</string>
+    <string name="new_password">Iphasiwedi Entsha</string>
+    <string name="enter_new_password">Faka iphasiwedi yakho entsha</string>
+    <string name="confirm_new_password">Qinisekisa Iphasiwedi Entsha</string>
+    <string name="confirm_your_new_password">Qinisekisa iphasiwedi yakho entsha</string>
+    <string name="update_password">Buyekeza Iphasiwedi</string>
+
+    <string name="policy_text">Imigomo nemibandela elandelayo ilawula ukusebenzisa kwakho uhlelo lwethu lokuthobela ukuphepha kwezolimo. Ngokulanda nokusebenzisa uhlelo lokusebenza, uyavumelana nale migomo. Sinikeza leli thuluzi ukukusiza ukuphatha nokubhala izinqubo zokuphepha epulazini lakho. Uhlelo lokusebenza luklanyelwe ukusiza ekuthobeleni kodwa aluthathi indawo yokwahlulela kochwepheshe noma iseluleko somthetho. Unesibopho sokuqinisekisa ukuthi imisebenzi yakho ihlangabezana nayo yonke imithetho yendawo, yesifunda, neyenhlangano.\n\nSiyazama ukunikeza ulwazi olunembile, kodwa asiqinisekisi ukuphelela noma ukunemba kokuqukethwe. Ukusetshenziswa kohlelo lokusebenza kusengozini yakho. Asinacala nganoma yikuphi ukulahlekelwa noma ukulimala okuvela ekusebenziseni kwakho lolu hlelo lokusebenza. Sigodla ilungelo lokushintsha le migomo noma kunini.</string>
+
+    <string name="training_fbm_title">Ukuphathwa Kwezakhiwo Zepulazi</string>
+    <string name="training_fbm_text">Ukuphathwa Kwezakhiwo Zepulazi kugxile ekwakhiweni nasekunakekelweni kwezakhiwo zasepulazini ukuze kuqinisekiswe ukuphepha nokusebenza kahle. Lokhu kuhlanganisa ukuqina kwesakhiwo, ukuphepha komlilo, nokungena komoya okufanele ezibayeni, ezindlini zokugcina impahla, nakuma-silo. Ukunakekelwa njalo kwezinhlelo zikagesi nokugcinwa ngendlela efanele kwamakhemikhali nakho kubalulekile ukuvimbela izingozi.</string>
+
+    <string name="training_pm_title">Ukuphathwa Kwezitshalo</string>
+    <string name="training_pm_text">Ukuphathwa Kwezitshalo kuhlanganisa zonke izici zokutshala nokunakekela izitshalo zakho. Lokhu kuhlanganisa ukukhetha ubuchwepheshe obufanele, ukuphatha okokufaka njengembewu nomanyolo, nokusebenzisa izindlela ezisebenzayo zokulima nokuvuna. Ukuhlela ngokucophelela nokwenza kahle kulo mkhakha kuholela esivunweni esiphezulu, imikhiqizo engcono, kanye nezindleko zokusebenza ezincishisiwe, okuthinta ngokuqondile inzuzo yepulazi lakho.</string>
+
+    <string name="training_fa_title">I-Farm Automation</string>
+    <string name="training_fa_text">I-Farm Automation ihilela ukusebenzisa ubuchwepheshe ukwenza lula nokushintsha imisebenzi yezolimo. Lokhu kungasuka ezinhlelweni zokunisela ezizenzakalelayo nabavuni abangamarobhothi kuya kuma-drones okuqapha izitshalo. Ukusebenzisa i-automation kungakhuphula kakhulu ukusebenza kahle, kunciphise izindleko zabasebenzi, futhi kuthuthukise ukunemba emisebenzini yasepulazini. Ukwamukela lobu buchwepheshe kuyisihluthulelo sokwenza ipulazi lakho libe lesimanje futhi lihlale likwazi ukuncintisana.</string>
+
+    <string name="training_pdm_title">Ukuphathwa Kwezinambuzane/Izifo</string>
+    <string name="training_pdm_text">I-Integrated Pest Management (IPM) iyindlela ephumelelayo nebucayi emvelweni yokulawula izinambuzane nezifo. Incike ekuhlanganisweni kwezinqubo, okuhlanganisa ukulawulwa kwebhayoloji, ukuguqulwa kwendawo yokuhlala, nokusetshenziswa kwezinhlobo ezikwazi ukumelana nezifo. Ukusetshenziswa ngokucophelela kwemithi yokubulala izinambuzane kuyisinyathelo sokugcina. Amasu afanele e-IPM avikela izitshalo zakho, anciphise izindleko zamakhemikhali, futhi anciphise umthelela emvelweni.</string>
+    <string name="hello_blank_fragment">Sawubona, </string>
+</resources>
