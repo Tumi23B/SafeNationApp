@@ -3,9 +3,17 @@
     <string name="app_name">Ezolimo</string>
     <string name="incidents_title">Izigameko</string>
 
+    <string name="settings_title">Izilungiselelo</string>
+    <string name="acc">I-akhawunti</string>
+    <string name="sett">Izilungiselelo</string>
+    <string name="acc_sub_text">Phatha i-akhawunti yakho</string>
     <string name="settings_language">Ulimi</string>
     <string name="settings_change_password">Shintsha Iphasiwedi</string>
     <string name="settings_policy">Inqubomgomo</string>
+    <string name="language_sett">Khetha Ulimi</string>
+    <string name="sav_btn">Londoloza</string>
+    <string name="sett_lng">Ulimi</string>
+    <string name="logout_btn">Phuma</string>
 
     <string name="language_english">IsiNgisi</string>
     <string name="language_sesotho">IsiSuthu</string>
@@ -32,7 +40,12 @@
 
     <string name="training_pdm_title">Ukuphathwa Kwezinambuzane/Izifo</string>
     <string name="training_pdm_text">I-Integrated Pest Management (IPM) iyindlela ephumelelayo nebucayi emvelweni yokulawula izinambuzane nezifo. Incike ekuhlanganisweni kwezinqubo, okuhlanganisa ukulawulwa kwebhayoloji, ukuguqulwa kwendawo yokuhlala, nokusetshenziswa kwezinhlobo ezikwazi ukumelana nezifo. Ukusetshenziswa ngokucophelela kwemithi yokubulala izinambuzane kuyisinyathelo sokugcina. Amasu afanele e-IPM avikela izitshalo zakho, anciphise izindleko zamakhemikhali, futhi anciphise umthelela emvelweni.</string>
-    <string name="greeting_text">Sawubona, </string>
+
+    <string name="learningMat">Funda</string>
+    <string name="quiz">Imibuzo</string>
+
+    <string name="greeting_text">Sawubona</string>
+    <string name="greeting_sub">Siyakwamukela!</string>
 
     <string name="dashboard_training_title">Ukuqeqeshwa</string>
     <string name="dashboard_checklist_title">Uhlu Lokuhlola Ukuphepha</string>

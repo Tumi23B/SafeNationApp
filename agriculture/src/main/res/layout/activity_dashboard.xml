@@ -24,149 +24,186 @@
         android:id="@+id/settings_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:contentDescription="@string/app_name"
         android:padding="12dp"
         android:src="@drawable/ic_settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#6f1d1b" />
+
+    <TextView
+        android:id="@+id/app_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/fredoka_one"
+        android:text="SafeNation"
+        android:textColor="#432818"
+        android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/profile_card"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#6F1D1B"
+        android:backgroundTint="#6F1D1B"
+        app:cardBackgroundColor="#6F1D1B"
+        app:cardCornerRadius="70dp"
+        app:layout_constraintBottom_toBottomOf="@id/header_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_layout">
+
+        <ImageView
+            android:id="@+id/profile_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:padding="24dp"
+            android:src="@drawable/profile"
+            app:tint="#BB9457" />
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/greeting_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/alata"
-        android:text="@string/greeting_text"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:text="Hello!"
+        android:textColor="#432818"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:contentDescription="@string/greeting_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/profile_card" />
 
     <TextView
-        android:id="@+id/username_text"
+        android:id="@+id/prompt_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/alata"
-        android:text="Username"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        android:textStyle="bold"
+        android:text="Welcome back"
+        android:textColor="#BB9457"
+        android:textSize="16sp"
+        android:contentDescription="@string/greeting_sub"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greeting_text" />
+        app:layout_constraintTop_toBottomOf="@id/greeting_text" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/actions_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_layout">
+        app:layout_constraintTop_toBottomOf="@id/prompt_text">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/trainingCard"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="40dp">
-
-            <ImageView
-                android:id="@+id/training_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/app_name"
-                android:padding="20dp"
-                android:src="@drawable/training"
-                app:tint="#432818" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:id="@+id/tvTraining"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/alata"
-            android:text="@string/dashboard_training_title"
-            android:textColor="#432818" />
+            android:layout_marginHorizontal="16dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/checklistCard"
+                android:layout_width="100dp"
+                android:layout_height="96dp"
+                android:background="@drawable/btnicon"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/safetyicon"
+                    android:layout_width="38dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/checklist"
+                    app:tint="#BB9457" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/safetyChecklist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/alata"
+                android:text="@string/dashboard_checklist_title"
+                android:textColor="#432818" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/trainingCard"
+                android:layout_width="100dp"
+                android:layout_height="96dp"
+                android:background="@drawable/btnicon"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/training_icon"
+                    android:layout_width="38dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/training"
+                    app:tint="#BB9457" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTraining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/alata"
+                android:text="@string/dashboard_training_title"
+                android:textColor="#432818" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
+        android:id="@+id/report_incident_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/header_layout">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/checklistCard"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="40dp">
-
-            <ImageView
-                android:id="@+id/checklist_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/app_name"
-                android:padding="20dp"
-                android:src="@drawable/checklist"
-                app:tint="#432818" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:id="@+id/safetyChecklist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/alata"
-            android:text="@string/dashboard_checklist_title"
-            android:textColor="#432818" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@id/actions_layout">
 
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:id="@+id/incidentCard"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="40dp">
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:background="@drawable/btnicon"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/repo_incident"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="38dp"
+                android:layout_height="48dp"
                 android:contentDescription="@string/app_name"
-                android:padding="20dp"
                 android:src="@drawable/incident"
-                app:tint="#432818" />
-        </com.google.android.material.card.MaterialCardView>
+                app:tint="#BB9457" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/reportIncidents"

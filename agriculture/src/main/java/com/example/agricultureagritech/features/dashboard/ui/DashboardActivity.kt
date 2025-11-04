@@ -10,6 +10,7 @@ import com.safenation.agriculture.features.incidentReporting.ui.IncidentReportin
 import com.safenation.agriculture.features.safetyChecklists.ui.SafetyChecklistActivity
 import com.safenation.agriculture.features.settings.ui.SettingsActivity
 import com.safenation.agriculture.features.training.ui.TrainingModuleActivity
+import android.widget.LinearLayout
 
 
 class DashboardActivity : BaseActivity() {
@@ -25,15 +26,18 @@ class DashboardActivity : BaseActivity() {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
 
-        findViewById<ImageView?>(R.id.checklist_img)?.setOnClickListener {
+        // Corrected: Find the LinearLayout ID "checklistCard"
+        findViewById<LinearLayout?>(R.id.checklistCard)?.setOnClickListener {
             startActivity(Intent(this, SafetyChecklistActivity::class.java))
         }
 
-        findViewById<ImageView?>(R.id.training_img)?.setOnClickListener {
+        // Corrected: Find the LinearLayout ID "trainingCard"
+        findViewById<LinearLayout?>(R.id.trainingCard)?.setOnClickListener {
             startActivity(Intent(this, TrainingModuleActivity::class.java))
         }
 
-        findViewById<ImageView?>(R.id.repo_incident)?.setOnClickListener {
+        // Corrected: Find the LinearLayout ID "incidentCard" for consistency
+        findViewById<LinearLayout?>(R.id.incidentCard)?.setOnClickListener {
             startActivity(Intent(this, IncidentReportingActivity::class.java))
         }
     }

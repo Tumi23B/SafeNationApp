@@ -29,10 +29,12 @@
                 Using a separate TextView allows for precise alignment, like centering the title.
                 -->
                 <TextView
+                    android:id="@+id/sc_toolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Safety Checklist"
+                    android:contentDescription="@string/dashboard_checklist_title"
                     android:textAppearance="@style/ToolbarTitleText" />
 
             </com.google.android.material.appbar.MaterialToolbar>
@@ -67,6 +69,7 @@
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
                 android:text="Save List"
+                android:contentDescription="@string/checklist_save_button"
                 android:textColor="#ffe6a7"
                 app:backgroundTint="#6f1d1b"
                 app:cornerRadius="16dp" />

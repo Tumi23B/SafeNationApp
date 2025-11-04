@@ -80,7 +80,9 @@
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:enabled="false"
-                        android:text="Learning Material" />
+                        android:text="Learning Material"
+                        android:contentDescription="@string/learningMat"
+                        />
 
                     <Button
                         android:id="@+id/btn_quiz"
@@ -89,6 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:enabled="false"
+                        android:contentDescription="@string/quiz"
                         android:text="Quiz" />
 
                     <ProgressBar

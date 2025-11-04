@@ -32,6 +32,7 @@
                 android:text="Select a language"
                 android:textColor="@color/settings_text_primary"
                 android:textSize="16sp"
+                android:contentDescription="@string/language_sett"
                 android:textStyle="bold" />
 
             <include
@@ -73,6 +74,7 @@
                 android:fontFamily="@font/alata"
                 android:text="Save"
                 android:textAllCaps="false"
+                android:contentDescription="@string/sav_btn"
                 android:textColor="#FFE6A7"
                 app:cornerRadius="@dimen/settings_button_corner" />
 

@@ -3,9 +3,17 @@
     <string name="app_name">Temo</string>
     <string name="incidents_title">Diketsahalo</string>
 
+    <string name="settings_title">Ditlhophiso</string>
+    <string name="acc">Akhaonto</string>
+    <string name="sett">Ditlhophiso</string>
+    <string name="acc_sub_text">Laola akhaonto ya hau</string>
     <string name="settings_language">Puo</string>
     <string name="settings_change_password">Fetola Phasewete</string>
     <string name="settings_policy">Lyano</string>
+    <string name="language_sett">Kgetha Puo</string>
+    <string name="sav_btn">Boloka</string>
+    <string name="sett_lng">Puo</string>
+    <string name="logout_btn">Tsoa</string>
 
     <string name="language_english">Sengesemane</string>
     <string name="language_sesotho">Sesotho</string>
@@ -32,7 +40,12 @@
 
     <string name="training_pdm_title">Tsamaiso ya Dikokoanyana/Mafu</string>
     <string name="training_pdm_text">Tsamaiso e Kopanetsoeng ya Likokoanyana (IPM) ke mokhoa o sebetsang le o tsotellang tikoloho oa ho laola likokoanyana le mafu. E itšetlehile ka motsoako oa mekhoa, ho kenyeletsoa taolo ya baeloji, ts\'ebetso ya tikoloho, le tšebeliso ya mefuta e hanyetsanang le mafu. Tšebeliso e hlokolosi ya chefo e bolayang likokoanyana ke khetho ya ho qetela. Maano a nepahetseng a IPM a sireletsa lijalo tsa hau, a fokotsa litšenyehelo tsa lik\'hemik\'hale, le ho fokotsa tšusumetso tikolohong.</string>
-    <string name="greeting_text">Dumelang, </string>
+
+    <string name="learningMat">Ithute</string>
+    <string name="quiz">Dipotso</string>
+
+    <string name="greeting_text">Dumelang</string>
+    <string name="greeting_sub">Re ya ho amohela!</string>
 
     <string name="dashboard_training_title">Koetliso</string>
     <string name="dashboard_checklist_title">Lethathamo la Tshireletso</string>

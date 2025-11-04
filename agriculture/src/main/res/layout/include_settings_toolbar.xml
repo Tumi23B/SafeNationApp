@@ -22,6 +22,7 @@
                 android:layout_gravity="center"
                 app:titleTextColor="#432818"
                 android:text="Settings"
+                android:contentDescription="@string/settings_title"
                 android:textAppearance="@style/ToolbarTitleText" />
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>

@@ -3,9 +3,17 @@
     <string name="app_name">AgricultureAgritech</string>
     <string name="incidents_title">Incidents</string>
 
+    <string name="settings_title">Settings</string>
+    <string name="acc">Account</string>
+    <string name="sett">Settings</string>
+    <string name="acc_sub_text">Manage your account</string>
     <string name="settings_language">Language</string>
     <string name="settings_change_password">Change Password</string>
     <string name="settings_policy">Policy</string>
+    <string name="language_sett">Select a Language</string>
+    <string name="sav_btn">Save</string>
+    <string name="sett_lng">Language</string>
+    <string name="logout_btn">Logout</string>
 
     <string name="language_english">English</string>
     <string name="language_sesotho">Sesotho</string>
@@ -33,7 +41,11 @@
     <string name="training_pdm_title">Pest/Disease Management</string>
     <string name="training_pdm_text">Integrated Pest Management (IPM) is an effective and environmentally sensitive approach to pest and disease control. It relies on a combination of practices, including biological control, habitat manipulation, and the use of resistant varieties. Judicious use of pesticides is a last resort. Proper IPM strategies protect your crops, reduce chemical costs, and minimize environmental impact.</string>
 
-    <string name="greeting_text">Hello, </string>
+    <string name="learningMat">Learning Material</string>
+    <string name="quiz">Quiz</string>
+
+    <string name="greeting_text">Hello</string>
+    <string name="greeting_sub"> Welcome back!</string>
     <string name="dashboard_training_title">Training</string>
     <string name="dashboard_checklist_title">Safety Checklist</string>
     <string name="dashboard_incident_title">Report Incident</string>

@@ -43,6 +43,7 @@
                     android:text="Account"
                     android:textColor="@color/settings_text_primary"
                     android:textSize="20sp"
+                    android:contentDescription="@string/acc"
                     android:textStyle="bold" />
 
                 <include
@@ -58,6 +59,7 @@
                     android:text="Settings"
                     android:textColor="@color/settings_text_primary"
                     android:textSize="20sp"
+                    android:contentDescription="@string/sett"
                     android:textStyle="bold" />
 
                 <include
@@ -93,6 +95,7 @@
                     android:backgroundTint="#6f1d1b"
                     android:fontFamily="@font/alata"
                     android:text="Logout"
+                    android:contentDescription="@string/logout_btn"
                     android:textAllCaps="false"
                     android:textColor="#FFE6A7"
                     app:cornerRadius="@dimen/settings_button_corner" />
