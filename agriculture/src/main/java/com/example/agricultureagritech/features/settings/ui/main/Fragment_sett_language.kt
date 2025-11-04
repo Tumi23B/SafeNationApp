@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import com.safenation.agriculture.R
 import com.safenation.agriculture.databinding.FragmentSettLanguageBinding
@@ -15,6 +17,9 @@ class FragmentSettLanguage : Fragment() {
 
     private var _binding: FragmentSettLanguageBinding? = null
     private val binding get() = _binding!!
+
+    // This variable will hold the language tag to be saved, as, "en", "zu", "st"
+    private var selectedLanguageTag: String = "en"
 
     // Inflate the layout for this fragment
     override fun onCreateView(
@@ -36,8 +41,9 @@ class FragmentSettLanguage : Fragment() {
 
         // Set click listener for the save button
         binding.btnSave.setOnClickListener {
-            Toast.makeText(context, "Save clicked", Toast.LENGTH_SHORT).show()
-            // You can add your save logic here
+            // Set the app's language to the one selected
+            setAppLocale(selectedLanguageTag)
+            Toast.makeText(context, "Language updated", Toast.LENGTH_SHORT).show()
         }
 
         // Set initial state and click listeners
@@ -54,26 +60,54 @@ class FragmentSettLanguage : Fragment() {
         val sesothoRadio: RadioButton = sesothoCard.findViewById(R.id.rbLanguageSelector)
         val isizuluRadio: RadioButton = isizuluCard.findViewById(R.id.rbLanguageSelector)
 
-        // Assume English is the default selected language
-        englishRadio.isChecked = true
+        // Get the app's current language to set the correct radio button
+        val currentLang = AppCompatDelegate.getApplicationLocales().toLanguageTags().split(",").firstOrNull() ?: "en"
+        selectedLanguageTag = currentLang // Initialize the selection
 
+        // Set the correct radio button based on the current language
+        when {
+            currentLang.contains("zu") -> {
+                isizuluRadio.isChecked = true
+                selectedLanguageTag = "zu"
+            }
+            currentLang.contains("st") -> {
+                sesothoRadio.isChecked = true
+                selectedLanguageTag = "st"
+            }
+            else -> {
+                englishRadio.isChecked = true
+                selectedLanguageTag = "en"
+            }
+        }
+
+        // Add listeners to update the radio buttons and the selectedLanguageTag variable
         englishCard.setOnClickListener {
             englishRadio.isChecked = true
             sesothoRadio.isChecked = false
             isizuluRadio.isChecked = false
+            selectedLanguageTag = "en"
         }
 
         sesothoCard.setOnClickListener {
             englishRadio.isChecked = false
             sesothoRadio.isChecked = true
             isizuluRadio.isChecked = false
+            selectedLanguageTag = "st"
         }
 
         isizuluCard.setOnClickListener {
             englishRadio.isChecked = false
             sesothoRadio.isChecked = false
             isizuluRadio.isChecked = true
+            selectedLanguageTag = "zu"
         }
+    }
+
+    // This function tells the system to change the app's language
+    private fun setAppLocale(languageTag: String) {
+        val locales = LocaleListCompat.forLanguageTags(languageTag)
+        AppCompatDelegate.setApplicationLocales(locales)
+        // The system will automatically recreate the Activity to apply the new language
     }
 
     // Clean up binding when the view is destroyed
