@@ -25,11 +25,11 @@ class DashboardActivity : BaseActivity() {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
 
-        findViewById<ImageView?>(R.id.safetyicon)?.setOnClickListener {
+        findViewById<ImageView?>(R.id.checklist_img)?.setOnClickListener {
             startActivity(Intent(this, SafetyChecklistActivity::class.java))
         }
 
-        findViewById<ImageView?>(R.id.training_icon)?.setOnClickListener {
+        findViewById<ImageView?>(R.id.training_img)?.setOnClickListener {
             startActivity(Intent(this, TrainingModuleActivity::class.java))
         }
 

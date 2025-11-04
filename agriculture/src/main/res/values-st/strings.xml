@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Temo</string>
-    <string name="incidents_title">Liketsahalo</string>
+    <string name="incidents_title">Diketsahalo</string>
 
     <string name="settings_language">Puo</string>
-    <string name="settings_change_password">Fetola Lekunutu</string>
-    <string name="settings_policy">Leano</string>
+    <string name="settings_change_password">Fetola Phasewete</string>
+    <string name="settings_policy">Lyano</string>
 
-    <string name="language_english">Senyesemane</string>
+    <string name="language_english">Sengesemane</string>
     <string name="language_sesotho">Sesotho</string>
     <string name="language_isizulu">Sezulu</string>
 
-    <string name="current_password">Lekunutu la Hajoale</string>
-    <string name="enter_current_password">Kenya lekunutu la hao la hajoale</string>
-    <string name="new_password">Lekunutu le Lecha</string>
-    <string name="enter_new_password">Kenya lekunutu la hao le lecha</string>
-    <string name="confirm_new_password">Netefatsa Lekunutu le Lecha</string>
-    <string name="confirm_your_new_password">Netefatsa lekunutu la hao le lecha</string>
-    <string name="update_password">Ntjhafatsa Lekunutu</string>
+    <string name="current_password">Phasewete ya Hajoale</string>
+    <string name="enter_current_password">Kenya Phasewete ya hao ya hajoale</string>
+    <string name="new_password">Phasewete le Lecha</string>
+    <string name="enter_new_password">Kenya phasewete ya hao en lecha</string>
+    <string name="confirm_new_password">Netefatsa phasewete en Lecha</string>
+    <string name="confirm_your_new_password">Netefatsa phasewete ya hao en lecha</string>
+    <string name="update_password">Ntjhafatsa Phasewete</string>
 
-    <string name="policy_text">Melao le lipehelo tse latelang li laola tšebeliso ea hau ea kopo ea rona ea ho latela polokeho ea temo. Ka ho khoasolla le ho sebelisa kopo, u lumellana le melao ena. Re fana ka sesebelisoa sena ho u thusa ho laola le ho ngola mekhoa ea polokeho polasing ea hau. Kopo e etselitsoe ho thusa ka ho latela melao empa ha e nke sebaka sa kahlolo ea setsebi kapa likeletso tsa molao. U ikarabella bakeng sa ho netefatsa hore ts\'ebetso ea hau e fihlela melao eohle ea lehae, ea naha, le ea mmuso.\n\nRe leka ho fana ka tlhahisoleseling e nepahetseng, empa ha re fane ka tiisetso ea ho phethahala kapa ho nepa ha litaba. Tšebeliso ea kopo e kotsing ea hau. Ha re na molato bakeng sa tahlehelo kapa tšenyo efe kapa efe e hlahang tšebelisong ea hau ea kopo ena. Re na le tokelo ea ho fetola melao ena neng kapa neng.</string>
+    <string name="policy_text">Melao le dipehelo tse latelang di laola tšebediso ya hau ya kopo ya rona ya ho latela polokeho ya temo. Ka ho khoasolla le ho sebelisa kopo, u lumellana le melao ena. Re fana ka sesebelisoa sena ho u thusa ho laola le ho ngola mekhoa ya polokeho polasing ya hau. Kopo e etselitsoe ho thusa ka ho latela melao empa ha e nke sebaka sa kahlolo ya setsebi kapa likeletso tsa molao. U ikarabella bakeng sa ho netefatsa hore ts\'ebetso ya hau e fihlela melao eohle ya lehae, ya naha, le ya mmuso.\n\nRe leka ho fana ka tlhahisoleseling e nepahetseng, empa ha re fane ka tiisetso ya ho phethahala kapa ho nepa ha litaba. Tšebeliso ya kopo e kotsing ya hau. Ha re na molato bakeng sa tahlehelo kapa tšenyo efe kapa efe e hlahang tšebelisong ya hau ya kopo ena. Re na le tokelo ya ho fetola melao ena neng kapa neng.</string>
 
-    <string name="training_fbm_title">Tsamaiso ea Meaho ea Polasi</string>
-    <string name="training_fbm_text">Tsamaiso ea Meaho ea Polasi e shebane le moralo le tlhokomelo ea meaho ea polasi ho netefatsa polokeho le ts\'ebetso e ntle. Sena se kenyelletsa botsitso ba meaho, polokeho ea mollo, le moea o kenang hantle ka lisibayeng, matlong a polokelo, le li-silo. Tlhokomelo e tloaelehileng ea litsamaiso tsa motlakase le polokelo e nepahetseng ea lik\'hemik\'hale le eona e bohlokoa ho thibela likotsi.</string>
+    <string name="training_fbm_title">Tsamaiso ya Meaho ya Polasi</string>
+    <string name="training_fbm_text">Tsamaiso ya Meaho ya Polasi e shebane le moralo le tlhokomelo ya myaho ya polasi ho netefatsa polokeho le ts\'ebetso e ntle. Sena se kenyelletsa botsitso ba myaho, polokeho ya mollo, le moya o kenang hantle ka lisibayeng, matlong a polokelo, le li-silo. Tlhokomelo e tloaelehileng ya litsamaiso tsa motlakase le polokelo e nepahetseng ya lik\'hemik\'hale le eona e bohlokoa ho thibela likotsi.</string>
 
-    <string name="training_pm_title">Tsamaiso ea Dirapa</string>
-    <string name="training_pm_text">Tsamaiso ea dirapa e akaretsa likarolo tsohle tsa ho lema le ho hlokomela lijalo tsa hau. Sena se kenyelletsa ho khetha mahlale a loketseng, ho laola lisebelisoa tse kang peo le manyolo, le ho kenya tšebetsong mekhoa e sebetsang ea ho lema le kotulo. Moralo o hlokolosi le ts\'ebetso sebakeng sena li lebisa chai e phahameng, lihlahisoa tsa boleng bo holimo, le litšenyehelo tse fokotsehileng tsa ts\'ebetso, tse amang ka kotloloho phaello ea polasi ea hau.</string>
+    <string name="training_pm_title">Tsamaiso ya Dirapa</string>
+    <string name="training_pm_text">Tsamaiso ya dirapa e akaretsa likarolo tsohle tsa ho lema le ho hlokomela lijalo tsa hau. Sena se kenyelletsa ho khetha mahlale a loketseng, ho laola lisebelisoa tse kang peo le manyolo, le ho kenya tšebetsong mekhoa e sebetsang ya ho lema le kotulo. Moralo o hlokolosi le ts\'ebetso sebakeng sena li lebisa chai e phahameng, lihlahisoa tsa boleng bo holimo, le litšenyehelo tse fokotsehileng tsa ts\'ebetso, tse amang ka kotloloho phaello ya polasi ya hau.</string>
 
-    <string name="training_fa_title">Mechini e Iketsetsang ea Polasi</string>
-    <string name="training_fa_text">Mechini e Iketsetsang ea Polasi e kenyelletsa tšebeliso ea mahlale a morao-rao ho nolofatsa le ho iketsetsa mesebetsi ea temo. Sena se ka kenyelletsa litsamaiso tsa nosetso tse iketsetsang le liroboto tsa kotulo ho isa ho li-drone bakeng sa ho beha lijalo leihlo. Ho kenya tšebetsong mechini e iketsetsang ho ka eketsa ts\'ebetso haholo, ha fokotsa litšenyehelo tsa basebetsi, le ho ntlafatsa ho nepahala mesebitsing ea polasi. Ho amohela mahlale ana a morao-rao ke senotlolo sa ho ntlafatsa polasi ea hau le ho lula u na le tlholisano.</string>
+    <string name="training_fa_title">Mechini e Iketsetsang ya Polasi</string>
+    <string name="training_fa_text">Mechini e Iketsetsang ya Polasi e kenyelletsa tšebeliso ya mahlale a morao-rao ho nolofatsa le ho iketsetsa mesebetsi ya temo. Sena se ka kenyelletsa litsamaiso tsa nosetso tse iketsetsang le liroboto tsa kotulo ho isa ho li-drone bakeng sa ho beha lijalo leihlo. Ho kenya tšebetsong mechini e iketsetsang ho ka eketsa ts\'ebetso haholo, ha fokotsa litšenyehelo tsa basebetsi, le ho ntlafatsa ho nepahala mesebitsing ya polasi. Ho amohela mahlale ana a morao-rao ke senotlolo sa ho ntlafatsa polasi ya hau le ho lula u na le tlholisano.</string>
 
-    <string name="training_pdm_title">Tsamaiso ea Dikokoanyana/Mafu</string>
-    <string name="training_pdm_text">Tsamaiso e Kopanetsoeng ea Likokoanyana (IPM) ke mokhoa o sebetsang le o tsotellang tikoloho oa ho laola likokoanyana le mafu. E itšetlehile ka motsoako oa mekhoa, ho kenyeletsoa taolo ea baeloji, ts\'ebetso ea tikoloho, le tšebeliso ea mefuta e hanyetsanang le mafu. Tšebeliso e hlokolosi ea chefo e bolaeang likokoanyana ke khetho ea ho qetela. Maano a nepahetseng a IPM a sireletsa lijalo tsa hau, a fokotsa litšenyehelo tsa lik\'hemik\'hale, le ho fokotsa tšusumetso tikolohong.</string>
+    <string name="training_pdm_title">Tsamaiso ya Dikokoanyana/Mafu</string>
+    <string name="training_pdm_text">Tsamaiso e Kopanetsoeng ya Likokoanyana (IPM) ke mokhoa o sebetsang le o tsotellang tikoloho oa ho laola likokoanyana le mafu. E itšetlehile ka motsoako oa mekhoa, ho kenyeletsoa taolo ya baeloji, ts\'ebetso ya tikoloho, le tšebeliso ya mefuta e hanyetsanang le mafu. Tšebeliso e hlokolosi ya chefo e bolayang likokoanyana ke khetho ya ho qetela. Maano a nepahetseng a IPM a sireletsa lijalo tsa hau, a fokotsa litšenyehelo tsa lik\'hemik\'hale, le ho fokotsa tšusumetso tikolohong.</string>
     <string name="greeting_text">Dumelang, </string>
 
     <string name="dashboard_training_title">Koetliso</string>
     <string name="dashboard_checklist_title">Lethathamo la Tshireletso</string>
-    <string name="dashboard_incident_title">Thlaleho ea Ketsahalo</string>
+    <string name="dashboard_incident_title">Thlaleho ya Ketsahalo</string>
 
     <string name="checklist_save_button">Boloka Lethathamo</string>
-    <string name="checklist_tractor_title">Tshebetso ea Terekere</string>
+    <string name="checklist_tractor_title">Tshebetso ya Terekere</string>
     <string name="checklist_tractor_subtitle">Lihlahlobo tsa pele ho tshebetso | Ho kganna ka polokeho</string>
     <string name="checklist_pesticide_title">Tshwaro ya Dibolaya-dikokonyana</string>
     <string name="checklist_pesticide_subtitle">PPE e nepahetseng | Tataiso ya polokelo</string>
@@ -50,9 +50,9 @@
     <string name="checklist_emergency_title">Boitokisetso ba Tshohanyetso</string>
     <string name="checklist_emergency_subtitle">Dikhithi tsa thuso ya pele | Ditsela tsa phalliso</string>
     <string name="checklist_fit_for_work_title">Ho Lokela Mosebetsi</string>
-    <string name="checklist_fit_for_work_subtitle">Leano | Mosebeletsi o Loketse ho etsa mesebetsi</string>
+    <string name="checklist_fit_for_work_subtitle">Lyano | Mosebeletsi o Loketse ho etsa mesebetsi</string>
     <string name="checklist_training_title">Koetliso</string>
-    <string name="checklist_training_subtitle">Module ea Koetliso | Sebedisa disebediswa le mechini ka polokeho</string>
+    <string name="checklist_training_subtitle">Module ya Koetliso | Sebedisa disebediswa le mechini ka polokeho</string>
     <string name="checklist_weather_title">Tlhokomediso ya Boemo ba Lehodimo</string>
     <string name="checklist_weather_subtitle">Mehato ya tshireletso | Maemo a lehodimo a fetohang</string>
     <string name="checklist_hazard_title">Temoso ya Kotsi</string>

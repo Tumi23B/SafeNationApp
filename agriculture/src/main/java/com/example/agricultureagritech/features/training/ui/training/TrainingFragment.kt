@@ -61,13 +61,20 @@ class TrainingFragment : Fragment() {
      * of the CoordinatorLayout. When a tile is clicked, this entire layout
      * will be replaced by the corresponding detail fragment.
      */
+    /*
+     * The transaction now correctly targets R.id.container, which is the ID
+     * of the CoordinatorLayout. When a tile is clicked, this entire layout
+     * will be replaced by the corresponding detail fragment.
+     */
     private fun setupRecycler() {
         adapter = TrainingTileAdapter { tile ->
-            val fragment = when (tile.title) {
-                "Farm Business Management" -> TrainingFbFragment.newInstance()
-                "Production Management" -> TrainingPmFragment.newInstance()
-                "Farm Automation" -> TrainingFaFragment.newInstance()
-                "Pest and disease management" -> TrainingPdmFragment.newInstance()
+            // Use the titleResId for navigation logic to support localization
+            // and ensure the correct fragment is opened.
+            val fragment = when (tile.titleResId) {
+                R.string.training_fbm_title -> TrainingFbFragment.newInstance()
+                R.string.training_pm_title -> TrainingPmFragment.newInstance()
+                R.string.training_fa_title -> TrainingFaFragment.newInstance()
+                R.string.training_pdm_title -> TrainingPdmFragment.newInstance()
                 else -> null
             }
 

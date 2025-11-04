@@ -45,7 +45,7 @@ android {
 dependencies {
     // The app module depends on the feature modules and the core module.
     implementation(project(":core"))
-    implementation(project(":agriculture"))
+     implementation(project(":agriculture"))
     implementation(project(":mining"))
     implementation(project(":logistics"))
 

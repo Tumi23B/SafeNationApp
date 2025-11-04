@@ -1,4 +1,4 @@
-// RecyclerView adapter for training tiles using ViewBinding with safe item position handling
+// RecyclerView adapter for the training grid tiles
 package com.example.agricultureagritech.features.training.ui
 
 import android.view.LayoutInflater
@@ -7,59 +7,65 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agricultureagritech.features.training.domain.TrainingTile
-import com.safenation.agriculture.R
 import com.safenation.agriculture.databinding.ItemTrainingTileBinding
 
 class TrainingTileAdapter(
-    private val onClick: (TrainingTile) -> Unit
-) : ListAdapter<TrainingTile, TrainingTileAdapter.VH>(Diff) {
+    private val onItemClick: (TrainingTile) -> Unit
+) : ListAdapter<TrainingTile, TrainingTileAdapter.TileViewHolder>(TrainingTileDiffCallback()) {
 
-    object Diff : DiffUtil.ItemCallback<TrainingTile>() {
-        override fun areItemsTheSame(oldItem: TrainingTile, newItem: TrainingTile) =
-            oldItem.title == newItem.title
-
-        override fun areContentsTheSame(oldItem: TrainingTile, newItem: TrainingTile) =
-            oldItem == newItem
-    }
-
-    class VH(
-        private val binding: ItemTrainingTileBinding,
-        private val onItemClick: (Int) -> Unit
-    ) : RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(item: TrainingTile) {
-            binding.trainingIcon.setImageResource(item.iconRes)
-            binding.trainingTitle.text = item.title
-        }
-
-        init {
-            binding.root.setOnClickListener {
-                val pos = adapterPosition
-                if (pos != RecyclerView.NO_POSITION) onItemClick(pos)
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+    // Inflates the layout for each tile
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TileViewHolder {
         val binding = ItemTrainingTileBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
+        return TileViewHolder(binding)
+    }
 
-        val minHeight = parent.resources.getDimensionPixelSize(R.dimen.training_tile_min_height)
-        binding.root.minimumHeight = minHeight
-        binding.root.layoutParams?.let { lp ->
-            if (lp.height == 0) {
-                lp.height = ViewGroup.LayoutParams.WRAP_CONTENT
-                binding.root.layoutParams = lp
+    // Binds data to the views in each tile
+    override fun onBindViewHolder(holder: TileViewHolder, position: Int) {
+        val tile = getItem(position)
+        holder.bind(tile)
+    }
+
+    // ViewHolder class that holds the views for each tile
+    inner class TileViewHolder(private val binding: ItemTrainingTileBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            // Set the click listener which triggers the navigation
+            binding.root.setOnClickListener {
+                // Get the item at the clicked adapter position
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick(getItem(position))
+                }
             }
         }
 
-        return VH(binding) { pos -> onClick(getItem(pos)) }
+        // Binds the TrainingTile data to the layout
+        fun bind(tile: TrainingTile) {
+            // Get context to resolve the string resource
+            val context = binding.root.context
+            binding.trainingTitle.text = context.getString(tile.titleResId)
+            binding.trainingIcon.setImageResource(tile.iconResId)
+        }
+    }
+}
+
+/**
+ * DiffUtil callback for calculating the difference between two non-null items in a list.
+ * This allows the ListAdapter to determine minimal updates.
+ */
+class TrainingTileDiffCallback : DiffUtil.ItemCallback<TrainingTile>() {
+    override fun areItemsTheSame(oldItem: TrainingTile, newItem: TrainingTile): Boolean {
+        // Check if the items represent the same object
+        return oldItem.titleResId == newItem.titleResId
     }
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.bind(getItem(position))
+    override fun areContentsTheSame(oldItem: TrainingTile, newItem: TrainingTile): Boolean {
+        // Check if the item contents have changed
+        return oldItem == newItem
     }
 }

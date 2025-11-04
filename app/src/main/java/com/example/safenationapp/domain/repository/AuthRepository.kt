@@ -3,7 +3,7 @@ package com.example.safenationapp.domain.repository
 
 import android.util.Log
 import com.example.safenationapp.data.model.Profile
-import com.example.safenationapp.data.supabase.SupabaseClient
+import com.example.core.SupabaseClient
 import io.github.jan.supabase.exceptions.RestException
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.providers.builtin.Email

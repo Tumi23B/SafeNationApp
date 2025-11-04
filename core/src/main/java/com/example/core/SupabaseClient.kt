@@ -1,5 +1,5 @@
 // This file initializes and provides a singleton Supabase client.
-package com.example.safenationapp.data.supabase
+package com.example.core
 
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.functions.Functions

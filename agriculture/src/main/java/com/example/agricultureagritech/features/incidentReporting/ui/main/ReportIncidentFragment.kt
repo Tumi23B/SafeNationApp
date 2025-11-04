@@ -11,23 +11,30 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
+import androidx.lifecycle.lifecycleScope
+import com.example.agricultureagritech.features.incidentReporting.data.model.AgriIncident
+import com.example.core.SupabaseClient
+import com.safenation.agriculture.R
 import com.safenation.agriculture.databinding.FragmentReportIncidentBinding
-import java.io.File
+import io.github.jan.supabase.postgrest.postgrest
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 class ReportIncidentFragment : Fragment() {
 
     private var _binding: FragmentReportIncidentBinding? = null
     private val binding get() = _binding!!
+
+    // This ViewModel is available if needed for other state management.
     private val viewModel: incidentReportingViewModel by activityViewModels()
 
     // This block inflates the layout and sets up the view.
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentReportIncidentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,69 +42,136 @@ class ReportIncidentFragment : Fragment() {
     // This block sets up listeners and adapters for the form fields.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupIncidentTypeDropdown()
+        setupSeverityDropdown()
         setupDateTimePickers()
-        setupDynamicWitnessFields()
-        setupSubmission()
+
+        binding.submitButton.setOnClickListener {
+            submitIncidentReport()
+        }
     }
 
     // This function populates the incident type dropdown.
     private fun setupIncidentTypeDropdown() {
-        val incidentTypes = arrayOf("Minor Accident", "Major Accident", "Near Miss", "Property Damage")
+        val incidentTypes = arrayOf("Minor Accident", "Major Accident", "Near Miss", "Property Damage", "Equipment Failure")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, incidentTypes)
         binding.incidentTypeAutocomplete.setAdapter(adapter)
     }
 
+    // This function populates the severity dropdown.
+    private fun setupSeverityDropdown() {
+        val severityLevels = arrayOf("Low", "Medium", "High", "Critical")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, severityLevels)
+        binding.severityAutocomplete.setAdapter(adapter)
+    }
+
     // This function sets up the date and time picker dialogs.
     private fun setupDateTimePickers() {
+        val calendar = Calendar.getInstance()
+
+        val datePicker = DatePickerDialog(
+            requireContext(),
+            { _, year, month, day ->
+                val selectedDate = Calendar.getInstance()
+                selectedDate.set(year, month, day)
+                // Format date as YYYY-MM-DD for database compatibility
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                binding.dateInput.setText(dateFormat.format(selectedDate.time))
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+
         binding.dateInput.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH)
-            val day = calendar.get(Calendar.DAY_OF_MONTH)
-            DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
-                binding.dateInput.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
-            }, year, month, day).show()
+            datePicker.show()
         }
+
+        val timePicker = TimePickerDialog(
+            requireContext(),
+            { _, hour, minute ->
+                val selectedTime = Calendar.getInstance()
+                selectedTime.set(Calendar.HOUR_OF_DAY, hour)
+                selectedTime.set(Calendar.MINUTE, minute)
+                // Format time as HH:mm:ss for database compatibility
+                val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+                binding.timeInput.setText(timeFormat.format(selectedTime.time))
+            },
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            true // 24-hour format
+        )
+
         binding.timeInput.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-            TimePickerDialog(requireContext(), { _, selectedHour, selectedMinute ->
-                binding.timeInput.setText("$selectedHour:$selectedMinute")
-            }, hour, minute, true).show()
+            timePicker.show()
         }
     }
 
-    // This function handles adding new witness input fields dynamically.
-    private fun setupDynamicWitnessFields() {
-        binding.addMoreButton.setOnClickListener {
-            val witnessLayout = TextInputLayout(requireContext()).apply {
-                hint = "Witness Name"
-                boxBackgroundMode = TextInputLayout.BOX_BACKGROUND_OUTLINE
-                layoutParams = ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                )
+    /**
+     * Collects data from form, validates it, and submits to Supabase.
+     */
+    private fun submitIncidentReport() {
+        // 1. Get data from form fields using correct view IDs
+        val incidentType = binding.incidentTypeAutocomplete.text.toString()
+        val date = binding.dateInput.text.toString()
+        val time = binding.timeInput.text.toString()
+        val location = binding.locationInput.text.toString()
+        val description = binding.descriptionInput.text.toString()
+        val severity = binding.severityAutocomplete.text.toString()
+        val witnessName = binding.witnessNameInput.text.toString()
+        val witnessContact = binding.witnessContactInput.text.toString()
+
+        // 2. Basic Validation
+        if (incidentType.isBlank() || date.isBlank() || time.isBlank() || location.isBlank() || severity.isBlank()) {
+            Toast.makeText(requireContext(), "Please fill all required fields (*)", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // 3. Create data model
+        val newIncident = AgriIncident(
+            incidentType = incidentType,
+            date = date,
+            time = time,
+            location = location,
+            description = description.takeIf { it.isNotBlank() },
+            severity = severity,
+            witnessName = witnessName.takeIf { it.isNotBlank() },
+            witnessContact = witnessContact.takeIf { it.isNotBlank() }
+        )
+
+        // 4. Launch coroutine for database operation
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                // Access the shared Supabase client from the :app module
+                val supabase = SupabaseClient.client
+
+                // Insert the new incident into the "agri_incidents" table
+                // This syntax works with the new library
+                supabase.postgrest.from("agri_incidents").insert(newIncident)
+
+                // 5. Handle Success
+                Toast.makeText(requireContext(), "Incident reported successfully", Toast.LENGTH_LONG).show()
+                clearForm()
+
+            } catch (e: Exception) {
+                // 6. Handle Error (Corrected typo)
+                Toast.makeText(requireContext(), "Error reporting incident: ${e.message}", Toast.LENGTH_LONG).show()
             }
-            val witnessInput = TextInputEditText(requireContext())
-            witnessLayout.addView(witnessInput)
-            binding.witnessContainer.addView(witnessLayout)
         }
     }
-
-    // This function sets up the click listener for the submit button.
-    private fun setupSubmission() {
-        binding.submitButton.setOnClickListener {
-            val incidentType = binding.incidentTypeAutocomplete.text.toString()
-            val injuredPerson = binding.injuredPersonInput.text.toString()
-            if (incidentType.isNotEmpty() && injuredPerson.isNotEmpty()) {
-                viewModel.reportIncident(incidentType)
-                Toast.makeText(context, "Incident reported successfully!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(context, "Please fill all required fields.", Toast.LENGTH_SHORT).show()
-            }
-        }
+    /**
+     * Clears all input fields after a successful submission.
+     */
+    private fun clearForm() {
+        binding.incidentTypeAutocomplete.setText("", false)
+        binding.dateInput.text?.clear()
+        binding.timeInput.text?.clear()
+        binding.locationInput.text?.clear()
+        binding.descriptionInput.text?.clear()
+        binding.severityAutocomplete.setText("", false)
+        binding.witnessNameInput.text?.clear()
+        binding.witnessContactInput.text?.clear()
     }
 
     // This block cleans up the binding object when the view is destroyed.
