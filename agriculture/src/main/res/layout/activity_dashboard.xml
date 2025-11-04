@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This XML file defines the layout for the Dashboard screen. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,9 +8,6 @@
     android:background="#FFE6A7"
     tools:context=".features.dashboard.ui.DashboardActivity">
 
-    <!-- This ImageView displays the curved header background. -->
-
-    <!-- This is the menu icon in the header. -->
     <ImageView
         android:id="@+id/header_layout"
         android:layout_width="0dp"
@@ -28,177 +24,138 @@
         android:id="@+id/settings_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/app_name"
+        android:padding="12dp"
         android:src="@drawable/ic_settings"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="#6f1d1b" />
-
-    <!-- This is the application logo text. -->
-
-    <!-- This block defines the main profile button. -->
-    <TextView
-        android:id="@+id/app_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:fontFamily="@font/fredoka_one"
-        android:text="SafeNation"
-        android:textColor="#432818"
-        android:textSize="26sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/profile_card"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:cardBackgroundColor="#6F1D1B"
-        app:cardCornerRadius="50dp"
-        app:layout_constraintBottom_toBottomOf="@id/header_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_layout">
-
-        <ImageView
-            android:id="@+id/profile_icon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/app_name"
-            android:padding="24dp"
-            android:src="@drawable/profile"
-            app:tint="#BB9457" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <!-- This is the greeting message for the user. -->
     <TextView
         android:id="@+id/greeting_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/alata"
-        android:text="Hi, Lungile Phakade!"
-        android:textColor="#432818"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/greeting_text"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_card" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- This is the prompt asking the user what to do. -->
     <TextView
-        android:id="@+id/prompt_text"
+        android:id="@+id/username_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
         android:fontFamily="@font/alata"
-        android:text="Welcome back. Are all safety checks met?"
-        android:textColor="#BB9457"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Username"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/greeting_text" />
+        app:layout_constraintTop_toBottomOf="@+id/greeting_text" />
 
-    <!-- This block contains the main action buttons. -->
     <LinearLayout
-        android:id="@+id/actions_layout"
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/prompt_text">
-
-        <!-- This is the button for Safety Checklists. -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:cardBackgroundColor="#99582A"
-                app:cardCornerRadius="40dp">
-
-                <ImageView
-                    android:id="@+id/safetyicon"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/app_name"
-                    android:padding="20dp"
-                    android:src="@drawable/checklist"
-                    app:tint="#432818" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/alata"
-                android:text="Safety Checklists"
-                android:textColor="#432818" />
-        </LinearLayout>
-
-        <!-- This is the button for Training Modules. -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:cardBackgroundColor="#99582A"
-                app:cardCornerRadius="40dp">
-
-                <ImageView
-                    android:id="@+id/training_icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/app_name"
-                    android:padding="20dp"
-                    android:src="@drawable/training"
-                    app:tint="#432818" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/alata"
-                android:text="Training"
-                android:textColor="#432818" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- This is the button for reporting an incident. -->
-    <LinearLayout
-        android:id="@+id/report_incident_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/actions_layout">
+        app:layout_constraintTop_toBottomOf="@+id/header_layout">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            app:cardBackgroundColor="#99582A"
+            android:id="@+id/trainingCard"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="40dp">
+
+            <ImageView
+                android:id="@+id/training_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:padding="20dp"
+                android:src="@drawable/training"
+                app:tint="#432818" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvTraining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/alata"
+            android:text="@string/dashboard_training_title"
+            android:textColor="#432818" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/checklistCard"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="40dp">
+
+            <ImageView
+                android:id="@+id/checklist_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:padding="20dp"
+                android:src="@drawable/checklist"
+                app:tint="#432818" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/safetyChecklist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/alata"
+            android:text="@string/dashboard_checklist_title"
+            android:textColor="#432818" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/incidentCard"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="40dp">
 
             <ImageView
@@ -212,26 +169,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
+            android:id="@+id/reportIncidents"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/alata"
-            android:text="Report Incident"
+            android:text="@string/dashboard_incident_title"
             android:textColor="#432818" />
     </LinearLayout>
-
-    <!-- This is the floating action button to add new items. -->
-    <!--
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:contentDescription="@string/app_name"
-        android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="#6F1D1B"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@android:color/white" /> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

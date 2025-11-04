@@ -1,4 +1,4 @@
-<!-- Defines app string resources, including screen titles -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AgricultureAgritech</string>
     <string name="incidents_title">Incidents</string>
@@ -19,28 +19,23 @@
     <string name="confirm_your_new_password">Confirm your new password</string>
     <string name="update_password">Update Password</string>
 
-    <string name="policy_text">The following terms and conditions govern your use of our agricultural safety compliance application. By downloading and using the application, you agree to these terms. We provide this tool to help you manage and document safety protocols on your farm. The application is designed to assist with compliance but does not replace professional judgment or legal advice. You are responsible for ensuring your operations meet all local, state, and federal regulations.
+    <string name="policy_text">The following terms and conditions govern your use of our agricultural safety compliance application. By downloading and using the application, you agree to these terms. We provide this tool to help you manage and document safety protocols on your farm. The application is designed to assist with compliance but does not replace professional judgment or legal advice. You are responsible for ensuring your operations meet all local, state, and federal regulations.\n\nWe strive to provide accurate information, but we do not guarantee the completeness or accuracy of the content. Use of the app is at your own risk. We are not liable for any losses or damages arising from your use of this application. We reserve the right to modify these terms at any time.</string>
 
-We are committed to protecting your privacy and handling your data responsibly. Our application functions based on the information you provide. To ensure the effectiveness of the application, you agree to the following points.
+    <string name="training_fbm_title">Farm Building Management</string>
+    <string name="training_fbm_text">Farm Building Management focuses on the design and maintenance of farm structures to ensure safety and efficiency. This includes structural integrity, fire safety, and proper ventilation in barns, storage units, and silos. Regular upkeep of electrical systems and correct chemical storage are also vital to prevent accidents.</string>
 
-You will provide accurate and current information for all safety logs and compliance checks.
-We collect operational data, such as equipment status and safety reports, to provide our services and improve application features. We do not share your specific farm data with third parties without your consent.
-The application is a support tool. You retain the final responsibility for all decisions and actions related to safety and compliance on your property.
-You must secure your account information and are responsible for all activities that occur under your account.</string>
-
-    <string name="training_fbm_title">Farm Business Management</string>
-    <string name="training_fbm_text">Effective farm business management is crucial for profitability and sustainability. This involves strategic planning, financial management, and resource allocation. Key areas include budgeting, record-keeping, market analysis, and risk management. By mastering these skills, you can make informed decisions that enhance productivity and ensure long-term success for your agricultural enterprise.</string>
-
-    <string name="training_pm_title">Production Management</string>
-    <string name="training_pm_text">Production management focuses on optimizing the processes of crop and livestock production. This includes selecting appropriate technologies, managing inputs like seeds and fertilizers, and implementing efficient cultivation and harvesting techniques. Careful planning and execution in this area lead to higher yields, better quality products, and reduced operational costs, directly impacting your farm\'s bottom line.</string>
+    <string name="training_pm_title">Plant Management</string>
+    <string name="training_pm_text">Plant Management covers all aspects of cultivating and caring for your crops. This includes selecting appropriate technologies, managing inputs like seeds and fertilizers, and implementing efficient cultivation and harvesting techniques. Careful planning and execution in this area lead to higher yields, better quality products, and reduced operational costs, directly impacting your farm\'s bottom line.</string>
 
     <string name="training_fa_title">Farm Automation</string>
     <string name="training_fa_text">Farm automation involves using technology to streamline and automate agricultural tasks. This can range from automated irrigation systems and robotic harvesters to drones for crop monitoring. Implementing automation can significantly increase efficiency, reduce labor costs, and improve precision in farm operations. Adopting these technologies is key to modernizing your farm and staying competitive.</string>
 
     <string name="training_pdm_title">Pest/Disease Management</string>
     <string name="training_pdm_text">Integrated Pest Management (IPM) is an effective and environmentally sensitive approach to pest and disease control. It relies on a combination of practices, including biological control, habitat manipulation, and the use of resistant varieties. Judicious use of pesticides is a last resort. Proper IPM strategies protect your crops, reduce chemical costs, and minimize environmental impact.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello, </string>
 
+    <string name="greeting_text">Hello, </string>
+    <string name="dashboard_training_title">Training</string>
+    <string name="dashboard_checklist_title">Safety Checklist</string>
+    <string name="dashboard_incident_title">Report Incident</string>
 
 </resources>

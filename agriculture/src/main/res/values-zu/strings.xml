@@ -32,5 +32,9 @@
 
     <string name="training_pdm_title">Ukuphathwa Kwezinambuzane/Izifo</string>
     <string name="training_pdm_text">I-Integrated Pest Management (IPM) iyindlela ephumelelayo nebucayi emvelweni yokulawula izinambuzane nezifo. Incike ekuhlanganisweni kwezinqubo, okuhlanganisa ukulawulwa kwebhayoloji, ukuguqulwa kwendawo yokuhlala, nokusetshenziswa kwezinhlobo ezikwazi ukumelana nezifo. Ukusetshenziswa ngokucophelela kwemithi yokubulala izinambuzane kuyisinyathelo sokugcina. Amasu afanele e-IPM avikela izitshalo zakho, anciphise izindleko zamakhemikhali, futhi anciphise umthelela emvelweni.</string>
-    <string name="hello_blank_fragment">Sawubona, </string>
+    <string name="greeting_text">Sawubona, </string>
+
+    <string name="dashboard_training_title">Ukuqeqeshwa</string>
+    <string name="dashboard_checklist_title">Uhlu Lokuhlola Ukuphepha</string>
+    <string name="dashboard_incident_title">Bika Isigameko</string>
 </resources>

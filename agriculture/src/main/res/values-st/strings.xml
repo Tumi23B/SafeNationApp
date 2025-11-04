@@ -32,5 +32,9 @@
 
     <string name="training_pdm_title">Tsamaiso ea Likokoanyana/Mafu</string>
     <string name="training_pdm_text">Tsamaiso e Kopanetsoeng ea Likokoanyana (IPM) ke mokhoa o sebetsang le o tsotellang tikoloho oa ho laola likokoanyana le mafu. E itšetlehile ka motsoako oa mekhoa, ho kenyeletsoa taolo ea baeloji, ts\'ebetso ea tikoloho, le tšebeliso ea mefuta e hanyetsanang le mafu. Tšebeliso e hlokolosi ea chefo e bolaeang likokoanyana ke khetho ea ho qetela. Maano a nepahetseng a IPM a sireletsa lijalo tsa hau, a fokotsa litšenyehelo tsa lik\'hemik\'hale, le ho fokotsa tšusumetso tikolohong.</string>
-    <string name="hello_blank_fragment">Dumelang, </string>
+    <string name="greeting_text">Dumelang, </string>
+
+    <string name="dashboard_training_title">Koetliso</string>
+    <string name="dashboard_checklist_title">Lethathamo la Tshireletso</string>
+    <string name="dashboard_incident_title">Thlaleho ea Ketsahalo</string>
 </resources>
