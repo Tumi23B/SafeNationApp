@@ -37,7 +37,7 @@
                     android:backgroundTint="#6f1d1b"
                     android:checked="true"
                     android:fontFamily="@font/alata"
-                    android:text="All"
+                    android:text="@string/filter_all"
                     android:textColor="#ffe6a7" />
 
                 <com.google.android.material.chip.Chip
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#6f1d1b"
                     android:fontFamily="@font/alata"
-                    android:text="Issued"
+                    android:text="@string/filter_issued"
                     android:textColor="#ffe6a7" />
 
                 <com.google.android.material.chip.Chip
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#6f1d1b"
                     android:fontFamily="@font/alata"
-                    android:text="Pending"
+                    android:text="@string/filter_pending"
                     android:textColor="#ffe6a7" />
 
                 <com.google.android.material.chip.Chip
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#6f1d1b"
                     android:fontFamily="@font/alata"
-                    android:text="Resolved"
+                    android:text="@string/filter_resolved"
                     android:textColor="#ffe6a7" />
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>

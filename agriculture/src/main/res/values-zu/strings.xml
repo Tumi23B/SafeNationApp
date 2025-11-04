@@ -72,4 +72,53 @@
     <string name="checklist_hazard_subtitle">Amalebula Okuthunyelwe Nezimpawu | Izimpawu eziyisixwayiso</string>
 
     <string name="training_toolbar_title">Ukuqeqeshwa</string>
+
+    <string name="incident_type_hint">Uhlobo Lwesigameko *</string>
+    <string name="incident_datetime_label">USUKU + ISIKHATHI SESIGAMEKO *</string>
+    <string name="incident_date_hint">Khetha Usuku *</string>
+    <string name="incident_time_hint">Khetha Isikhathi *</string>
+    <string name="incident_location_hint">Indawo *</string>
+    <string name="incident_severity_hint">Ubungozi *</string>
+    <string name="incident_description_hint">Incazelo (Ngokuzikhethela)</string>
+    <string name="incident_witness_name_hint">Igama Likafakazi (Ngokuzikhethela)</string>
+    <string name="incident_witness_contact_hint">Oxhumana Naye Ufakazi (Ngokuzikhethela)</string>
+    <string name="incident_submit_button">Thumela Umbiko</string>
+
+    <string name="incident_download_report_button">Landa Umbiko</string>
+
+    <string name="filter_all">Konke</string>
+    <string name="filter_issued">Kukhishiwe</string>
+    <string name="filter_pending">Kulindile</string>
+    <string name="filter_resolved">Kuxazululiwe</string>
+
+    <string-array name="incident_status_filters">
+        <item>@string/filter_all</item>
+        <item>@string/filter_issued</item>
+        <item>@string/filter_pending</item>
+        <item>@string/filter_resolved</item>
+    </string-array>
+
+    <string-array name="incident_types">
+        <item>Ingozi Encane</item>
+        <item>Ingozi Enkulu</item>
+        <item>Okucishe Kwenzeka</item>
+        <item>Umonakalo Wempahla</item>
+        <item>Ukuhluleka Kwensiza</item>
+    </string-array>
+    <string-array name="severity_levels">
+        <item>Phansi</item>
+        <item>Maphakathi</item>
+        <item>Phezulu</item>
+        <item>Kubucayi</item>
+    </string-array>
+
+    <string name="toast_fill_required_fields">Sicela ugcwalise zonke izinkambu ezidingekayo (*)</string>
+    <string name="toast_report_success">Umbiko uthunyelwe ngempumelelo</string>
+    <string name="toast_report_error">Iphutha lokubika isigameko: %s</string>
+
+    <string name="status_na">N/A</string>
+    <string name="owner_unassigned">Ayabelwe</string>
+
+    <string name="incident_tab_all">Zonke Izigameko</string>
+    <string name="incident_tab_report">Bika Isigameko</string>
 </resources>

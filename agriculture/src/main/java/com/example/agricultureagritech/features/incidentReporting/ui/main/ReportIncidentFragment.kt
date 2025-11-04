@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import com.example.agricultureagritech.features.incidentReporting.ui.IncidentReportingViewModel
 
 class ReportIncidentFragment : Fragment() {
 
@@ -28,7 +29,7 @@ class ReportIncidentFragment : Fragment() {
     private val binding get() = _binding!!
 
     // This ViewModel is available if needed for other state management.
-    private val viewModel: incidentReportingViewModel by activityViewModels()
+    private val viewModel: IncidentReportingViewModel by activityViewModels()
 
     // This block inflates the layout and sets up the view.
     override fun onCreateView(
@@ -54,14 +55,15 @@ class ReportIncidentFragment : Fragment() {
 
     // This function populates the incident type dropdown.
     private fun setupIncidentTypeDropdown() {
-        val incidentTypes = arrayOf("Minor Accident", "Major Accident", "Near Miss", "Property Damage", "Equipment Failure")
+        val incidentTypes = resources.getStringArray(R.array.incident_types)
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, incidentTypes)
         binding.incidentTypeAutocomplete.setAdapter(adapter)
     }
 
     // This function populates the severity dropdown.
+    // This function populates the severity dropdown.
     private fun setupSeverityDropdown() {
-        val severityLevels = arrayOf("Low", "Medium", "High", "Critical")
+        val severityLevels = resources.getStringArray(R.array.severity_levels)
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, severityLevels)
         binding.severityAutocomplete.setAdapter(adapter)
     }
@@ -124,7 +126,7 @@ class ReportIncidentFragment : Fragment() {
 
         // 2. Basic Validation
         if (incidentType.isBlank() || date.isBlank() || time.isBlank() || location.isBlank() || severity.isBlank()) {
-            Toast.makeText(requireContext(), "Please fill all required fields (*)", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.toast_fill_required_fields), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -153,15 +155,16 @@ class ReportIncidentFragment : Fragment() {
                 supabase.postgrest.from("agri_incidents").insert(newIncident)
 
                 // 5. Handle Success
-                Toast.makeText(requireContext(), "Incident reported successfully", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.toast_report_success), Toast.LENGTH_LONG).show()
                 clearForm()
 
                 // 6. Notify the ViewModel to refresh the list on the other tab
-                viewModel.refreshIncidents()
+                viewModel.fetchAllIncidents()
 
             } catch (e: Exception) {
                 // 7. Handle Error
-                Toast.makeText(requireContext(), "Error reporting incident: ${e.message}", Toast.LENGTH_LONG).show()
+                val errorMessage = getString(R.string.toast_report_error, e.message)
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
             }
         }
     }

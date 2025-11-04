@@ -17,8 +17,9 @@
             android:name="com.safenation.agriculture.features.dashboard.ui.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name="com.safenation.agriculture.features.incidentReporting.ui.IncidentReportingActivity"
-            android:exported="false" />
+            android:name="com.agricultureAgritech.features.incidentReporting.ui.IncidentReportingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name="com.safenation.agriculture.features.safetyChecklists.ui.SafetyChecklistActivity"
             android:exported="false" />

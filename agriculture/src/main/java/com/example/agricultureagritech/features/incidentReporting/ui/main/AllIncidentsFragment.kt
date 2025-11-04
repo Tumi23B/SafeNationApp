@@ -1,76 +1,93 @@
-// This file displays the list of all reported incidents.
-package com.example.agricultureagritech.features.incidentReporting.ui
+// This fragment displays a list of all incidents with a filter spinner
+package com.agricultureAgritech.features.incidentReporting.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.agricultureagritech.features.incidentReporting.ui.IncidentAdapter
 import com.safenation.agriculture.R
 import com.safenation.agriculture.databinding.FragmentAllIncidentsBinding
-
+import com.example.agricultureagritech.features.incidentReporting.data.model.Incident
+import com.example.agricultureagritech.features.incidentReporting.ui.IncidentReportingViewModel
 
 class AllIncidentsFragment : Fragment() {
 
     private var _binding: FragmentAllIncidentsBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: incidentReportingViewModel by activityViewModels()
+
+    // Use activityViewModels to share the ViewModel with the parent Activity and other Fragment
+    private val viewModel: IncidentReportingViewModel by activityViewModels()
     private lateinit var incidentAdapter: IncidentAdapter
 
-    // This block inflates the layout using data binding.
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAllIncidentsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    // This block sets up the RecyclerView and observes data changes.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Setup the filter chips
+        setupStatusFilter()
+
+        // Setup the RecyclerView
         setupRecyclerView()
-        setupFilterChips()
-        observeViewModel()
-    }
 
-    // This function configures the RecyclerView and its adapter.
-    private fun setupRecyclerView() {
-        incidentAdapter = IncidentAdapter(emptyList())
-        binding.incidentsRecyclerView.apply {
-            adapter = incidentAdapter
-            layoutManager = LinearLayoutManager(context)
-        }
-    }
-
-    // This function observes the ViewModel for incident list updates.
-    private fun observeViewModel() {
+        // Observe the LiveData from the ViewModel
         viewModel.incidents.observe(viewLifecycleOwner) { incidents ->
-            incidentAdapter.updateIncidents(incidents)
+            // Submit an empty list if incidents is null
+            incidentAdapter.submitList(incidents ?: emptyList<Incident>())
         }
-        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            // You can add a ProgressBar to your layout and control its visibility here.
-        }
+
+        // Fetch incidents when the fragment is created
+        viewModel.fetchAllIncidents()
     }
 
-    // This block cleans up the binding object to avoid memory leaks.
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    // This function sets up the listeners for the filter chips.
-    private fun setupFilterChips() {
+    /*
+     * Sets up the status filter spinner using the string array resource.
+     * This ensures the spinner options are translated.
+     */
+    /*
+ * Sets up listeners for the status filter ChipGroup.
+ */
+    private fun setupStatusFilter() {
+        // Set a listener on the chip group to respond to new selections
         binding.filterChipGroup.setOnCheckedChangeListener { group, checkedId ->
+            // Determine the status string based on which chip was selected
             val status = when (checkedId) {
                 R.id.chip_issued -> "Issued"
                 R.id.chip_pending -> "Pending"
                 R.id.chip_resolved -> "Resolved"
-                else -> "All" // Default to "All" for chip_all or no selection
+                else -> "All" // Default to "All" for R.id.chip_all or no selection
             }
+            // Call the ViewModel to apply the filter
             viewModel.filterIncidents(status)
         }
+    }
+
+    /*
+     * Configures the RecyclerView, adapter, and layout manager.
+     */
+    private fun setupRecyclerView() {
+        incidentAdapter = IncidentAdapter { incident ->
+            // Handle incident click if needed, e.g., navigate to detail screen
+        }
+        binding.incidentsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = incidentAdapter
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

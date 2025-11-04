@@ -19,8 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Policy"
-                android:contentDescription="@string/settings_policy"
+                android:text="@string/settings_policy"
                 android:textAppearance="@style/ToolbarTitleText"
                 app:titleTextColor="#432818" />
         </com.google.android.material.appbar.MaterialToolbar>

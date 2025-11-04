@@ -6,11 +6,12 @@ import android.os.Bundle
 import android.widget.ImageView
 import com.example.safenationapp.BaseActivity
 import com.safenation.agriculture.R
-import com.safenation.agriculture.features.incidentReporting.ui.IncidentReportingActivity
 import com.safenation.agriculture.features.safetyChecklists.ui.SafetyChecklistActivity
 import com.safenation.agriculture.features.settings.ui.SettingsActivity
 import com.safenation.agriculture.features.training.ui.TrainingModuleActivity
 import android.widget.LinearLayout
+import com.agricultureAgritech.features.incidentReporting.ui.IncidentReportingActivity
+import com.google.android.material.card.MaterialCardView
 
 
 class DashboardActivity : BaseActivity() {
@@ -26,18 +27,18 @@ class DashboardActivity : BaseActivity() {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
 
-        // Corrected: Find the LinearLayout ID "checklistCard"
-        findViewById<LinearLayout?>(R.id.checklistCard)?.setOnClickListener {
+        // Find the MaterialCardView ID "checklistCard"
+        findViewById<MaterialCardView?>(R.id.checklistCard)?.setOnClickListener {
             startActivity(Intent(this, SafetyChecklistActivity::class.java))
         }
 
-        // Corrected: Find the LinearLayout ID "trainingCard"
-        findViewById<LinearLayout?>(R.id.trainingCard)?.setOnClickListener {
+        // Find the MaterialCardView ID "trainingCard"
+        findViewById<MaterialCardView?>(R.id.trainingCard)?.setOnClickListener {
             startActivity(Intent(this, TrainingModuleActivity::class.java))
         }
 
-        // Corrected: Find the LinearLayout ID "incidentCard" for consistency
-        findViewById<LinearLayout?>(R.id.incidentCard)?.setOnClickListener {
+        // Find the MaterialCardView ID "incidentCard"
+        findViewById<MaterialCardView?>(R.id.incidentCard)?.setOnClickListener {
             startActivity(Intent(this, IncidentReportingActivity::class.java))
         }
     }

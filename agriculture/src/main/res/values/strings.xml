@@ -72,4 +72,52 @@
 
     <string name="training_toolbar_title">Training</string>
 
+    <string name="incident_type_hint">Type of Incident *</string>
+    <string name="incident_datetime_label">DATE + TIME OF INCIDENT *</string>
+    <string name="incident_date_hint">Select Date *</string>
+    <string name="incident_time_hint">Select Time *</string>
+    <string name="incident_location_hint">Location *</string>
+    <string name="incident_severity_hint">Severity *</string>
+    <string name="incident_description_hint">Description (Optional)</string>
+    <string name="incident_witness_name_hint">Witness Name (Optional)</string>
+    <string name="incident_witness_contact_hint">Witness Contact (Optional)</string>
+    <string name="incident_submit_button">Submit Report</string>
+
+    <string name="incident_download_report_button">Download Report</string>
+
+    <string name="filter_all">All</string>
+    <string name="filter_issued">Issued</string>
+    <string name="filter_pending">Pending</string>
+    <string name="filter_resolved">Resolved</string>
+
+    <string-array name="incident_status_filters">
+        <item>@string/filter_all</item>
+        <item>@string/filter_issued</item>
+        <item>@string/filter_pending</item>
+        <item>@string/filter_resolved</item>
+    </string-array>
+
+    <string-array name="incident_types">
+        <item>Minor Accident</item>
+        <item>Major Accident</item>
+        <item>Near Miss</item>
+        <item>Property Damage</item>
+        <item>Equipment Failure</item>
+    </string-array>
+    <string-array name="severity_levels">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+        <item>Critical</item>
+    </string-array>
+
+    <string name="toast_fill_required_fields">Please fill all required fields (*)</string>
+    <string name="toast_report_success">Incident reported successfully</string>
+    <string name="toast_report_error">Error reporting incident: %s</string>
+
+    <string name="status_na">N/A</string>
+    <string name="owner_unassigned">Unassigned</string>
+
+    <string name="incident_tab_all">All Incidents</string>
+    <string name="incident_tab_report">Report Incident</string>
 </resources>

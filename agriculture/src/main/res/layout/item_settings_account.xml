@@ -27,8 +27,7 @@
                 android:layout_width="288dp"
                 android:layout_height="55dp"
                 android:fontFamily="@font/fredoka_one"
-                android:text="Manage your account"
-                android:contentDescription="@string/acc_sub_text"
+                android:text="@string/acc_sub_text"
                 android:textColor="@color/settings_text_primary"
                 android:textSize="22sp" />
 

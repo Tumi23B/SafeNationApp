@@ -29,10 +29,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/fredoka_one"
-                android:text="Select a language"
                 android:textColor="@color/settings_text_primary"
                 android:textSize="16sp"
-                android:contentDescription="@string/language_sett"
+                android:text="@string/language_sett"
                 android:textStyle="bold" />
 
             <include
@@ -72,9 +71,8 @@
                 android:layout_marginTop="8dp"
                 android:backgroundTint="#6F1D1B"
                 android:fontFamily="@font/alata"
-                android:text="Save"
                 android:textAllCaps="false"
-                android:contentDescription="@string/sav_btn"
+                android:text="@string/sav_btn"
                 android:textColor="#FFE6A7"
                 app:cornerRadius="@dimen/settings_button_corner" />
 

@@ -22,12 +22,12 @@
 
     <ImageView
         android:id="@+id/settings_icon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="50dp"
+        android:layout_height="57dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="@string/app_name"
-        android:padding="12dp"
+        android:padding="8dp"
         android:src="@drawable/ic_settings"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -77,11 +77,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/alata"
-        android:text="Hello!"
+        android:text="@string/greeting_text"
         android:textColor="#432818"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:contentDescription="@string/greeting_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_card" />
@@ -92,10 +91,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/alata"
-        android:text="Welcome back"
         android:textColor="#BB9457"
         android:textSize="16sp"
-        android:contentDescription="@string/greeting_sub"
+        android:text="@string/greeting_sub"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/greeting_text" />
@@ -118,21 +116,22 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/checklistCard"
                 android:layout_width="100dp"
-                android:layout_height="96dp"
-                android:background="@drawable/btnicon"
-                android:gravity="center">
+                android:layout_height="100dp"
+                app:cardBackgroundColor="#99582A"
+                app:cardCornerRadius="70dp">
 
                 <ImageView
                     android:id="@+id/safetyicon"
-                    android:layout_width="38dp"
-                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/app_name"
+                    android:padding="24dp"
                     android:src="@drawable/checklist"
-                    app:tint="#BB9457" />
-            </LinearLayout>
+                    app:tint="#432818" />
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/safetyChecklist"
@@ -151,21 +150,22 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/trainingCard"
                 android:layout_width="100dp"
-                android:layout_height="96dp"
-                android:background="@drawable/btnicon"
-                android:gravity="center">
+                android:layout_height="100dp"
+                app:cardBackgroundColor="#99582A"
+                app:cardCornerRadius="70dp">
 
                 <ImageView
                     android:id="@+id/training_icon"
-                    android:layout_width="38dp"
-                    android:layout_height="48dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/app_name"
+                    android:padding="24dp"
                     android:src="@drawable/training"
-                    app:tint="#BB9457" />
-            </LinearLayout>
+                    app:tint="#432818" />
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/tvTraining"
@@ -189,21 +189,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/actions_layout">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/incidentCard"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:background="@drawable/btnicon"
-            android:gravity="center">
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardBackgroundColor="#99582A"
+            app:cardCornerRadius="70dp">
 
             <ImageView
                 android:id="@+id/repo_incident"
-                android:layout_width="38dp"
-                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:contentDescription="@string/app_name"
+                android:padding="24dp"
                 android:src="@drawable/incident"
-                app:tint="#BB9457" />
-        </LinearLayout>
+                app:tint="#432818" />
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/reportIncidents"

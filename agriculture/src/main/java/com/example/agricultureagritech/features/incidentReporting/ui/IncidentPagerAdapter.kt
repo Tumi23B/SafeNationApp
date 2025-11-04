@@ -4,6 +4,7 @@ package com.example.agricultureagritech.features.incidentReporting.ui
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.agricultureAgritech.features.incidentReporting.ui.main.AllIncidentsFragment
 
 // This adapter provides the correct fragment for each tab.
 class IncidentPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {

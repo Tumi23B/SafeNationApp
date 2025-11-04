@@ -62,4 +62,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation("androidx.test.ext:junit:1.2.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.0")
+
+    implementation("androidx.fragment:fragment-ktx:1.7.1")
 }
