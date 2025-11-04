@@ -37,4 +37,24 @@
     <string name="dashboard_training_title">Ukuqeqeshwa</string>
     <string name="dashboard_checklist_title">Uhlu Lokuhlola Ukuphepha</string>
     <string name="dashboard_incident_title">Bika Isigameko</string>
+
+    <string name="checklist_save_button">Londoloza Uhlu</string>
+    <string name="checklist_tractor_title">Ukusebenza Kukagandaganda</string>
+    <string name="checklist_tractor_subtitle">Ukuhlolwa kwangaphambi kokusebenza | Ukushayela okuphephile</string>
+    <string name="checklist_pesticide_title">Ukuphathwa Kwemithi Yokubulala Izinambuzane</string>
+    <string name="checklist_pesticide_subtitle">I-PPE efanele | Imihlahlandlela yokugcina</string>
+    <string name="checklist_harvesting_title">Ukuphepha Kokuvuna</string>
+    <string name="checklist_harvesting_subtitle">Ukuhlolwa kwemishini | Ukuphathwa kokukhathala</string>
+    <string name="checklist_livestock_title">Ukuphathwa Kwemfuyo</string>
+    <string name="checklist_livestock_subtitle">Ukuziphatha kwezilwane | Izibopho ezifanele</string>
+    <string name="checklist_emergency_title">Ukulungela Isimo Esiphuthumayo</string>
+    <string name="checklist_emergency_subtitle">Amakhithi osizo lokuqala | Imizila yokuphuma</string>
+    <string name="checklist_fit_for_work_title">Ukulungele Ukusebenza</string>
+    <string name="checklist_fit_for_work_subtitle">Inqubomgomo | Isisebenzi siyakwazi ukwenza imisebenzi</string>
+    <string name="checklist_training_title">Ukuqeqeshwa</string>
+    <string name="checklist_training_subtitle">Imojuli yokuqeqesha | Sebenzisa imishini ngokuphepha</string>
+    <string name="checklist_weather_title">Ukuqwashisa Ngesimo Sezulu</string>
+    <string name="checklist_weather_subtitle">Izinyathelo zokuqapha | Izimo zezulu ezishintshayo</string>
+    <string name="checklist_hazard_title">Isexwayiso Sengozi</string>
+    <string name="checklist_hazard_subtitle">Amalebula Okuthunyelwe Nezimpawu | Izimpawu eziyisixwayiso</string>
 </resources>

@@ -24,17 +24,37 @@
     <string name="training_fbm_title">Tsamaiso ea Meaho ea Polasi</string>
     <string name="training_fbm_text">Tsamaiso ea Meaho ea Polasi e shebane le moralo le tlhokomelo ea meaho ea polasi ho netefatsa polokeho le ts\'ebetso e ntle. Sena se kenyelletsa botsitso ba meaho, polokeho ea mollo, le moea o kenang hantle ka lisibayeng, matlong a polokelo, le li-silo. Tlhokomelo e tloaelehileng ea litsamaiso tsa motlakase le polokelo e nepahetseng ea lik\'hemik\'hale le eona e bohlokoa ho thibela likotsi.</string>
 
-    <string name="training_pm_title">Tsamaiso ea Lirapa</string>
-    <string name="training_pm_text">Tsamaiso ea Lirapa e akaretsa likarolo tsohle tsa ho lema le ho hlokomela lijalo tsa hau. Sena se kenyelletsa ho khetha mahlale a loketseng, ho laola lisebelisoa tse kang peo le manyolo, le ho kenya tšebetsong mekhoa e sebetsang ea ho lema le kotulo. Moralo o hlokolosi le ts\'ebetso sebakeng sena li lebisa chai e phahameng, lihlahisoa tsa boleng bo holimo, le litšenyehelo tse fokotsehileng tsa ts\'ebetso, tse amang ka kotloloho phaello ea polasi ea hau.</string>
+    <string name="training_pm_title">Tsamaiso ea Dirapa</string>
+    <string name="training_pm_text">Tsamaiso ea dirapa e akaretsa likarolo tsohle tsa ho lema le ho hlokomela lijalo tsa hau. Sena se kenyelletsa ho khetha mahlale a loketseng, ho laola lisebelisoa tse kang peo le manyolo, le ho kenya tšebetsong mekhoa e sebetsang ea ho lema le kotulo. Moralo o hlokolosi le ts\'ebetso sebakeng sena li lebisa chai e phahameng, lihlahisoa tsa boleng bo holimo, le litšenyehelo tse fokotsehileng tsa ts\'ebetso, tse amang ka kotloloho phaello ea polasi ea hau.</string>
 
     <string name="training_fa_title">Mechini e Iketsetsang ea Polasi</string>
     <string name="training_fa_text">Mechini e Iketsetsang ea Polasi e kenyelletsa tšebeliso ea mahlale a morao-rao ho nolofatsa le ho iketsetsa mesebetsi ea temo. Sena se ka kenyelletsa litsamaiso tsa nosetso tse iketsetsang le liroboto tsa kotulo ho isa ho li-drone bakeng sa ho beha lijalo leihlo. Ho kenya tšebetsong mechini e iketsetsang ho ka eketsa ts\'ebetso haholo, ha fokotsa litšenyehelo tsa basebetsi, le ho ntlafatsa ho nepahala mesebitsing ea polasi. Ho amohela mahlale ana a morao-rao ke senotlolo sa ho ntlafatsa polasi ea hau le ho lula u na le tlholisano.</string>
 
-    <string name="training_pdm_title">Tsamaiso ea Likokoanyana/Mafu</string>
+    <string name="training_pdm_title">Tsamaiso ea Dikokoanyana/Mafu</string>
     <string name="training_pdm_text">Tsamaiso e Kopanetsoeng ea Likokoanyana (IPM) ke mokhoa o sebetsang le o tsotellang tikoloho oa ho laola likokoanyana le mafu. E itšetlehile ka motsoako oa mekhoa, ho kenyeletsoa taolo ea baeloji, ts\'ebetso ea tikoloho, le tšebeliso ea mefuta e hanyetsanang le mafu. Tšebeliso e hlokolosi ea chefo e bolaeang likokoanyana ke khetho ea ho qetela. Maano a nepahetseng a IPM a sireletsa lijalo tsa hau, a fokotsa litšenyehelo tsa lik\'hemik\'hale, le ho fokotsa tšusumetso tikolohong.</string>
     <string name="greeting_text">Dumelang, </string>
 
     <string name="dashboard_training_title">Koetliso</string>
     <string name="dashboard_checklist_title">Lethathamo la Tshireletso</string>
     <string name="dashboard_incident_title">Thlaleho ea Ketsahalo</string>
+
+    <string name="checklist_save_button">Boloka Lethathamo</string>
+    <string name="checklist_tractor_title">Tshebetso ea Terekere</string>
+    <string name="checklist_tractor_subtitle">Lihlahlobo tsa pele ho tshebetso | Ho kganna ka polokeho</string>
+    <string name="checklist_pesticide_title">Tshwaro ya Dibolaya-dikokonyana</string>
+    <string name="checklist_pesticide_subtitle">PPE e nepahetseng | Tataiso ya polokelo</string>
+    <string name="checklist_harvesting_title">Polokeho ya Kotulo</string>
+    <string name="checklist_harvesting_subtitle">Tlhahlobo ya disebediswa | Taolo ya mokgathala</string>
+    <string name="checklist_livestock_title">Tshwaro ya Mehlape</string>
+    <string name="checklist_livestock_subtitle">Boitshwaro ba diphoofolo | Dithibelo tse nepahetseng</string>
+    <string name="checklist_emergency_title">Boitokisetso ba Tshohanyetso</string>
+    <string name="checklist_emergency_subtitle">Dikhithi tsa thuso ya pele | Ditsela tsa phalliso</string>
+    <string name="checklist_fit_for_work_title">Ho Lokela Mosebetsi</string>
+    <string name="checklist_fit_for_work_subtitle">Leano | Mosebeletsi o Loketse ho etsa mesebetsi</string>
+    <string name="checklist_training_title">Koetliso</string>
+    <string name="checklist_training_subtitle">Module ea Koetliso | Sebedisa disebediswa le mechini ka polokeho</string>
+    <string name="checklist_weather_title">Tlhokomediso ya Boemo ba Lehodimo</string>
+    <string name="checklist_weather_subtitle">Mehato ya tshireletso | Maemo a lehodimo a fetohang</string>
+    <string name="checklist_hazard_title">Temoso ya Kotsi</string>
+    <string name="checklist_hazard_subtitle">Manstwe le Matshwao | Matshwao a temoso</string>
 </resources>

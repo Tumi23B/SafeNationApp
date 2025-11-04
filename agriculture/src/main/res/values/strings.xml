@@ -38,4 +38,24 @@
     <string name="dashboard_checklist_title">Safety Checklist</string>
     <string name="dashboard_incident_title">Report Incident</string>
 
+    <string name="checklist_save_button">Save List</string>
+    <string name="checklist_tractor_title">Tractor Operation</string>
+    <string name="checklist_tractor_subtitle">Pre-operation checks | Safe driving</string>
+    <string name="checklist_pesticide_title">Pesticide Handling</string>
+    <string name="checklist_pesticide_subtitle">Proper PPE | Storage guidelines</string>
+    <string name="checklist_harvesting_title">Harvesting Safety</string>
+    <string name="checklist_harvesting_subtitle">Equipment inspection | Fatigue management</string>
+    <string name="checklist_livestock_title">Livestock Handling</string>
+    <string name="checklist_livestock_subtitle">Animal behavior | Proper restraints</string>
+    <string name="checklist_emergency_title">Emergency Preparedness</string>
+    <string name="checklist_emergency_subtitle">First aid kits | Evacuation routes</string>
+    <string name="checklist_fit_for_work_title">Fit For Work</string>
+    <string name="checklist_fit_for_work_subtitle">Policy | Worker Capable of performing tasks</string>
+    <string name="checklist_training_title">Training</string>
+    <string name="checklist_training_subtitle">Training Module | Operate equipment and machinery safely</string>
+    <string name="checklist_weather_title">Weather Awareness</string>
+    <string name="checklist_weather_subtitle">Precautions | Changing weather conditions</string>
+    <string name="checklist_hazard_title">Hazard Warning</string>
+    <string name="checklist_hazard_subtitle">Post Labels and Signs | Warning signs</string>
+
 </resources>
