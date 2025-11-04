@@ -137,25 +137,30 @@ class ReportIncidentFragment : Fragment() {
             description = description.takeIf { it.isNotBlank() },
             severity = severity,
             witnessName = witnessName.takeIf { it.isNotBlank() },
-            witnessContact = witnessContact.takeIf { it.isNotBlank() }
+            witnessContact = witnessContact.takeIf { it.isNotBlank() },
+            status = "Issued" // Set default status for new reports
         )
 
         // 4. Launch coroutine for database operation
         viewLifecycleOwner.lifecycleScope.launch {
             try {
-                // Access the shared Supabase client from the :app module
+                // Access the shared Supabase client
                 val supabase = SupabaseClient.client
 
-                // Insert the new incident into the "agri_incidents" table
-                // This syntax works with the new library
+                // Insert the new incident.
+                // We pass 'AgriIncident' directly.
+                // Supabase matches the @SerialName tags to the table columns.
                 supabase.postgrest.from("agri_incidents").insert(newIncident)
 
                 // 5. Handle Success
                 Toast.makeText(requireContext(), "Incident reported successfully", Toast.LENGTH_LONG).show()
                 clearForm()
 
+                // 6. Notify the ViewModel to refresh the list on the other tab
+                viewModel.refreshIncidents()
+
             } catch (e: Exception) {
-                // 6. Handle Error (Corrected typo)
+                // 7. Handle Error
                 Toast.makeText(requireContext(), "Error reporting incident: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }

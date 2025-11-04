@@ -1,17 +1,24 @@
 // This file manages the data for the incident reporting UI.
 package com.example.agricultureagritech.features.incidentReporting.ui
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.agricultureagritech.features.incidentReporting.data.model.AgriIncident
 import com.example.agricultureagritech.features.incidentReporting.data.model.Incident
-import kotlinx.coroutines.delay
+import com.example.core.SupabaseClient
+import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.postgrest.query.Order
 import kotlinx.coroutines.launch
 
 class incidentReportingViewModel : ViewModel() {
 
-    // This block declares the LiveData for incidents and loading state.
+    // Holds the complete list fetched from Supabase
+    private val _allIncidents = MutableLiveData<List<AgriIncident>>()
+
+    // Holds the list displayed in the UI, which can be filtered
     private val _incidents = MutableLiveData<List<Incident>>()
     val incidents: LiveData<List<Incident>> = _incidents
 
@@ -22,26 +29,78 @@ class incidentReportingViewModel : ViewModel() {
         fetchIncidents()
     }
 
-    // This function fetches a list of incidents.
+    /**
+     * Fetches all incidents from the Supabase "agri_incidents" table.
+     */
     fun fetchIncidents() {
         viewModelScope.launch {
             _isLoading.value = true
-            delay(1000) // Simulate network delay.
-            _incidents.value = listOf(
-                Incident("INC001", "Leaking pipe in Section A", "High", "2025-08-25 20:30:00", "Lethabo Rema", "Issued"),
-                Incident("INC002", "Safety gear missing", "Medium", "2025-08-25 18:00:00", "Jane Smith", "Pending"),
-                Incident("INC003", "Fence broken near West gate", "Low", "2025-08-24 12:00:00", "Melusi Feka", "Resolved")
-            )
-            _isLoading.value = false
+            try {
+                // Fetch data from Supabase
+                val supabaseResponse = SupabaseClient.client.postgrest
+                    .from("agri_incidents")
+                    .select {
+                        order("created_at", Order.DESCENDING) // Show newest first
+                    }
+                    .decodeList<AgriIncident>() // Deserialize into our data model
+
+                _allIncidents.value = supabaseResponse
+                // Map the database model (AgriIncident) to the UI model (Incident)
+                _incidents.value = mapToUiModel(supabaseResponse)
+
+            } catch (e: Exception) {
+                Log.e("IncidentViewModel", "Error fetching incidents", e)
+                _allIncidents.value = emptyList()
+                _incidents.value = emptyList()
+            } finally {
+                _isLoading.value = false
+            }
         }
     }
 
-    // This function simulates reporting a new incident.
-    fun reportIncident(description: String) {
-        viewModelScope.launch {
-            _isLoading.value = true
-            delay(1500)
-            fetchIncidents()
+    /**
+     * Public function to allow UI (e.g., ReportIncidentFragment) to trigger a refresh.
+     */
+    fun refreshIncidents() {
+        fetchIncidents()
+    }
+
+    /**
+     * Filters the displayed incident list based on the selected status.
+     * @param status The status to filter by ("All", "Issued", "Pending", "Resolved").
+     */
+    fun filterIncidents(status: String) {
+        if (status == "All") {
+            _incidents.value = mapToUiModel(_allIncidents.value ?: emptyList())
+            return
+        }
+
+        val filteredList = _allIncidents.value?.filter {
+            it.status.equals(status, ignoreCase = true)
+        }
+        _incidents.value = mapToUiModel(filteredList ?: emptyList())
+    }
+
+    /**
+     * Maps the database model (AgriIncident) to the UI model (Incident).
+     * This decouples the database schema from the UI display.
+     */
+    private fun mapToUiModel(dbIncidents: List<AgriIncident>): List<Incident> {
+        return dbIncidents.map { agriIncident ->
+            Incident(
+                // Use severity for priority (e.g., "High")
+                priority = agriIncident.severity,
+                // Use the database ID
+                id = agriIncident.id?.toString() ?: "N/A",
+                // Use description as the main title, or incident type as fallback
+                title = agriIncident.description ?: agriIncident.incidentType,
+                // Combine date and time for the timestamp
+                timestamp = "${agriIncident.date}, ${agriIncident.time}",
+                // Use witness name for owner, or "Unassigned" as fallback
+                owner = agriIncident.witnessName ?: "Unassigned",
+                // Pass the status directly
+                status = agriIncident.status
+            )
         }
     }
 }

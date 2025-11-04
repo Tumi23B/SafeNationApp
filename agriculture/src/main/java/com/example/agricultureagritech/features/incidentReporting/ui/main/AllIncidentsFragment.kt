@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.safenation.agriculture.R
 import com.safenation.agriculture.databinding.FragmentAllIncidentsBinding
 
 
@@ -31,6 +32,7 @@ class AllIncidentsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupFilterChips()
         observeViewModel()
     }
 
@@ -57,5 +59,18 @@ class AllIncidentsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    // This function sets up the listeners for the filter chips.
+    private fun setupFilterChips() {
+        binding.filterChipGroup.setOnCheckedChangeListener { group, checkedId ->
+            val status = when (checkedId) {
+                R.id.chip_issued -> "Issued"
+                R.id.chip_pending -> "Pending"
+                R.id.chip_resolved -> "Resolved"
+                else -> "All" // Default to "All" for chip_all or no selection
+            }
+            viewModel.filterIncidents(status)
+        }
     }
 }
